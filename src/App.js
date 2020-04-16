@@ -1,13 +1,13 @@
-import React, { Component} from "react";
+import React from "react";
 
-class App extends Component{
-  render(){
-    return(
-      <div className="App">
-        <h1> Hello, World! </h1>
-      </div>
-    );
-  }
-}
+import Index from "./pages/Index";
+
+import "./styles/reset.less";
+
+const App = () => {
+  return (
+    < Index />
+  );
+};
 
 export default App;
