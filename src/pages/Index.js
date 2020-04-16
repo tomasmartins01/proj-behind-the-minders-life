@@ -19,7 +19,7 @@ class Index extends React.Component {
 
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
-      const emailSplited = firebase.auth().currentUser.email.split("@");
+      const emailSplited = user.email.split("@");
       const emailDomain = emailSplited[1];
       if (
         emailDomain === "school.mindera.com" ||
@@ -38,6 +38,8 @@ class Index extends React.Component {
         signInSuccess: () => false
       }
     };
+
+    const auth = firebase.auth();
     return (
       <>
         <Title tabTitle="Behind The Minder's Life" />
@@ -45,10 +47,10 @@ class Index extends React.Component {
         <h2> Get ready for some new adventures inside Mindera! </h2>
         {this.state.isSignedIn ? (
           <>
-            <div>Welcome {firebase.auth().currentUser.displayName}</div>
+            <div>Welcome {auth.currentUser.displayName}</div>
             <button
               onClick={() => {
-                firebase.auth().signOut();
+                auth.signOut();
                 this.setState({ isSignedIn: false });
               }}
             >
@@ -58,7 +60,7 @@ class Index extends React.Component {
         ) : (
           <StyledFirebaseAuth
             uiConfig={uiConfig}
-            firebaseAuth={firebase.auth()}
+            firebaseAuth={auth}
           />
         )}
       </>
