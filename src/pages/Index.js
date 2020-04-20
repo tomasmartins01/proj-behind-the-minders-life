@@ -2,8 +2,9 @@ import React from "react";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
-import Title from "../components/Title";
 import Image from "../components/Image";
+import WelcomePage from "../components/index/WelcomePage";
+import ErrorPage from "../components/index/ErrorPage";
 
 import logoBlack from "../images/logoBlack.png";
 import room404 from "../images/room404.png";
@@ -25,10 +26,7 @@ class Index extends React.Component {
     firebase.auth().onAuthStateChanged(user => {
       const emailSplited = user.email.split("@");
       const emailDomain = emailSplited[1];
-      if (
-        emailDomain === "school.mindera.com" ||
-        emailDomain === "mindera.com"
-      ) {
+      if (emailDomain === ("school.mindera.com" || "mindera.com")) {
         this.setState({ isSignedIn: !!user, success: true });
       } else {
         this.setState({ isSignedIn: !!user, success: false });
@@ -46,41 +44,26 @@ class Index extends React.Component {
     };
 
     const auth = firebase.auth();
+
     return (
       <>
-        <Title tabTitle="Behind The Minder's Life" />
         {this.state.isSignedIn ? (
           this.state.success ? (
-            <div id="successLogin">
-              <div>Welcome {auth.currentUser.displayName}</div>
-              <button
-                onClick={() => {
-                  auth.signOut();
-                  this.setState({ isSignedIn: false });
-                }}
-              >
-                Sign out!
-              </button>
-            </div>
+            <WelcomePage
+              name={auth.currentUser.displayName}
+              handleClick={() => {
+                auth.signOut();
+                this.setState({ isSignedIn: false });
+              }}
+            />
           ) : (
-            <div id="errorPage">
-              <Image
-                imageSrc={room404}
-                alt="Email not found"
-                cName="room404img"
-              />
-              <div id="message">
-                <h1 id="message404">404: EMAIL NOT FOUND</h1>
-                <button
-                  onClick={() => {
-                    auth.signOut();
-                    this.setState({ isSignedIn: false });
-                  }}
-                >
-                  try another email
-                </button>
-              </div>
-            </div>
+            <ErrorPage
+              image={room404}
+              handleClick={() => {
+                auth.signOut();
+                this.setState({ isSignedIn: false });
+              }}
+            />
           )
         ) : (
           <div id="toLogin">

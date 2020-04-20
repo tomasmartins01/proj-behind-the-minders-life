@@ -1,0 +1,115 @@
+@import "../vars.less";
+
+#successLogin {
+  background-color: @black;
+  * {
+    font-family: "Iceberg";
+  }
+}
+#signOut {
+  position: absolute;
+  width: 135px;
+  height: 30px;
+  top: 24px;
+  background-color: @brown;
+  border-radius: 10px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  color: white;
+  right: 10px;
+
+  &:hover {
+    animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.LogoLife {
+  width: 90%;
+  height: 258px;
+  object-fit: cover;
+  margin-left: 5%;
+  margin-top: 20px;
+}
+
+#welcome {
+  font-size: 85px;
+  color: white;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.buttonContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .mainButtons {
+    width: 300px;
+    height: 150px;
+    background: white;
+    border: 20px solid #fdd20a;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-size: 40px;
+
+    &:first-of-type {
+      margin-right: 50px;
+    }
+
+    &:hover {
+      animation: 2.5s changeColors linear;
+    }
+  }
+}
+
+footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background-color: @brown;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    margin: 0;
+    color: white;
+    font-size: 24px;
+  }
+}
+
+@keyframes changeColors {
+  50% {
+    background: @black;
+    color: white;
+  }
+  100% {
+    background: white;
+    color: @black;
+  }
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
