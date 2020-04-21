@@ -27,6 +27,7 @@
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
     "react-firebaseui": "^4.1.0",
+    "react-router-dom": "^5.1.2",
     "url-loader": "^4.1.0"
   }
 }
