@@ -13,11 +13,11 @@
 
   h1 {
     font-size: 75px;
-    text-shadow: 5px 2px #fdda10;
+    text-shadow: 5px 2px @yellow;
     margin: 20px;
 
     &:hover {
-      color: #fdda10;
+      color: @yellow;
       text-shadow: 5px 2px black;
     }
   }
@@ -29,5 +29,29 @@
   .login-logo {
     width: 271px;
     height: 287px;
+  }
+}
+
+@media screen and (max-width: 900px) {  
+
+  #toLogin {
+
+    h1 {
+      font-size: 30px;
+      margin: 20px;
+      margin-top:100px;
+    }
+    
+    h2 {
+      font-size: 20px;
+      margin-bottom: 125px;
+    }
+
+    .login-logo {
+      margin-top: 50px;
+      width: 150px;
+      height: 150px;
+    }
+
   }
 }
