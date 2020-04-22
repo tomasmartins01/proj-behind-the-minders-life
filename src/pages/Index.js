@@ -1,6 +1,7 @@
 import React from "react";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import Image from "../components/Image";
 import WelcomePage from "../components/index/WelcomePage";
@@ -13,7 +14,7 @@ import "../styles/index.less";
 
 firebase.initializeApp({
   apiKey: "AIzaSyAzDykfytwb2JBZ7mtfzVFVm5AAXCMuT54",
-  authDomain: "behindtheminderslife.firebaseapp.com",
+  authDomain: "behindtheminderslife.firebaseapp.com"
 });
 
 class Index extends React.Component {
@@ -23,7 +24,7 @@ class Index extends React.Component {
   }
 
   componentDidMount() {
-    firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth().onAuthStateChanged(user => {
       const emailSplited = user.email.split("@");
       const emailDomain = emailSplited[1];
       if (emailDomain === ("school.mindera.com" || "mindera.com")) {
@@ -39,8 +40,8 @@ class Index extends React.Component {
       signInFlow: "popup",
       signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
       callbacks: {
-        signInSuccess: () => false,
-      },
+        signInSuccess: () => false
+      }
     };
 
     const auth = firebase.auth();
@@ -49,13 +50,15 @@ class Index extends React.Component {
       <>
         {this.state.isSignedIn ? (
           this.state.success ? (
-            <WelcomePage
-              name={auth.currentUser.displayName}
-              handleClick={() => {
-                auth.signOut();
-                this.setState({ isSignedIn: false });
-              }}
-            />
+            <Router>
+              <WelcomePage
+                name={auth.currentUser.displayName}
+                handleClick={() => {
+                  auth.signOut();
+                  this.setState({ isSignedIn: false });
+                }}
+              />
+            </Router>
           ) : (
             <ErrorPage
               image={room404}
