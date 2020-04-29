@@ -3,7 +3,7 @@ import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { BrowserRouter as Router } from "react-router-dom";
 
-import Image from "../components/Image";
+import Image from "../components/utils/Image";
 import WelcomePage from "../components/index/WelcomePage";
 import ErrorPage from "../components/index/ErrorPage";
 

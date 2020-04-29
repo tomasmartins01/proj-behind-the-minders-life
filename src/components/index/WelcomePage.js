@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Link, withRouter } from "react-router-dom";
 
-import Image from "../Image";
+import Image from "../utils/Image";
 import logoLife from "../../images/logoLife.png";
 
 const WelcomePage = ({ name, handleClick }) => {
