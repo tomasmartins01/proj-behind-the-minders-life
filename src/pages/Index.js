@@ -50,15 +50,13 @@ class Index extends React.Component {
       <>
         {this.state.isSignedIn ? (
           this.state.success ? (
-            <Router>
-              <WelcomePage
-                name={auth.currentUser.displayName}
-                handleClick={() => {
-                  auth.signOut();
-                  this.setState({ isSignedIn: false });
-                }}
-              />
-            </Router>
+            <WelcomePage
+              name={auth.currentUser.displayName}
+              handleClick={() => {
+                auth.signOut();
+                this.setState({ isSignedIn: false });
+              }}
+            />
           ) : (
             <ErrorPage
               image={room404}

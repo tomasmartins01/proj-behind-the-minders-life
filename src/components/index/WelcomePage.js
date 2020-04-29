@@ -6,35 +6,29 @@ import logoLife from "../../images/logoLife.png";
 
 const WelcomePage = ({ name, handleClick }) => {
   return (
-    <Router>
+    <div id="successLogin">
+      <button id="signOut" onClick={handleClick}>
+        Sign out!
+      </button>
 
-      <div id="successLogin">
+      <Image imageSrc={logoLife} alt="Logo" cName="LogoLife" />
 
-        <button id="signOut" onClick={handleClick}>
-          Sign out!
-        </button>
+      <p id="welcome">Welcome {name} </p>
 
-        <Image imageSrc={logoLife} alt="Logo" cName="LogoLife" />
+      <div className="buttonContainer">
+        <Link to="/game">
+          <button className="mainButtons">Play Game</button>
+        </Link>
 
-        <p id="welcome">Welcome {name} </p>
-
-        <div className="buttonContainer">
-          <button className="mainButtons">
-            <Link to="/game">Play Game</Link>
-          </button>
-
-          <button className="mainButtons">
-            <Link to="/minders">The Minders</Link>
-          </button>
-        </div>
-
-        <footer>
-          <p>All Rights Reserved to Mindera School 2019/2020</p>
-        </footer>
-
+        <Link to="/minders">
+          <button className="mainButtons">The Minders</button>
+        </Link>
       </div>
 
-    </Router>
+      <footer>
+        <p>All Rights Reserved to Mindera School 2019/2020</p>
+      </footer>
+    </div>
   );
 };
 
