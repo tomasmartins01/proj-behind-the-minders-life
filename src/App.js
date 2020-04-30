@@ -4,6 +4,7 @@ import { hot } from "react-hot-loader";
 
 import Index from "./pages/Index";
 import PlayGame from "./pages/PlayGame";
+import Game from "./pages/Game";
 import TheMinders from "./pages/TheMinders";
 
 import "./styles/reset.less";
@@ -15,8 +16,11 @@ const App = () => {
         <Route exact path="/">
           <Index />
         </Route>
-        <Route exact path="/game">
+        <Route exact path="/create">
           <PlayGame />
+        </Route>
+        <Route exact path="/game">
+          <Game />
         </Route>
         <Route exact path="/minders">
           {" "}

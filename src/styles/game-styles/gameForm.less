@@ -1,0 +1,36 @@
+@import "../vars.less";
+
+main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  section {
+    display: flex;
+    min-height: 100px;
+
+    div {
+      width: 100%;
+      min-height: 700px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:first-of-type {
+        border-right: 3px solid @black;
+      }
+    }
+  }
+
+  #button-container {
+    display: flex;
+    justify-content: center;
+    button {
+      width: 178px;
+      height: 57px;
+      border: 3px solid black;
+      border-radius: 20px;
+      align-self: center;
+    }
+  }
+}

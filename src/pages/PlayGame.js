@@ -1,10 +1,12 @@
 import React from "react";
+import { Link, withRouter } from "react-router-dom";
 
 import HeaderWithImage from "../components/utils/HeaderWithImage";
 import Footer from "../components/utils/Footer";
+import PlayerForm from "../components/game/PlayerForm";
 
 import "../styles/reset.less";
-import "../styles/gameForm.less";
+import "../styles/game-styles/gameForm.less";
 
 const PlayGame = () => {
   document.title = "Create Your Character";
@@ -13,14 +15,20 @@ const PlayGame = () => {
       <HeaderWithImage />
       <main>
         <section>
-          <div className="form">a</div>
-          <div className="avatar">a</div>
+          <div className="form">
+            <PlayerForm />
+          </div>
+          <div className="avatar">avatar</div>
         </section>
-        <button>Start Life</button>
+        <div id="button-container">
+          <Link to="/game">
+            <button>Start Life</button>
+          </Link>
+        </div>
       </main>
       <Footer />
     </>
   );
 };
 
-export default PlayGame;
+export default withRouter(PlayGame);
