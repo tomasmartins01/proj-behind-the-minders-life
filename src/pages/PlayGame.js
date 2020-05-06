@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 
-import HeaderWithImage from "../components/utils/HeaderWithImage";
+import Header from "../components/utils/Header";
 import Footer from "../components/utils/Footer";
 import PlayerForm from "../components/game/PlayerForm";
 
@@ -12,7 +12,7 @@ const PlayGame = () => {
   document.title = "Create Your Character";
   return (
     <>
-      <HeaderWithImage />
+      <Header />
       <main>
         <section>
           <div className="form">
@@ -31,4 +31,4 @@ const PlayGame = () => {
   );
 };
 
-export default withRouter(PlayGame);
+export default PlayGame;

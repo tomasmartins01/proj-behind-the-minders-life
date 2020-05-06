@@ -6,15 +6,15 @@ import logoWhite from "../../images/logoWhite.png";
 
 import "../../styles/utils/header.less";
 
-const HeaderWithImage = ({children}) => {
+const Header = ({ children }) => {
   return (
     <header>
       <Link to="/">
-      <Image imageSrc={logoWhite} alt="white logo" cName="header-logo" />
+        <Image imageSrc={logoWhite} alt="white logo" cName="header-logo" />
       </Link>
       {children}
     </header>
   );
 };
 
-export default HeaderWithImage;
+export default Header;
