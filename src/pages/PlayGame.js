@@ -11,7 +11,7 @@ import "../styles/game-styles/gameForm.less";
 const PlayGame = () => {
   document.title = "Create Your Character";
   return (
-    <>
+    <div className="GameForm">
       <Header />
       <main>
         <section>
@@ -22,12 +22,12 @@ const PlayGame = () => {
         </section>
         <div id="button-container">
           <Link to="/game">
-            <button>Start Life</button>
+            <button className="start">Start Life</button>
           </Link>
         </div>
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 

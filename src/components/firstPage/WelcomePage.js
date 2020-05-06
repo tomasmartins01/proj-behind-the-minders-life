@@ -2,16 +2,16 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 
 import Image from "../utils/Image";
-import logoLife from "../../images/logoLife.png";
+import Footer from "../utils/Footer";
 
-const WelcomePage = ({ name, handleClick, history }) => {
+const WelcomePage = ({ name, handleClick, history, image }) => {
   return (
     <div id="successLogin">
       <button id="signOut" onClick={handleClick}>
         Sign out!
       </button>
 
-      <Image imageSrc={logoLife} alt="Logo" cName="LogoLife" />
+      <Image imageSrc={image} alt="Logo" cName="LogoLife" />
 
       <p id="welcome">Welcome {name} </p>
 
@@ -28,9 +28,7 @@ const WelcomePage = ({ name, handleClick, history }) => {
         </button>
       </div>
 
-      <footer>
-        <p>All Rights Reserved to Mindera School 2019/2020</p>
-      </footer>
+      <Footer />
     </div>
   );
 };

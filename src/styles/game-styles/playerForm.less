@@ -11,11 +11,8 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-
-    width: 450px;
-    height: 350px;
-
-    background-color: @black;
+    width: 430px;
+    height: 420px;
     border-radius: 16px;
     display: flex;
     flex-direction: column;
@@ -23,158 +20,158 @@
     fieldset {
       border: none;
       width: 100%;
+      margin: 10px;
     }
 
-    //-----------------------------------------------------------------
-    #firstNameSection  {
+    #firstNameSection,
+    #lastNameSection,
+    #ageSection,
+    #genderSection,
+    #countrySection,
+    #citySection  {
       width: 100%;
-      color: white;
+      color: black;
+      transition: 0.5 color;
 
       label {
         font-family: "Iceberg";
         font-size: 16px;
-
         margin-left: 28px;
+      }
+
+      input {
+        height: 30px;
+        border-radius: 8px;
+        font-size: 20px;
+        padding-left: 10px;
+        transition: 0.5 border;
+        box-sizing: border-box;
+      }
+    }
+
+    #firstNameSection {
+      label {
         margin-right: 55px;
       }
 
       input {
-        border-radius: 8px;
         width: 250px;
-        font-size: 20px;
-        padding-left: 10px;
       }
     }
 
-    //-----------------------------------------------------------------
     #lastNameSection  {
-      width: 100%;
-      color: white;
-
       label {
-        font-family: "Iceberg";
-        font-size: 16px;
-
-        width: 36px;
-        margin-left: 28px;
         margin-right: 18px;
       }
 
       input {
-        border-radius: 8px;
         width: 250px;
-        font-size: 20px;
-        padding-left: 10px;
       }
     }
 
-    //-----------------------------------------------------------------
     #ageSection  {
-      width: 100%;
-      color: white;
-
       label {
-        font-family: "Iceberg";
-        font-size: 16px;
-
-        margin-left: 28px;
-        margin-right: 65px;
+        margin-right: 70px;
       }
 
       input {
-        border-radius: 8px;
-        width: 56px;
-        font-size: 16px;
-        padding-left: 10px;
+        width: 70px;
       }
     }
 
-    //-----------------------------------------------------------------
     #genderSection  {
-      width: 100%;
-      color: white;
-
       #genderText {
         margin-left: 28px;
         margin-right: 30px;
       }
 
-      #male {
-        margin: 10px;
-      }
-
+      #male,
       #female {
         margin: 10px;
       }
 
       label {
-        font-family: "Iceberg";
-        font-size: 16px;
-        margin-right: 10px;
+        margin-right: 20px;
+        margin-left: 0;
       }
     }
 
-    //-----------------------------------------------------------------
     #countrySection  {
-      width: 100%;
-      color: white;
-
       label {
-        font-family: "Iceberg";
-        font-size: 16px;
-
-        margin-left: 28px;
         margin-right: 30px;
       }
-
-      select {
-        font-size: 20px;
-        font-weight: 700;
-        color: black;
-        width: 260px;
-        padding: 4px;
-        padding-left: 8px;
-        border: none;
-        border-radius: 0.5em;
-        -moz-appearance: none;
-        -webkit-appearance: none;
-        background-image: url("https://upload.wikimedia.org/wikipedia/commons/f/ff/BSicon_lNULf.svg"),
-          linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
-        background-repeat: no-repeat, repeat;
-        background-position: right -10px top 50%, 0 0;
-        background-size: 3em auto, 100%;
-      }
     }
 
-    //-----------------------------------------------------------------
     #citySection  {
-      width: 100%;
-      color: white;
-
       label {
-        font-family: "Iceberg";
-        font-size: 16px;
-
-        margin-left: 28px;
         margin-right: 65px;
+      }
+    }
+    select {
+      font-size: 16px;
+      font-weight: 500;
+      color: black;
+      width: 260px;
+      padding: 4px;
+      padding-left: 8px;
+      border: none;
+      border-radius: 0.5em;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      background-image: url("https://upload.wikimedia.org/wikipedia/commons/f/ff/BSicon_lNULf.svg"),
+        linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+      background-repeat: no-repeat, repeat;
+      background-position: right -10px top 50%, 0 0;
+      background-size: 3em auto, 100%;
+      transition: 0.5 background-image;
+    }
+
+    input,
+    select {
+      transition: 0.5 background;
+    }
+  }
+}
+
+.day-mode {
+  #characterForm {
+    background: @yellow;
+    transition: 0.5 background;
+  }
+}
+
+.night-mode {
+  .form {
+    #characterForm {
+      transition: 0.5 background;
+
+      input,
+      select {
+        background: @grey;
+        transition: 0.5 background;
+      }
+
+      #firstNameSection,
+      #lastNameSection,
+      #ageSection,
+      #genderSection,
+      #countrySection,
+      #citySection  {
+        color: white;
+        transition: 0.5 color;
+
+        input {
+          border: none;
+          transition: 0.5 border;
+        }
       }
 
       select {
-        font-size: 20px;
-        font-weight: 700;
-        color: black;
-        width: 260px;
-        padding: 4px;
-        padding-left: 8px;
-        border: none;
-        border-radius: 0.5em;
-        -moz-appearance: none;
-        -webkit-appearance: none;
-        background-image: url("https://upload.wikimedia.org/wikipedia/commons/f/ff/BSicon_lNULf.svg"),
-          linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+        background-image: url("https://upload.wikimedia.org/wikipedia/commons/f/ff/BSicon_lNULf.svg");
         background-repeat: no-repeat, repeat;
         background-position: right -10px top 50%, 0 0;
         background-size: 3em auto, 100%;
+        transition: 0.5 background-image;
       }
     }
   }

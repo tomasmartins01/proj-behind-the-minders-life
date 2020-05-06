@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: @white;
 
   h1,
   h2 {
@@ -13,7 +12,6 @@
 
   h1 {
     font-size: 75px;
-    text-shadow: 5px 2px @yellow;
     margin: 20px;
 
     &:hover {
@@ -32,16 +30,44 @@
   }
 }
 
-@media screen and (max-width: 900px) {  
-
+.day-mode {
   #toLogin {
+    background: @white;
+    transition: 0.5s background;
+  }
 
+  h1 {
+    text-shadow: 5px 2px @yellow;
+    transition: 0.5s text-shadow;
+  }
+}
+
+.night-mode {
+  #toLogin {
+    background: @black;
+    transition: 0.5s background;
+  }
+
+  h1 {
+    color: @yellow;
+    text-shadow: 5px 2px @white;
+    transition: 0.5s text-shadow, 0.5s color;
+  }
+
+  h2 {
+    color: @white;
+    transition: 0.5s color;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #toLogin {
     h1 {
       font-size: 30px;
       margin: 20px;
-      margin-top:100px;
+      margin-top: 100px;
     }
-    
+
     h2 {
       font-size: 20px;
       margin-bottom: 125px;
@@ -52,6 +78,5 @@
       width: 150px;
       height: 150px;
     }
-
   }
 }

@@ -1,13 +1,18 @@
 @import "../vars.less";
 
-main {
+.GameForm {
   height: 100%;
+  transition: 0.5s background;
+}
+
+main {
   display: flex;
   flex-direction: column;
 
   section {
     display: flex;
     min-height: 100px;
+    margin-top: 10%;
 
     div {
       width: 100%;
@@ -18,6 +23,7 @@ main {
 
       &:first-of-type {
         border-right: 3px solid @black;
+        transition: 0.5 border;
       }
     }
   }
@@ -25,12 +31,32 @@ main {
   #button-container {
     display: flex;
     justify-content: center;
-    button {
+    .start {
       width: 178px;
       height: 57px;
-      border: 3px solid black;
+      background: black;
+      color: white;
+      border: 3px solid white;
       border-radius: 20px;
-      align-self: center;
+      font-size: 18px;
+      box-sizing: content-box;
+      transition: 0.5s background, 0.5s color;
+    }
+  }
+}
+
+.night-mode {
+  .GameForm {
+    background: @darkgrey;
+    transition: 0.5s background;
+  }
+
+  #button-container {
+    .start {
+      background: white;
+      color: black;
+      border: 3px solid black;
+      transition: 0.5s background, 0.5s color;
     }
   }
 }

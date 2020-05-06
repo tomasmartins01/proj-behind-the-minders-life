@@ -1,5 +1,62 @@
 body {
-  width: 100%;
   margin: 0;
   padding: 0;
+}
+
+.container {
+  height: 100vh;
+}
+
+button {
+  outline: none;
+}
+
+.changeMode {
+  position: absolute;
+  bottom: 80px;
+  right: 20px;
+  width: 150px;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 900;
+  border-radius: 10px;
+  text-transform: uppercase;
+}
+
+.day-mode {
+  .changeMode {
+    border: 1px solid black;
+    background: linear-gradient(
+      to left,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(9, 9, 121, 1) 70%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: 0.5s border, 0.5s background;
+  }
+}
+
+.night-mode {
+  .changeMode {
+    border: 1px solid white;
+    background: linear-gradient(
+      to left,
+      rgba(224, 241, 9, 1) 0%,
+      rgba(255, 255, 255, 1) 70%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: 0.5s border, 0.5s background;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .changeMode {
+    width: 90px;
+    height: 40px;
+    font-size: 12px;
+    font-weight: 900;
+    bottom: 10px;
+  }
 }

@@ -7,12 +7,12 @@ import PlayGame from "../pages/PlayGame";
 import Game from "../pages/Game";
 import TheMinders from "../pages/TheMinders";
 
-const Routes = () => {
+const Routes = ({ isNightMode }) => {
   return (
     <Router>
       <Switch>
         <Route exact path="/">
-          <FirstPage />
+          <FirstPage isNightMode={isNightMode} />
         </Route>
         <Private path="/create" component={PlayGame} />
         <Private path="/game" component={Game} />

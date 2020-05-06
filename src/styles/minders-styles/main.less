@@ -1,5 +1,10 @@
 @import "../vars.less";
 
+.TheMinders {
+  height: 100%;
+  transition: 0.5s background;
+}
+
 .title {
   font-family: "Iceberg";
   font-size: 96px;
@@ -35,7 +40,7 @@
     box-sizing: border-box;
     border-radius: 10px;
     color: @white;
-    background-color: @black;
+    background: @black;
     margin-bottom: 70px;
     cursor: pointer;
     outline: none;
@@ -68,8 +73,25 @@
     opacity: 100%;
     animation: playAnimation 0.5s linear;
   }
-  border: 15px solid black;
-  animation: borderAnimation 0.5s linear;
+}
+
+.day-mode {
+  .character:hover {
+    animation: borderAnimation 0.5s linear;
+    border: 15px solid black;
+  }
+}
+
+.night-mode {
+  .TheMinders {
+    background: black;
+    transition: 0.5s background;
+  }
+
+  .character:hover {
+    animation: borderAnimationNight 0.5s linear;
+    border: 15px solid white;
+  }
 }
 
 @keyframes playAnimation {
@@ -83,9 +105,18 @@
 
 @keyframes borderAnimation {
   from {
-    border: 15px solid #fdd20a;
+    border: 15px solid @yellow;
   }
   to {
     border: 15px solid black;
+  }
+}
+
+@keyframes borderAnimationNight {
+  from {
+    border: 15px solid @yellow;
+  }
+  to {
+    border: 15px solid white;
   }
 }

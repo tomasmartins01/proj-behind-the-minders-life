@@ -9,6 +9,9 @@ import ErrorPage from "../components/firstPage/ErrorPage";
 import loginUserAction from "../redux/userLogin/actions";
 
 import logoBlack from "../images/logoBlack.png";
+import logoWhite from "../images/logoWhite.png";
+import logoLife from "../images/logoLife.png";
+import logoLifeBlack from "../images/logoLifeBlack.png";
 import room404 from "../images/room404.png";
 
 import "../styles/index.less";
@@ -18,7 +21,7 @@ firebase.initializeApp({
   authDomain: "behindtheminderslife.firebaseapp.com"
 });
 
-const FirstPage = ({ loginUser }) => {
+const FirstPage = ({ loginUser, isNightMode }) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [isSucceded, setIsSucceded] = useState(false);
 
@@ -60,6 +63,7 @@ const FirstPage = ({ loginUser }) => {
               auth.signOut();
               setIsSignedIn(false);
             }}
+            image={isNightMode ? logoLife : logoLifeBlack}
           />
         ) : (
           <ErrorPage
@@ -72,7 +76,11 @@ const FirstPage = ({ loginUser }) => {
         )
       ) : (
         <div id="toLogin">
-          <Image imageSrc={logoBlack} alt="Logo Site" cName="login-logo" />
+          <Image
+            imageSrc={isNightMode ? logoWhite : logoBlack}
+            alt="Logo Site"
+            cName="login-logo"
+          />
           <h1> Behind The Minder's Life </h1>
           <h2> Get ready for the adventure </h2>
           <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
