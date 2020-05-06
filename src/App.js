@@ -9,7 +9,7 @@ const App = () => {
   const [nightMode, setNightMode] = useState(false);
   return (
     <Provider store={store}>
-      <div className={`container ${nightMode ? "night-mode" : "day-mode"}`}>
+      <div className={`page-container ${nightMode ? "night-mode" : "day-mode"}`}>
         <Routes isNightMode={nightMode} />
         <button className="changeMode" onClick={() => setNightMode(!nightMode)}>
           Change Mode
