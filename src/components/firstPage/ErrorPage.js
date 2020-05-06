@@ -1,6 +1,6 @@
 import React from "react";
 
-import Image from "../Image";
+import Image from "../utils/Image";
 
 const ErrorPage = ({ image, handleClick }) => {
   return (

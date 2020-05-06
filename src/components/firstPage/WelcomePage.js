@@ -1,10 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Link, withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
-import Image from "../Image";
+import Image from "../utils/Image";
 import logoLife from "../../images/logoLife.png";
 
-const WelcomePage = ({ name, handleClick }) => {
+const WelcomePage = ({ name, handleClick, history }) => {
   return (
     <div id="successLogin">
       <button id="signOut" onClick={handleClick}>
@@ -16,13 +16,16 @@ const WelcomePage = ({ name, handleClick }) => {
       <p id="welcome">Welcome {name} </p>
 
       <div className="buttonContainer">
-        <Link to="/game">
-          <button className="mainButtons">Play Game</button>
-        </Link>
+        <button className="mainButtons" onClick={() => history.push("/create")}>
+          Play Game
+        </button>
 
-        <Link to="/minders">
-          <button className="mainButtons">The Minders</button>
-        </Link>
+        <button
+          className="mainButtons"
+          onClick={() => history.push("/minders")}
+        >
+          The Minders
+        </button>
       </div>
 
       <footer>

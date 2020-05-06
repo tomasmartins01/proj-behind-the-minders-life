@@ -1,0 +1,91 @@
+@import "../vars.less";
+
+.title {
+  font-family: "Iceberg";
+  font-size: 96px;
+  color: @black;
+  text-align: center;
+  margin: 20px;
+  cursor: default;
+  &:hover {
+    color: black;
+    font-weight: 900;
+    text-shadow: 6px 6px 5px @yellow;
+  }
+}
+
+.container {
+  .container1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+  }
+
+  .character {
+    position: relative;
+    width: 356px;
+    height: 337px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: 15px solid @yellow;
+    box-sizing: border-box;
+    border-radius: 10px;
+    color: @white;
+    background-color: @black;
+    margin-bottom: 70px;
+    cursor: pointer;
+    outline: none;
+  }
+  .textName {
+    font-family: "Iceberg";
+    font-size: 27px;
+  }
+  .profilePicture {
+    width: 172px;
+    height: 159px;
+    border-radius: 20%;
+  }
+  .textJob {
+    top: -25px;
+    font-family: "Iceberg";
+    font-size: 23px;
+  }
+}
+
+.play {
+  position: absolute;
+  top: 120px;
+  opacity: 0;
+  right: 110px;
+}
+
+.character:hover {
+  .play {
+    opacity: 100%;
+    animation: playAnimation 0.5s linear;
+  }
+  border: 15px solid black;
+  animation: borderAnimation 0.5s linear;
+}
+
+@keyframes playAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+
+@keyframes borderAnimation {
+  from {
+    border: 15px solid #fdd20a;
+  }
+  to {
+    border: 15px solid black;
+  }
+}
