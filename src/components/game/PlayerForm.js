@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
+import ReactCountryFlag from "react-country-flag";
+
+import getShortCode from "../../country/shortcode";
 
 import "../../styles/game-styles/playerForm.less";
 
@@ -7,7 +11,7 @@ const PlayerForm = () => {
   const [lastName, setLastName] = useState("");
   const [age, setAge] = useState(18);
   const [country, setCountry] = useState("");
-  const [city, setCity] = useState("");
+  const [region, setRegion] = useState("");
 
   return (
     <form id="characterForm">
@@ -18,6 +22,7 @@ const PlayerForm = () => {
           placeholder="First Name"
           value={name}
           onChange={e => setName(e.target.value)}
+          required
         />
       </fieldset>
 
@@ -28,6 +33,7 @@ const PlayerForm = () => {
           placeholder="Last Name"
           value={lastName}
           onChange={e => setLastName(e.target.value)}
+          required
         />
       </fieldset>
 
@@ -40,11 +46,12 @@ const PlayerForm = () => {
           max="56"
           value={age}
           onChange={e => setAge(e.target.value)}
+          required
         />
       </fieldset>
 
       <fieldset id="genderSection">
-        <label id="genderText">GENDER: </label>
+        <label id="genderText">GENDER:</label>
 
         <label>
           <input type="radio" id="male" name="gender" value="male" />
@@ -58,20 +65,27 @@ const PlayerForm = () => {
 
       <fieldset id="countrySection">
         <label>COUNTRY:</label>
-        <select
-          id="country"
+        <ReactCountryFlag countryCode={getShortCode(country)} />
+        <CountryDropdown
           value={country}
-          onChange={e => setCountry(e.target.value)}
-        >
-          <option value="lol">Portugal </option>
-        </select>
+          priorityOptions={[
+            getShortCode("Brazil"),
+            getShortCode("India"),
+            getShortCode("Portugal"),
+            getShortCode("United Kingdom"),
+            getShortCode("United States")
+          ]}
+          onChange={val => setCountry(val)}
+        />
       </fieldset>
 
-      <fieldset id="citySection">
-        <label>CITY:</label>
-        <select id="city" value={city} onChange={e => setCity(e.target.value)}>
-          <option value="lol1">Porto </option>
-        </select>
+      <fieldset id="regionSection">
+        <label>REGION:</label>
+        <RegionDropdown
+          country={country}
+          value={region}
+          onChange={val => setRegion(val)}
+        />
       </fieldset>
     </form>
   );
