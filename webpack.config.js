@@ -1,13 +1,17 @@
 const path = require("path");
 const webpack = require("webpack");
+const CopyPlugin = require('copy-webpack-plugin');
+
 module.exports = {
     entry: "./src/index.js",
     mode: "development",
     module: {
         rules: [{
                 test: /\.(jpg|png)$/,
-                use: {
-                    loader: 'url-loader',
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                    publicPath: '/',
                 },
             },
 
@@ -26,6 +30,8 @@ module.exports = {
             },
             {
                 test: /\.(js|jsx)$/,
+
+
                 exclude: /(node_modules|bower_components)/,
                 loader: "babel-loader",
                 options: { presets: ["@babel/env"] }
@@ -45,9 +51,12 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, "public/"),
         port: 4000,
-        publicPath: "http://localhost:4000/dist/",
+        publicPath: "http://localhost:4000/",
         hotOnly: true,
         historyApiFallback: true
     },
-    plugins: [new webpack.HotModuleReplacementPlugin()]
+    plugins: [new webpack.HotModuleReplacementPlugin(), new CopyPlugin([
+            { from: 'public' }
+        ]
+    )]
 };
