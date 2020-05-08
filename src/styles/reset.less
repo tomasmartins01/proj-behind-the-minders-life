@@ -28,9 +28,10 @@ button {
     border: 1px solid black;
     background: linear-gradient(
       to left,
-      rgb(107,201,255) 0%,
+      rgb(107, 201, 255) 0%,
       rgba(86, 86, 212, 0.5) 70%
     );
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: 0.5s border, 0.5s background;
@@ -45,6 +46,7 @@ button {
       rgba(224, 241, 9, 1) 0%,
       rgba(255, 255, 255, 1) 70%
     );
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: 0.5s border, 0.5s background;
@@ -53,9 +55,10 @@ button {
 
 @media screen and (max-width: 900px) {
   .changeMode {
-    width: 90px;
-    height: 40px;
+    width: 200px;
+    height: 30px;
     font-size: 12px;
     bottom: 40px;
+    left: 86px;
   }
 }

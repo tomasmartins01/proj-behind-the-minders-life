@@ -14,8 +14,6 @@
     width: 430px;
     height: 420px;
     border-radius: 16px;
-    display: flex;
-    flex-direction: column;
 
     fieldset {
       border: none;
@@ -28,7 +26,7 @@
     #ageSection,
     #genderSection,
     #countrySection,
-    #regionSection {
+    #regionSection  {
       width: 100%;
       color: black;
       transition: 0.5 color;
@@ -92,7 +90,8 @@
       }
     }
 
-    input, select {
+    input,
+    select {
       outline: none;
     }
 
@@ -182,6 +181,16 @@
         background-size: 3em auto, 100%;
         transition: 0.5 background-image;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .form {
+    #characterForm {
+      width: 300px;
+      height: 400px;
+      margin: 10px;
     }
   }
 }
