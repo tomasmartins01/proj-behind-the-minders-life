@@ -39,7 +39,7 @@ const FirstPage = ({ loginUser, isNightMode }) => {
     auth.onAuthStateChanged(user => {
       const emailSplited = user.email.split("@");
       const emailDomain = emailSplited[1];
-      if (emailDomain === "school.mindera.com" || emailDomain === "mindera.com") {
+      if (emailDomain === "mindera.com" || emailDomain === "school.mindera.com") {
         setIsSignedIn(true);
         setIsSucceded(true);
       } else {
