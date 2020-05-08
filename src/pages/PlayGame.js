@@ -18,7 +18,7 @@ const PlayGame = () => {
           <div className="form">
             <PlayerForm />
           </div>
-          <div className="avatar">avatar</div>
+          <div className="avatar"></div>
         </section>
         <div id="button-container">
           <Link to="/game">

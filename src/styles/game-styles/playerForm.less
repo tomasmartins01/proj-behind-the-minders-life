@@ -28,7 +28,7 @@
     #ageSection,
     #genderSection,
     #countrySection,
-    #citySection  {
+    #regionSection {
       width: 100%;
       color: black;
       transition: 0.5 color;
@@ -70,6 +70,7 @@
     }
 
     #ageSection  {
+      margin-bottom: 0;
       label {
         margin-right: 70px;
       }
@@ -85,28 +86,16 @@
         margin-right: 30px;
       }
 
-      #male,
-      #female {
-        margin: 10px;
-      }
-
       label {
         margin-right: 20px;
         margin-left: 0;
       }
     }
 
-    #countrySection  {
-      label {
-        margin-right: 30px;
-      }
+    input, select {
+      outline: none;
     }
 
-    #citySection  {
-      label {
-        margin-right: 65px;
-      }
-    }
     select {
       font-size: 16px;
       font-weight: 500;
@@ -114,6 +103,7 @@
       width: 260px;
       padding: 4px;
       padding-left: 8px;
+      padding-right: 24px;
       border: none;
       border-radius: 0.5em;
       -moz-appearance: none;
@@ -124,6 +114,25 @@
       background-position: right -10px top 50%, 0 0;
       background-size: 3em auto, 100%;
       transition: 0.5 background-image;
+    }
+
+    #countrySection  {
+      position: relative;
+      label {
+        margin-right: 30px;
+      }
+
+      select {
+        position: absolute;
+        right: 54px;
+        width: 240px;
+      }
+    }
+
+    #regionSection  {
+      label {
+        margin-right: 43px;
+      }
     }
 
     input,
@@ -156,7 +165,7 @@
       #ageSection,
       #genderSection,
       #countrySection,
-      #citySection  {
+      #regionSection  {
         color: white;
         transition: 0.5 color;
 
