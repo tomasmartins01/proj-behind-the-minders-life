@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import Image from "../components/utils/Image";
 import WelcomePage from "../components/firstPage/WelcomePage";
 import ErrorPage from "../components/firstPage/ErrorPage";
-import loginUserAction from "../redux/userLogin/actions";
+import { loginUserAction, logoutUserAction } from "../redux/userLogin/actions";
 
 import logoBlack from "../images/logoBlack.png";
 import logoWhite from "../images/logoWhite.png";
@@ -21,7 +21,7 @@ firebase.initializeApp({
   authDomain: "behindtheminderslife.firebaseapp.com"
 });
 
-const FirstPage = ({ loginUser, isNightMode }) => {
+const FirstPage = ({ loginUser, logoutUser, isNightMode }) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [isSucceded, setIsSucceded] = useState(false);
 
@@ -39,7 +39,10 @@ const FirstPage = ({ loginUser, isNightMode }) => {
     auth.onAuthStateChanged(user => {
       const emailSplited = user.email.split("@");
       const emailDomain = emailSplited[1];
-      if (emailDomain === "mindera.com" || emailDomain === "school.mindera.com") {
+      if (
+        emailDomain === "mindera.com" ||
+        emailDomain === "school.mindera.com"
+      ) {
         setIsSignedIn(true);
         setIsSucceded(true);
       } else {
@@ -50,6 +53,11 @@ const FirstPage = ({ loginUser, isNightMode }) => {
 
     if (isSignedIn && isSucceded) {
       loginUser();
+    }
+
+    if (!isSignedIn && isSucceded) {
+      logoutUser();
+      setIsSucceded(false);
     }
   });
 
@@ -91,7 +99,8 @@ const FirstPage = ({ loginUser, isNightMode }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  loginUser: () => dispatch(loginUserAction())
+  loginUser: () => dispatch(loginUserAction()),
+  logoutUser: () => dispatch(logoutUserAction())
 });
 
 export default connect(undefined, mapDispatchToProps)(FirstPage);

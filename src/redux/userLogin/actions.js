@@ -1,5 +1,7 @@
-const loginUserAction = () => ({
+export const loginUserAction = () => ({
   type: "LOGIN_USER"
 });
 
-export default loginUserAction;
+export const logoutUserAction = () => ({
+  type: "LOGOUT_USER"
+});

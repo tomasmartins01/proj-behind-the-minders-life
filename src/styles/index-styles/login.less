@@ -4,6 +4,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: @white;
+  transition: 0.5s background;
+
+  .login-logo {
+    width: 271px;
+    height: 287px;
+  }
 
   h1,
   h2 {
@@ -13,6 +20,8 @@
   h1 {
     font-size: 75px;
     margin: 20px;
+    text-shadow: 5px 2px @yellow;
+    transition: 0.5s text-shadow;
 
     &:hover {
       color: @yellow;
@@ -22,23 +31,6 @@
 
   h2 {
     font-size: 30px;
-  }
-
-  .login-logo {
-    width: 271px;
-    height: 287px;
-  }
-}
-
-.day-mode {
-  #toLogin {
-    background: @white;
-    transition: 0.5s background;
-  }
-
-  h1 {
-    text-shadow: 5px 2px @yellow;
-    transition: 0.5s text-shadow;
   }
 }
 
@@ -60,8 +52,17 @@
   }
 }
 
+// tablet - 770px
+
+// phone - 420px
 @media screen and (max-width: 900px) {
   #toLogin {
+    .login-logo {
+      margin-top: 50px;
+      width: 150px;
+      height: 150px;
+    }
+
     h1 {
       font-size: 30px;
       margin: 20px;
@@ -72,12 +73,6 @@
     h2 {
       font-size: 20px;
       margin-bottom: 125px;
-    }
-
-    .login-logo {
-      margin-top: 50px;
-      width: 150px;
-      height: 150px;
     }
   }
 }

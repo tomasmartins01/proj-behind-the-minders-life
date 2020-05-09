@@ -1,21 +1,19 @@
 @import "../vars.less";
 
 .TheMinders {
-  height: 100%;
   transition: 0.5s background;
-}
-
-.title {
-  font-family: "Iceberg";
-  font-size: 96px;
-  color: @black;
-  text-align: center;
-  margin: 20px;
-  cursor: default;
-  &:hover {
-    color: black;
-    font-weight: 900;
-    text-shadow: 6px 6px 5px @yellow;
+  .title {
+    font-family: "Iceberg";
+    font-size: 96px;
+    color: @black;
+    text-align: center;
+    margin: 20px;
+    &:hover {
+      color: black;
+      font-weight: 900;
+      text-shadow: 6px 6px 5px @yellow;
+      animation: 0.5s text-shadow;
+    }
   }
 }
 
@@ -92,10 +90,11 @@
     animation: borderAnimationNight 0.5s linear;
     border: 15px solid white;
   }
-  .title&:hover {
+  .title:hover {
     color: white;
     font-weight: 900;
     text-shadow: 6px 6px 5px @yellow;
+    animation: 0.5s text-shadow;
   }
 }
 
