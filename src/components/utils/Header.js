@@ -12,7 +12,6 @@ const Header = ({ children }) => {
       <Link to="/">
         <Image imageSrc={logoWhite} alt="white logo" cName="header-logo" />
       </Link>
-      {children}
     </header>
   );
 };
