@@ -2,6 +2,7 @@
 
 .form {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   height: 100%;
   width: 100%;
@@ -141,6 +142,28 @@
   }
 }
 
+#button-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 60px;
+  left: 50%;
+  .start {
+    width: 178px;
+    height: 57px;
+    background: black;
+    color: white;
+    border: 3px solid white;
+    border-radius: 20px;
+    font-size: 18px;
+    box-sizing: content-box;
+    transition: 0.5s background, 0.5s color;
+    &:disabled {
+      background: @grey;
+    }
+  }
+}
+
 .day-mode {
   #characterForm {
     background: @yellow;
@@ -181,6 +204,14 @@
         background-size: 3em auto, 100%;
         transition: 0.5 background-image;
       }
+    }
+  }
+  #button-container {
+    .start {
+      background: white;
+      color: black;
+      border: 3px solid black;
+      transition: 0.5s background, 0.5s color;
     }
   }
 }

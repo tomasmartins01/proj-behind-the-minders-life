@@ -1,5 +1,4 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
 
 import Header from "../components/utils/Header";
 import Footer from "../components/utils/Footer";
@@ -20,11 +19,6 @@ const PlayGame = () => {
           </div>
           <div className="avatar"></div>
         </section>
-        <div id="button-container">
-          <Link to="/game">
-            <button className="start">Start Life</button>
-          </Link>
-        </div>
       </main>
       <Footer />
     </div>

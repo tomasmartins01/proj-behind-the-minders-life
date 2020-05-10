@@ -1,7 +1,7 @@
 @import "../vars.less";
 
 .GameForm {
-  height: 100%;
+  min-height: 100vh;
   transition: 0.5s background;
 
   main {
@@ -13,50 +13,26 @@
       min-height: 100px;
       margin-top: 5%;
 
-      div {
+      .form, .avatar {
         width: 100%;
         min-height: 500px;
         display: flex;
         justify-content: center;
         align-items: center;
-
-        &:first-of-type {
-          border-right: 3px solid @black;
-          transition: 0.5 border;
-        }
       }
-    }
 
-    #button-container {
-      display: flex;
-      justify-content: center;
-      .start {
-        width: 178px;
-        height: 57px;
-        background: black;
-        color: white;
-        border: 3px solid white;
-        border-radius: 20px;
-        font-size: 18px;
-        box-sizing: content-box;
-        transition: 0.5s background, 0.5s color;
+      .form {
+        border-right: 3px solid @black;
+        transition: 0.5 border;
       }
     }
   }
 }
+
 .night-mode {
   .GameForm {
     background: @darkgrey;
     transition: 0.5s background;
-  }
-
-  #button-container {
-    .start {
-      background: white;
-      color: black;
-      border: 3px solid black;
-      transition: 0.5s background, 0.5s color;
-    }
   }
 }
 
