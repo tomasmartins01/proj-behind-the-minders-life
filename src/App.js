@@ -5,6 +5,8 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import Routes from "./routes";
 
+import "./styles/reset.less";
+
 const App = () => {
   const [nightMode, setNightMode] = useState(false);
   return (

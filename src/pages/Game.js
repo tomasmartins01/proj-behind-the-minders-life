@@ -7,7 +7,7 @@ const Game = () => {
   document.title = "Game";
   return (
     <>
-      <Header></Header>
+      <Header />
       <Footer />
     </>
   );

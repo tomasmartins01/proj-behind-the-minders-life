@@ -3,6 +3,9 @@
 .TheMinders {
   transition: 0.5s background;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   .title {
     font-family: "Iceberg";
     font-size: 96px;
@@ -18,15 +21,11 @@
   }
 }
 
-.container {
-  .container1 {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    width: 100%;
-    height: 100%;
-  }
-
+.mindersContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  margin-bottom: 50px;
   .character {
     position: relative;
     width: 356px;
@@ -43,21 +42,24 @@
     margin-bottom: 70px;
     cursor: pointer;
     outline: none;
+    margin: 30px;
   }
   .textName {
     font-family: "Iceberg";
     font-size: 27px;
   }
-  .profilePicture {
-    width: 172px;
-    height: 159px;
-    border-radius: 20%;
-  }
+  
   .textJob {
     top: -25px;
     font-family: "Iceberg";
     font-size: 23px;
   }
+}
+
+.profilePicture {
+  width: 172px;
+  height: 159px;
+  border-radius: 20%;
 }
 
 .play {
@@ -83,7 +85,7 @@
 
 .night-mode {
   .TheMinders {
-    background: black;
+    background: rgb(19, 19, 19);
     transition: 0.5s;
   }
 

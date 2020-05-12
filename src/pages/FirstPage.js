@@ -22,6 +22,7 @@ firebase.initializeApp({
 });
 
 const FirstPage = ({ loginUser, logoutUser, isNightMode }) => {
+  document.title = "Behind The Minders Life";
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [isSucceded, setIsSucceded] = useState(false);
 
