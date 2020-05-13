@@ -1,10 +1,12 @@
 const initialState = {
-  firstName: "",
-  lastName: "",
-  age: 18,
-  gender: "",
-  country: "",
-  region: ""
+  formDetails: {
+    fullName: "",
+    age: 18,
+    gender: "",
+    country: "",
+    region: "",
+    avatarUrl: ""
+  }
 };
 
 const formReducer = (state = initialState, action) => {
@@ -12,22 +14,26 @@ const formReducer = (state = initialState, action) => {
     case "SAVE_CHARACTER_INFO":
       return {
         ...state,
-        firstName,
-        lastName,
-        age,
-        gender,
-        country,
-        region
+        formDetails: {
+          fullName: action.fullName ,
+          age: action.age,
+          gender: action.gender,
+          country: action.country,
+          region: action.region,
+          avatarUrl: action.avatarUrl
+        }
       };
     case "DELETE_CHARACTER_INFO":
       return {
         ...state,
-        firstName: "",
-        lastName: "",
-        age: 18,
-        gender: "",
-        country: "",
-        region: ""
+        formDetails: {
+          fullName: "",
+          age: 18,
+          gender: "",
+          country: "",
+          region: "",
+          avatarUrl: ""
+        }
       };
     default:
       return state;

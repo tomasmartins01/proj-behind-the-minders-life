@@ -1,7 +1,20 @@
-export const saveInfoAction = (firstName, lastName, age, gender, country, region) => ({
-    type: "SAVE_CHARACTER_INFO"
+export const saveInfoAction = (
+  fullName,
+  age,
+  gender,
+  country,
+  region,
+  avatarUrl
+) => ({
+  type: "SAVE_CHARACTER_INFO",
+  fullName,
+  age,
+  gender,
+  country,
+  region,
+  avatarUrl
 });
 
 export const deleteInfoAction = () => ({
-    type: "DELETE_CHARACTER_INFO"
+  type: "DELETE_CHARACTER_INFO"
 });

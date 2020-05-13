@@ -1,16 +1,24 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import ReactCountryFlag from "react-country-flag";
 
 import Header from "../components/utils/Header";
 import Footer from "../components/utils/Footer";
+import Image from "../components/utils/Image";
 import getShortCode from "../helpers/shortcode";
+import { femaleVersion, maleVersion } from "../helpers/avatarImages";
+
+import { saveInfoAction } from "../redux/formInfo/actions";
 
 import "../styles/game-styles/gameForm.less";
 
-const PlayGame = () => {
+const PlayGame = ({ saveInfo, history }) => {
   document.title = "Create Your Character";
+
+  const [imageArr, setImageArr] = useState([]);
+  const [imageIndex, setImageIndex] = useState(0);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -18,12 +26,21 @@ const PlayGame = () => {
   const [gender, setGender] = useState("");
   const [country, setCountry] = useState("");
   const [region, setRegion] = useState("");
+  const [avatarImage, setAvatarImage] = useState("");
 
   const isButtonDisabled =
-    !firstName || !lastName || age < 18 || age > 56 || !gender || !region;
+    !firstName.trim() ||
+    !lastName.trim() ||
+    age < 18 ||
+    age > 56 ||
+    !gender ||
+    !region;
 
   const handleSubmit = e => {
     e.preventDefault();
+    const fullName = firstName + " " + lastName;
+    saveInfo(fullName, age, gender, country, region, avatarImage);
+    history.push("/game");
   };
 
   return (
@@ -69,7 +86,14 @@ const PlayGame = () => {
               <label className="characterInfo" id="genderSection">
                 <span>Gender</span>
                 <div>
-                  <label onClick={() => setGender("M")}>
+                  <label
+                    onClick={() => {
+                      setGender("M");
+                      setImageArr(maleVersion);
+                      setImageIndex(0);
+                      setAvatarImage(maleVersion[0]);
+                    }}
+                  >
                     <input
                       type="radio"
                       id="male"
@@ -79,7 +103,14 @@ const PlayGame = () => {
                     />
                     <span>♂️(male)</span>
                   </label>
-                  <label onClick={() => setGender("F")}>
+                  <label
+                    onClick={() => {
+                      setGender("F");
+                      setImageArr(femaleVersion);
+                      setImageIndex(0);
+                      setAvatarImage(femaleVersion[0]);
+                    }}
+                  >
                     <input
                       type="radio"
                       id="female"
@@ -120,7 +151,39 @@ const PlayGame = () => {
               </label>
             </fieldset>
 
-            <fieldset>Side B</fieldset>
+            <fieldset>
+              <p>Select Your Avatar</p>
+
+              <div className="avatarSelector">
+                {gender ? (
+                  <>
+                    <button
+                      className="goPrev"
+                      onClick={e => {
+                        e.preventDefault();
+                        setImageIndex(imageIndex - 1);
+                        setAvatarImage(imageArr[imageIndex - 1]);
+                      }}
+                      disabled={imageIndex === 0}
+                    />
+                    <Image
+                      imageSrc={imageArr[imageIndex]}
+                      alt="avatar"
+                      cName="avatarImage"
+                    />
+                    <button
+                      className="goNext"
+                      onClick={e => {
+                        e.preventDefault();
+                        setImageIndex(imageIndex + 1);
+                        setAvatarImage(imageArr[imageIndex + 1]);
+                      }}
+                      disabled={imageIndex === imageArr.length - 1}
+                    />
+                  </>
+                ) : null}
+              </div>
+            </fieldset>
           </section>
 
           <button
@@ -137,4 +200,9 @@ const PlayGame = () => {
   );
 };
 
-export default PlayGame;
+const mapDispatchToProps = dispatch => ({
+  saveInfo: (fullName, age, gender, country, region, avatarUrl) =>
+    dispatch(saveInfoAction(fullName, age, gender, country, region, avatarUrl))
+});
+
+export default withRouter(connect(undefined, mapDispatchToProps)(PlayGame));

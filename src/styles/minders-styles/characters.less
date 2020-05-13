@@ -1,0 +1,56 @@
+@import "../vars.less";
+
+.Characters, .displayMinders {
+    font-family: "Iceberg";
+}
+
+.Characters {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+
+  #characterTitle {
+    font-size: 70px;
+    align-self: center;
+  }
+}
+
+.displayMinders {
+  h2 {
+    padding-left: 16px;
+    font-size: 28px;
+  }
+
+  .mindersSuggestions {
+    display: flex;
+    justify-content: space-around;
+  
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+}
+
+.minderPhoto {
+  margin-bottom: 60px;
+  img {
+    width: 252px;
+    height: 252px;
+    border:13px solid black;
+    border-radius: 5px;
+
+    &:hover{
+      
+    }
+  }
+
+  h3 {
+    position: relative;
+    bottom: 40px;
+    background: @yellow;
+    text-align: center;
+    border:3px solid black;
+  }
+}
