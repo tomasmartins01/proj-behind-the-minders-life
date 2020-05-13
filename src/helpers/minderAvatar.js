@@ -5,7 +5,7 @@ import DiogoFerreira from "../images/minders/Diogo.png";
 import VitorMineiro from "../images/minders/Vitor.png";
 import MarcoEscaleira from "../images/minders/Marco.png";
 import MehulIra from "../images/minders/Mehul.png";
-import TiagoCaldas from "../images/minders/Caldas.png";
+import Goncalo from "../images/minders/Goncalo.png";
 import CainaBrazil from "../images/minders/Caina.png";
 import PedroTeixeira from "../images/minders/Pedro.png";
 import LuisSimoes from "../images/minders/Luis.png";
@@ -20,7 +20,7 @@ const getMinderProfilePic = name => {
       case "Vitor Mineiro": return VitorMineiro;
       case "Marco Escaleira": return MarcoEscaleira;
       case "Mehul Irá": return MehulIra;
-      case "Tiago Caldas": return TiagoCaldas;
+      case "Gonçalo Fernandes": return Goncalo;
       case "Cainã Brazil": return CainaBrazil;
       case "Pedro Teixeira": return PedroTeixeira;
       case "Luis Simões": return LuisSimoes;

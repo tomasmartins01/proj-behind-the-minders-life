@@ -11,12 +11,22 @@ import "../styles/minders-styles/main.less";
 const TheMinders = () => {
   document.title = "The Minders";
 
+  const getOrder = (a, b) => {
+    if (a > b) {
+      return 1;
+  }
+  if (b > a) {
+      return -1;
+  }
+  return 0;
+  }
+
   return (
     <div className="TheMinders">
       <Header />
       <h1 className="title">The Minders</h1>
       <div className="mindersContainer">
-        {mindersList.map((minder, index) => (
+        {mindersList.sort((a,b) => getOrder(a.name, b.name)).map((minder, index) => (
           <MinderButton
             key={index}
             urlMinder={`/${minder.urlName}`}
