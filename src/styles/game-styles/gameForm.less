@@ -133,7 +133,7 @@
               width: 20px;
               height: 20px;
               transition: 0.5s background;
-              cursor:pointer;
+              cursor: pointer;
             }
 
             .goPrev {
@@ -204,9 +204,74 @@
 @media screen and (max-width: 420px) {
   .GameForm {
     main {
-      section {
-        display: flex;
-        flex-direction: column;
+      form {
+        width: 90%;
+
+        section {
+          display: flex;
+          flex-direction: column;
+          padding: 0;
+
+          fieldset {
+            width: 60%;
+            border: none;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+
+            &:first-of-type {
+              border-right: 0;
+            }
+
+            &:last-of-type {
+              width: 99%;
+              border-top: 2px solid @grey;
+              display: flex;
+              align-items: center;
+            }
+
+            .characterInfo {
+              display: flex;
+              justify-content: space-between;
+              margin: 40px;
+              margin-bottom: 20px;
+              margin-left: 20px;
+            }
+
+            #genderSection {
+              span  {
+                margin-right: 8px; 
+                display: flex;
+                align-self: center;
+              }
+              div {
+                  display: flex;
+                  flex-direction: row;
+                  width: 100%;               
+                }
+              }
+
+            p {
+              font-size: 20px;
+            }
+
+            input[type="radio"] {
+              width: 20px;
+            }
+
+            .ageInput {
+              margin-left: 17%;
+            }
+
+            input {
+              margin-left: 10px;
+            }
+          }
+        }
+
+        .startLife {
+          margin-bottom: 30px;
+        }
       }
     }
   }

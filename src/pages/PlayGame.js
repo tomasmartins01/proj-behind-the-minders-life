@@ -38,7 +38,7 @@ const PlayGame = ({ saveInfo, history }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const fullName = firstName + " " + lastName;
+    const fullName = firstName.trim() + " " + lastName.trim();
     saveInfo(fullName, age, gender, country, region, avatarImage);
     history.push("/game");
   };
@@ -181,7 +181,9 @@ const PlayGame = ({ saveInfo, history }) => {
                       disabled={imageIndex === imageArr.length - 1}
                     />
                   </>
-                ) : null}
+                ) : 
+                <p>Try to select a gender so that you can select an avatar</p>
+                }
               </div>
             </fieldset>
           </section>
