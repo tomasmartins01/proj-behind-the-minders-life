@@ -13,22 +13,34 @@ import IrinaPrioteasa from "../images/minders/Irina.png";
 import TiagoReis from "../images/minders/Tiago.png";
 
 const getMinderProfilePic = name => {
-    switch (name) {
-      case "Sara Cardoso": return SaraCardoso;
-      case "Edgar Costa": return EdgarCosta;
-      case "Diogo Ferreira": return DiogoFerreira;
-      case "Vitor Mineiro": return VitorMineiro;
-      case "Marco Escaleira": return MarcoEscaleira;
-      case "Mehul Irá": return MehulIra;
-      case "Gonçalo Fernandes": return Goncalo;
-      case "Cainã Brazil": return CainaBrazil;
-      case "Pedro Teixeira": return PedroTeixeira;
-      case "Luis Simões": return LuisSimoes;
-      case "Irina Prioteasa": return IrinaPrioteasa;
-      case "Tiago Reis": return TiagoReis;
-      default:
-        return RandomPic;
-    }
-  };
+  switch (name) {
+    case "Sara Cardoso":
+      return SaraCardoso;
+    case "Edgar Costa":
+      return EdgarCosta;
+    case "Diogo Ferreira":
+      return DiogoFerreira;
+    case "Vitor Mineiro":
+      return VitorMineiro;
+    case "Marco Escaleira":
+      return MarcoEscaleira;
+    case "Mehul Irá":
+      return MehulIra;
+    case "Gonçalo Fernandes":
+      return Goncalo;
+    case "Cainã Brazil":
+      return CainaBrazil;
+    case "Pedro Teixeira":
+      return PedroTeixeira;
+    case "Luis Simões":
+      return LuisSimoes;
+    case "Irina Prioteasa":
+      return IrinaPrioteasa;
+    case "Tiago Reis":
+      return TiagoReis;
+    default:
+      return RandomPic;
+  }
+};
 
 export default getMinderProfilePic;

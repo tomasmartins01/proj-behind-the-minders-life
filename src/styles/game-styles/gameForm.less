@@ -161,7 +161,6 @@
         border-radius: 20px;
         font-size: 18px;
         box-sizing: content-box;
-        // transition: 0.5s background, 0.5s color;
         &:disabled {
           background: @grey;
         }
@@ -196,11 +195,23 @@
   }
 }
 
-// tablet
 @media screen and (max-width: 770px) {
+  .GameForm {
+    main {
+      form {
+        width: 50%;
+        section {
+          flex-direction: column;
+
+          fieldset:first-of-type {
+            border-right: 0;
+          }
+        }
+      }
+    }
+  }
 }
 
-// phone
 @media screen and (max-width: 420px) {
   .GameForm {
     main {
@@ -208,7 +219,6 @@
         width: 90%;
 
         section {
-          display: flex;
           flex-direction: column;
           padding: 0;
 
@@ -239,17 +249,17 @@
             }
 
             #genderSection {
-              span  {
-                margin-right: 8px; 
+              span {
+                margin-right: 8px;
                 display: flex;
                 align-self: center;
               }
               div {
-                  display: flex;
-                  flex-direction: row;
-                  width: 100%;               
-                }
+                display: flex;
+                flex-direction: row;
+                width: 100%;
               }
+            }
 
             p {
               font-size: 20px;

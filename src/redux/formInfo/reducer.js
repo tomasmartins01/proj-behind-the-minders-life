@@ -15,7 +15,7 @@ const formReducer = (state = initialState, action) => {
       return {
         ...state,
         formDetails: {
-          fullName: action.fullName ,
+          fullName: action.fullName,
           age: action.age,
           gender: action.gender,
           country: action.country,

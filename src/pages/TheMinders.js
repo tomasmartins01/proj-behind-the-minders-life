@@ -14,27 +14,29 @@ const TheMinders = () => {
   const getOrder = (a, b) => {
     if (a > b) {
       return 1;
-  }
-  if (b > a) {
+    }
+    if (b > a) {
       return -1;
-  }
-  return 0;
-  }
+    }
+    return 0;
+  };
 
   return (
     <div className="TheMinders">
       <Header />
       <h1 className="title">The Minders</h1>
       <div className="mindersContainer">
-        {mindersList.sort((a,b) => getOrder(a.name, b.name)).map((minder, index) => (
-          <MinderButton
-            key={index}
-            urlMinder={`/${minder.urlName}`}
-            nameMinder={minder.name}
-            picMinder={getMinderProfilePic(minder.name)}
-            jobMinder={minder.job}
-          />
-        ))}
+        {mindersList
+          .sort((a, b) => getOrder(a.name, b.name))
+          .map((minder, index) => (
+            <MinderButton
+              key={index}
+              urlMinder={`/${minder.urlName}`}
+              nameMinder={minder.name}
+              picMinder={getMinderProfilePic(minder.name)}
+              jobMinder={minder.job}
+            />
+          ))}
       </div>
       <Footer />
     </div>

@@ -181,9 +181,9 @@ const PlayGame = ({ saveInfo, history }) => {
                       disabled={imageIndex === imageArr.length - 1}
                     />
                   </>
-                ) : 
-                <p>Try to select a gender so that you can select an avatar</p>
-                }
+                ) : (
+                  <p>Try to select a gender so that you can select an avatar</p>
+                )}
               </div>
             </fieldset>
           </section>

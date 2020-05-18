@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import ReactPlayer from "react-player";
 import { Link, useParams } from "react-router-dom";
 
@@ -49,7 +49,13 @@ const MinderPage = () => {
       <main className="characterPage">
         <section className="Characters">
           <h1 id="characterTitle">{minderInfo.name}</h1>
-          <ReactPlayer url={minderInfo.youtubeVideo} width="100%" height={window.innerHeight <= 800 ? "40%" : "90%" } className="minderVideo"/>
+          <ReactPlayer
+            controls
+            url={minderInfo.youtubeVideo}
+            width="100%"
+            height="100%"
+            className="minderVideo"
+          />
         </section>
 
         <section className="displayMinders">
