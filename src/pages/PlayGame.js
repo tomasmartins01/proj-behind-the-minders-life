@@ -38,7 +38,18 @@ const PlayGame = ({ saveInfo, history }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const fullName = firstName.trim() + " " + lastName.trim();
+    const firstNameCapitalized =
+      firstName
+        .trim()
+        .charAt(0)
+        .toUpperCase() + firstName.slice(1);
+    const lastNameCapitalized =
+      lastName
+        .trim()
+        .charAt(0)
+        .toUpperCase() + lastName.slice(1);
+
+    const fullName = firstNameCapitalized + " " + lastNameCapitalized;
     saveInfo(fullName, age, gender, country, region, avatarImage);
     history.push("/game");
   };

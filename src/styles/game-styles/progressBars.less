@@ -1,0 +1,42 @@
+@import "../vars.less";
+
+.progressBars {
+  width: 400px;
+  article {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.bar {
+  width: 150px;
+  height: 30px;
+  padding-left: 10px;
+  border: 2px solid black;
+  border-radius: 3px;
+
+  &.badStatus {
+    background: radial-gradient(
+      circle farthest-corner at -1% 57.5%,
+      rgb(198, 88, 88) 0%,
+      rgba(201, 39, 39, 1) 90%
+    );
+  }
+
+  &.mediumStatus {
+    background: radial-gradient(
+      circle farthest-corner at -1% 57.5%,
+      rgba(255, 149, 0, 1) 0%,
+      rgba(240, 77, 18, 1) 90%
+    );
+  }
+
+  &.goodStatus {
+    background: radial-gradient(
+      circle farthest-corner at -1% 57.5%,
+      rgba(19, 170, 82, 1) 0%,
+      rgba(0, 102, 43, 1) 90%
+    );
+  }
+}

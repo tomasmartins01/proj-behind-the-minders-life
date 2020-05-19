@@ -1,45 +1,64 @@
-import React from "react";
-import ReactCountryFlag from "react-country-flag";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import Header from "../components/utils/Header";
-import Image from "../components/utils/Image";
 import Footer from "../components/utils/Footer";
-import getShortCode from "../helpers/shortcode";
+import Profile from "../components/game/Profile";
+import ProgressBars from "../components/game/ProgressBars";
+import MindersPreview from "../components/game/MindersPreview";
 
 import "../styles/game-styles/gamePage.less";
+import "../styles/game-styles/gameArticle.less";
 
 const Game = ({ formDetails }) => {
   document.title = "Game";
+  const [dropdownValue, setDropdownValue] = useState("");
+
+  const [socialSkills, setSocialSkills] = useState(0);
+  const [programmingSkills, setProgrammingSkills] = useState(0);
+  const [javaSkills, setJavaSkills] = useState(0);
+  const [sqlSkills, setSqlSkills] = useState(0);
+  const [htmlSkills, setHtmlSkills] = useState(0);
+  const [cssSkills, setCssSkills] = useState(0);
+  const [jsSkills, setJsSkills] = useState(0);
+  const [reactjsSkills, setReactjsSkills] = useState(0);
+
+  const handleSocialClick = () => setSocialSkills(socialSkills + 20);
 
   return (
     <>
       <Header />
       <main className="gameParts">
-        <section className="game">Game</section>
+        <div className="game">game</div>
         <aside>
-          <section>
-            <Image
-              imageSrc={formDetails.avatarUrl}
-              alt="avatar"
-              cName="gameAvatar"
-            />
-            <article>
-              <p>{formDetails.fullName}</p>
-              <div>
-                <p>{formDetails.age} years</p>
-                <p>
-                  <ReactCountryFlag
-                    countryCode={getShortCode(formDetails.country)}
-                  />
-                  {formDetails.country}
-                </p>
-                <p>{formDetails.gender}</p>
-              </div>
-            </article>
-          </section>
-          <section>Progress bars</section>
-          <section>Minder Preview</section>
+          <select
+            className="dropdownGame"
+            value={dropdownValue}
+            onChange={e => setDropdownValue(e.target.value)}
+          >
+            <option value="none">-----</option>
+            <option value="profile">Profile</option>
+            <option value="progress">Progress</option>
+            <option value="minders">Minders</option>
+          </select>
+          <div className="valueDisplay">
+            {dropdownValue === "profile" && (
+              <Profile formDetails={formDetails} />
+            )}
+            {dropdownValue === "progress" && (
+              <ProgressBars
+                socialSkills={socialSkills}
+                programmingSkills={programmingSkills}
+                javaSkills={javaSkills}
+                sqlSkills={sqlSkills}
+                htmlSkills={htmlSkills}
+                cssSkills={cssSkills}
+                jsSkills={jsSkills}
+                reactjsSkills={reactjsSkills}
+              />
+            )}
+            {dropdownValue === "minders" && <MindersPreview />}
+          </div>
         </aside>
       </main>
       <Footer />
