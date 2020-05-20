@@ -63,7 +63,7 @@ const mindersList = [
     name: "Irina Prioteasa",
     urlName: "irinaprioteasa",
     job: "Product Owner",
-    youtubeVideo: "https://www.youtube.com/watch?v=gwIcgyqioPo"
+    youtubeVideo: "https://www.youtube.com/watch?v=NvNz3iAJHqU"
   },
   {
     name: "Tiago Reis",

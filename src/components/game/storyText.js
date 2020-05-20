@@ -1,10 +1,14 @@
 import React from "react";
 
-const storyText = ({ text, hashtag }) => {
+import "../../styles/game-styles/gameText.less";
+
+const StoryText = ({ children, hashtag }) => {
   return (
-    <section>
-      <article>{text}</article>
+    <section className="storyTime">
+      <article>{children}</article>
       <article>{hashtag}</article>
-    </div>
+    </section>
   );
 };
+
+export default StoryText;
