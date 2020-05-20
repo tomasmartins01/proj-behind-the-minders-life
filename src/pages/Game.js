@@ -51,7 +51,7 @@ const Game = ({ formDetails }) => {
         <div className="game">
           <StoryText hashtag="#september2019">
             <p>You started Mindera School</p>
-            <StoryOptions op1="be cool" op2="be nice" op3="go fuck yourselves">
+            <StoryOptions op1="op1" op2="op3" op3="op3">
               How would you react?
               </StoryOptions>
           </StoryText>
