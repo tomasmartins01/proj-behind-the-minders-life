@@ -4,7 +4,7 @@ import ReactCountryFlag from "react-country-flag";
 import Image from "../utils/Image";
 import getShortCode from "../../helpers/shortcode";
 
-const Profile = ({ formDetails, carrer, happiness }) => {
+const Profile = ({ formDetails, carrer, happiness, bankBalance }) => {
   const emojiArray = [
     "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/320/facebook/230/crying-face_1f622.png",
     "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/facebook/230/pensive-face_1f614.png",
@@ -46,30 +46,27 @@ const Profile = ({ formDetails, carrer, happiness }) => {
       <Image imageSrc={formDetails.avatarUrl} alt="avatar" cName="gameAvatar" />
       <article>
         <p>Name: {formDetails.fullName}</p>
-        <div>
-          <p>Age: {formDetails.age} years</p>
+        <p>Age: {formDetails.age} years</p>
+        <p>
+          Country: 
+          <ReactCountryFlag countryCode={getShortCode(formDetails.country)} />
+          {formDetails.country}
+        </p>
+        <p>Gender: {formDetails.gender === "F" ? "Female" : "Male"}</p>
+        {carrer && (
           <p>
-            Country:
-            <ReactCountryFlag countryCode={getShortCode(formDetails.country)} />
-            {formDetails.country}
+            Vocation:
+            {carrer.charAt(0).toUpperCase() + carrer.slice(1)}
           </p>
-          <p>Gender: {formDetails.gender === "F" ? "Female" : "Male"}</p>
-          {carrer && (
-            <p>
-              Vocation:
-              {carrer.charAt(0).toUpperCase() + carrer.slice(1)}
-            </p>
-          )}
+        )}
+        <p>Bank Balance: {bankBalance} euros</p>
 
-          <div>
-            <Image
-              imageSrc={selectedEmoji(happiness)}
-              cName="happiness"
-              alt={selectedHappiness(happiness)}
-            />
-            <p>Mood: {selectedHappiness(happiness)}</p>
-          </div>
-        </div>
+        <Image
+          imageSrc={selectedEmoji(happiness)}
+          cName="happiness"
+          alt={selectedHappiness(happiness)}
+        />
+        <p>Mood: {selectedHappiness(happiness)}</p>
       </article>
     </div>
   );

@@ -21,8 +21,8 @@ const MindersPreview = () => {
   };
 
   return (
-    <>
-      <ul type="square">
+    <div className="mindersPreview">
+      <ul type="none">
         {mindersList
           .sort((a, b) => getOrder(a.name, b.name))
           .map((minder, index) => (
@@ -36,12 +36,12 @@ const MindersPreview = () => {
         <ReactPlayer
           controls
           url={videoUrl}
-          width="250px"
-          height="300px"
+          width="300px"
+          height="200px"
           className="gamePreview"
         />
       ) : null}
-    </>
+    </div>
   );
 };
 

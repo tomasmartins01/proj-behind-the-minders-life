@@ -13,8 +13,9 @@ import { femaleVersion, maleVersion } from "../helpers/avatarImages";
 import { saveInfoAction } from "../redux/formInfo/actions";
 
 import "../styles/game-styles/gameForm.less";
+import { startGameAction } from "../redux/game/actions";
 
-const PlayGame = ({ saveInfo, history }) => {
+const PlayGame = ({ saveInfo, startGame, history }) => {
   document.title = "Create Your Character";
 
   const [imageArr, setImageArr] = useState([]);
@@ -51,6 +52,7 @@ const PlayGame = ({ saveInfo, history }) => {
 
     const fullName = firstNameCapitalized + " " + lastNameCapitalized;
     saveInfo(fullName, age, gender, country, region, avatarImage);
+    startGame();
     history.push("/game");
   };
 
@@ -215,7 +217,8 @@ const PlayGame = ({ saveInfo, history }) => {
 
 const mapDispatchToProps = dispatch => ({
   saveInfo: (fullName, age, gender, country, region, avatarUrl) =>
-    dispatch(saveInfoAction(fullName, age, gender, country, region, avatarUrl))
+    dispatch(saveInfoAction(fullName, age, gender, country, region, avatarUrl)),
+    startGame: () => dispatch(startGameAction())
 });
 
 export default withRouter(connect(undefined, mapDispatchToProps)(PlayGame));

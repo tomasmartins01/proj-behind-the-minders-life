@@ -1,4 +1,4 @@
-const initialState = {
+const initialStateForm = {
   formDetails: {
     fullName: "",
     age: 18,
@@ -9,7 +9,7 @@ const initialState = {
   }
 };
 
-const formReducer = (state = initialState, action) => {
+const formReducer = (state = initialStateForm, action) => {
   switch (action.type) {
     case "SAVE_CHARACTER_INFO":
       return {

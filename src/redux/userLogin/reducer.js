@@ -1,8 +1,8 @@
-const initialState = {
+const initialStateLogin = {
   isLogged: false
 };
 
-const userReducer = (state = initialState, action) => {
+const userReducer = (state = initialStateLogin, action) => {
   switch (action.type) {
     case "LOGIN_USER":
       return {

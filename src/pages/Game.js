@@ -7,54 +7,24 @@ import Profile from "../components/game/Profile";
 import ProgressBars from "../components/game/ProgressBars";
 import MindersPreview from "../components/game/MindersPreview";
 
-import StoryText from "../components/game/StoryText";
-import StoryOptions from "../components/game/StoryOptions";
+// Routes
+import InterviewJune from "../gameRoutes/InterviewJune";
 
 import "../styles/game-styles/gamePage.less";
 import "../styles/game-styles/gameArticle.less";
+import "../styles/game-styles/gameMinders.less";
 
-const Game = ({ formDetails }) => {
+const Game = ({ formDetails, gameDetails }) => {
   document.title = "Game";
-  const [dropdownValue, setDropdownValue] = useState("");
 
-  const skillsLevel = {
-    socialSkills: 0,
-    programmingSkills: 0,
-    backend: {
-      javaSkills: 0,
-      rubySkills: 0,
-      pythonSkills: 0,
-      golangSkills: 0,
-      sqlSkills: 0
-    },
-    frontend: {
-      htmlSkills: 0,
-      cssSkills: 0,
-      jsSkills: 0,
-      reactjsSkills: 0
-    },
-    mobile: {
-      kotlinSkills: 0,
-      swiftSkills: 0,
-      reactNativeSkills: 0
-    }
-  };
-
-  const [skills, setSkills] = useState(skillsLevel);
-  const [carrer, setCarrer] = useState("");
-  const [happiness, setHappiness] = useState(70);
+  const [dropdownValue, setDropdownValue] = useState("profile");
 
   return (
     <>
       <Header />
       <main className="gameParts">
         <div className="game">
-          <StoryText hashtag="#september2019">
-            <p>You started Mindera School</p>
-            <StoryOptions op1="op1" op2="op3" op3="op3">
-              How would you react?
-              </StoryOptions>
-          </StoryText>
+          <InterviewJune />
         </div>
         <aside>
           <select
@@ -62,7 +32,6 @@ const Game = ({ formDetails }) => {
             value={dropdownValue}
             onChange={e => setDropdownValue(e.target.value)}
           >
-            <option value="none">-----</option>
             <option value="profile">Profile</option>
             <option value="progress">Progress</option>
             <option value="minders">Minders</option>
@@ -71,12 +40,16 @@ const Game = ({ formDetails }) => {
             {dropdownValue === "profile" && (
               <Profile
                 formDetails={formDetails}
-                carrer={carrer}
-                happiness={happiness}
+                carrer={gameDetails.carrer}
+                happiness={gameDetails.happiness}
+                bankBalance={gameDetails.bankBalance}
               />
             )}
             {dropdownValue === "progress" && (
-              <ProgressBars skills={skills} carrer={carrer} />
+              <ProgressBars
+                skills={gameDetails.skillsLevel}
+                carrer={gameDetails.carrer}
+              />
             )}
             {dropdownValue === "minders" && <MindersPreview />}
           </div>
@@ -88,7 +61,10 @@ const Game = ({ formDetails }) => {
 };
 
 const mapStateToProps = state => {
-  return { formDetails: state.form.formDetails };
+  return {
+    formDetails: state.form.formDetails,
+    gameDetails: state.game.gameInfo
+  };
 };
 
 export default connect(mapStateToProps)(Game);
