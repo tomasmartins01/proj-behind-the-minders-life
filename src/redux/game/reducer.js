@@ -6,37 +6,40 @@ const initialStateGame = {
     happiness: 70,
     bankBalance: 0,
     prevExperience: "",
-    timestamps: { 
-      isInterviewJuneFinished: false,
-      isSchoolSeptemberFinished: false,
-      isSchoolDecemberFinished: false,
-      isSchoolMarchFinished: false,
-      isSchoolJuneFinished: false,
+    timestamps: {
+      interviewJune: {
+        isInterviewJuneFinished: false,
+        characterPassedTheInterview: undefined
+      },
+      schoolSep: { isSchoolSeptemberFinished: false },
+      schoolDec: { isSchoolDecemberFinished: false },
+      schoolMar: { isSchoolMarchFinished: false },
+      schoolJun: { isSchoolJuneFinished: false },
 
-      isMinderaFirstSepFinished: false,
-      isMinderaFirstDecFinished: false,
-      isMinderaFirstMarFinished: false,
-      isMinderaFirstJuneFinished: false,
+      minderaOneSep: { isMinderaFirstSepFinished: false },
+      minderaOneDec: { isMinderaFirstDecFinished: false },
+      minderaOneMar: { isMinderaFirstMarFinished: false },
+      minderaOneJun: { isMinderaFirstJuneFinished: false },
 
-      isMinderaSecondSepFinished: false,
-      isMinderaSecondDecFinished: false,
-      isMinderaSecondMarFinished: false,
-      isMinderaSecondJuneFinished: false,
+      minderaTwoSep: { isMinderaSecondSepFinished: false },
+      minderaTwoDec: { isMinderaSecondDecFinished: false },
+      minderaTwoMar: { isMinderaSecondMarFinished: false },
+      minderaTwoJun: { isMinderaSecondJuneFinished: false },
 
-      isMinderaThirdSepFinished: false,
-      isMinderaThirdDecFinished: false,
-      isMinderaThirdMarFinished: false,
-      isMinderaThirdJuneFinished: false,
+      minderaThreeSep: { isMinderaThirdSepFinished: false },
+      minderaThreeDec: { isMinderaThirdDecFinished: false },
+      minderaThreeMar: { isMinderaThirdMarFinished: false },
+      minderaThreeMar: { isMinderaThirdJuneFinished: false },
 
-      isMinderaFourthSepFinished: false,
-      isMinderaFourthDecFinished: false,
-      isMinderaFourthMarFinished: false,
-      isMinderaFourthJuneFinished: false,
+      minderaFourSep: { isMinderaFourthSepFinished: false },
+      minderaFourDec: { isMinderaFourthDecFinished: false },
+      minderaFourMar: { isMinderaFourthMarFinished: false },
+      minderaFourJun: { isMinderaFourthJuneFinished: false },
 
-      isMinderaFifthSepFinished: false,
-      isMinderaFifthDecFinished: false,
-      isMinderaFifthMarFinished: false,
-      isMinderaFifthJuneFinished: false
+      minderaFourSep: { isMinderaFifthSepFinished: false },
+      minderaFourDec: { isMinderaFifthDecFinished: false },
+      minderaFourMar: { isMinderaFifthMarFinished: false },
+      minderaFourJun: { isMinderaFifthJuneFinished: false }
     },
     skillsLevel: {
       socialSkills: 0,
@@ -113,7 +116,7 @@ const gameReducer = (state = initialStateGame, action) => {
           skillsLevel: action.skillsLevel
         }
       };
-      case "START_GAME":
+    case "START_GAME":
       return {
         ...state,
         gameInfo: { ...initialStateGame.gameInfo }

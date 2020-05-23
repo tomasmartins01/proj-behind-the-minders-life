@@ -11,7 +11,7 @@ const ProgressBars = ({ skills, carrer }) => {
         <TabList>
           <Tab>General Skills</Tab>
           <Tab>Backend Skills</Tab>
-          <Tab>FrontEnd Skills</Tab>
+          <Tab>Frontend Skills</Tab>
           <Tab>Mobile Skills</Tab>
         </TabList>
 

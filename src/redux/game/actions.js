@@ -1,5 +1,5 @@
-export const updateCarrerAction = career => ({
-  type: "UPDATE_GAME_CAReER",
+export const updateCareerAction = career => ({
+  type: "UPDATE_GAME_CAREER",
   career
 });
 
@@ -13,7 +13,7 @@ export const updateBankBalanceAction = bankBalance => ({
   bankBalance
 });
 
-export const setPrevExperience = prevExperience => ({
+export const setPrevExperienceAction = prevExperience => ({
   type: "SET_GAME_PREVIOUS_EXPERIENCE",
   prevExperience
 });

@@ -6,7 +6,7 @@ import logoWhite from "../../images/logoWhite.png";
 
 import "../../styles/utils/header.less";
 
-const Header = ({ children }) => {
+const Header = () => {
   return (
     <header>
       <Link to="/">

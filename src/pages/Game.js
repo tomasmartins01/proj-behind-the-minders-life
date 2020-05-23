@@ -8,7 +8,7 @@ import ProgressBars from "../components/game/ProgressBars";
 import MindersPreview from "../components/game/MindersPreview";
 
 // Routes
-import InterviewJune from "../gameRoutes/InterviewJune";
+import InterviewJune from "../gameRoutes/InterviewJune/index";
 
 import "../styles/game-styles/gamePage.less";
 import "../styles/game-styles/gameArticle.less";
@@ -24,7 +24,7 @@ const Game = ({ formDetails, gameDetails }) => {
       <Header />
       <main className="gameParts">
         <div className="game">
-          <InterviewJune />
+          {gameDetails.isGameFinished ? <p>End</p> : <InterviewJune />}
         </div>
         <aside>
           <select
