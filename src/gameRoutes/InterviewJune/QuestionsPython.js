@@ -1,40 +1,57 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { updateTimeBoxAction } from "../../redux/game/actions";
+import {
+  updateTimeBoxAction,
+  updateSkillsAction
+} from "../../redux/game/actions";
 
 const PythonQuestions = ({
-  timestamps,
+  questionId, 
   correctAnswer,
   wrongAnswer,
-  questionId
+  timestamps,
+  skillsLevel,
+  updatePythonSkills
 }) => {
   return (
     <>
       {questionId === 0 && (
         <FirstPythonQuestion
-          correctAnswer={() => correctAnswer(timestamps)}
+          correctAnswer={() => {
+            correctAnswer(timestamps);
+            updatePythonSkills(skillsLevel);
+          }}
           wrongAnswer={() => wrongAnswer(timestamps)}
         />
       )}
 
       {questionId === 1 && (
         <SecondPythonQuestion
-          correctAnswer={() => correctAnswer(timestamps)}
+          correctAnswer={() => {
+            correctAnswer(timestamps);
+            updatePythonSkills(skillsLevel);
+          }}
           wrongAnswer={() => wrongAnswer(timestamps)}
         />
       )}
 
       {questionId === 2 && (
         <ThirdPythonQuestion
-          correctAnswer={() => correctAnswer(timestamps)}
+          correctAnswer={() => {
+            correctAnswer(timestamps);
+            updatePythonSkills(skillsLevel);
+          }}
           wrongAnswer={() => wrongAnswer(timestamps)}
         />
       )}
 
       {questionId === 3 && (
         <FourthPythonQuestion
-          correctAnswer={() => correctAnswer(timestamps)}
+          correctAnswer={() => {
+            correctAnswer(timestamps);
+            updatePythonSkills(skillsLevel);
+          }}
           wrongAnswer={() => wrongAnswer(timestamps)}
         />
       )}
@@ -101,7 +118,8 @@ const FourthPythonQuestion = ({ correctAnswer, wrongAnswer }) => {
 
 const mapStateToProps = state => {
   return {
-    timestamps: state.game.gameInfo.timestamps
+    timestamps: state.game.gameInfo.timestamps,
+    skillsLevel: state.game.gameInfo.skillsLevel
   };
 };
 
@@ -124,6 +142,13 @@ const mapDispatchToProps = dispatch => ({
           ...timestamps.interviewJune,
           characterPassedTheInterview: false
         }
+      })
+    ),
+  updatePythonSkills: skillsLevel =>
+    dispatch(
+      updateSkillsAction({
+        ...skillsLevel,
+        backend: { ...skillsLevel.backend, pythonSkills: 50 }
       })
     )
 });

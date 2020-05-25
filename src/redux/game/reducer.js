@@ -8,47 +8,49 @@ const initialStateGame = {
     prevExperience: "",
     timestamps: {
       interviewJune: {
-        isInterviewJuneFinished: false,
+        isFinished: false,
         characterPassedTheInterview: undefined
       },
-      schoolSep: { isSchoolSeptemberFinished: false },
-      schoolDec: { isSchoolDecemberFinished: false },
-      schoolMar: { isSchoolMarchFinished: false },
-      schoolJun: { isSchoolJuneFinished: false },
+      schoolSep: { isFinished: false },
+      schoolDec: { isFinished: false },
+      schoolMar: { isFinished: false },
+      schoolJun: { isFinished: false },
 
-      minderaOneSep: { isMinderaFirstSepFinished: false },
-      minderaOneDec: { isMinderaFirstDecFinished: false },
-      minderaOneMar: { isMinderaFirstMarFinished: false },
-      minderaOneJun: { isMinderaFirstJuneFinished: false },
+      minderaOneSep: { isFinished: false },
+      minderaOneDec: { isFinished: false },
+      minderaOneMar: { isFinished: false },
+      minderaOneJun: { isFinished: false },
 
-      minderaTwoSep: { isMinderaSecondSepFinished: false },
-      minderaTwoDec: { isMinderaSecondDecFinished: false },
-      minderaTwoMar: { isMinderaSecondMarFinished: false },
-      minderaTwoJun: { isMinderaSecondJuneFinished: false },
+      minderaTwoSep: { isFinished: false },
+      minderaTwoDec: { isFinished: false },
+      minderaTwoMar: { isFinished: false },
+      minderaTwoJun: { isFinished: false },
 
-      minderaThreeSep: { isMinderaThirdSepFinished: false },
-      minderaThreeDec: { isMinderaThirdDecFinished: false },
-      minderaThreeMar: { isMinderaThirdMarFinished: false },
-      minderaThreeMar: { isMinderaThirdJuneFinished: false },
+      minderaThreeSep: { isFinished: false },
+      minderaThreeDec: { isFinished: false },
+      minderaThreeMar: { isFinished: false },
+      minderaThreeJun: { isFinished: false },
 
-      minderaFourSep: { isMinderaFourthSepFinished: false },
-      minderaFourDec: { isMinderaFourthDecFinished: false },
-      minderaFourMar: { isMinderaFourthMarFinished: false },
-      minderaFourJun: { isMinderaFourthJuneFinished: false },
+      minderaFourSep: { isFinished: false },
+      minderaFourDec: { isFinished: false },
+      minderaFourMar: { isFinished: false },
+      minderaFourJun: { isFinished: false },
 
-      minderaFourSep: { isMinderaFifthSepFinished: false },
-      minderaFourDec: { isMinderaFifthDecFinished: false },
-      minderaFourMar: { isMinderaFifthMarFinished: false },
-      minderaFourJun: { isMinderaFifthJuneFinished: false }
+      minderaFiveSep: { isFinished: false },
+      minderaFiveDec: { isFinished: false },
+      minderaFiveMar: { isFinished: false },
+      minderaFiveJun: { isFinished: false }
     },
     skillsLevel: {
       socialSkills: 0,
       programmingSkills: 0,
       backend: {
-        javaSkills: 0,
-        rubySkills: 0,
-        pythonSkills: 0,
+        cplusplusSkills: 0,
         golangSkills: 0,
+        javaSkills: 0,
+        phpSkills: 0,
+        pythonSkills: 0,
+        rubySkills: 0,
         sqlSkills: 0
       },
       frontend: {

@@ -218,7 +218,7 @@ const PlayGame = ({ saveInfo, startGame, history }) => {
 const mapDispatchToProps = dispatch => ({
   saveInfo: (fullName, age, gender, country, region, avatarUrl) =>
     dispatch(saveInfoAction(fullName, age, gender, country, region, avatarUrl)),
-    startGame: () => dispatch(startGameAction())
+  startGame: () => dispatch(startGameAction())
 });
 
 export default withRouter(connect(undefined, mapDispatchToProps)(PlayGame));

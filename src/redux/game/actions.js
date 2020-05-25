@@ -25,28 +25,7 @@ export const updateTimeBoxAction = timestamps => ({
 
 export const updateSkillsAction = skillsLevel => ({
   type: "UPDATE_GAME_SKILLS",
-  skillsLevel: {
-    socialSkills,
-    programmingSkills,
-    backend: {
-      javaSkills,
-      rubySkills,
-      pythonSkills,
-      golangSkills,
-      sqlSkills
-    },
-    frontend: {
-      htmlSkills,
-      cssSkills,
-      jsSkills,
-      reactjsSkills
-    },
-    mobile: {
-      kotlinSkills,
-      swiftSkills,
-      reactNativeSkills
-    }
-  }
+  skillsLevel
 });
 
 export const startGameAction = () => ({

@@ -4,7 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "../../styles/game-styles/progressBars.less";
 
-const ProgressBars = ({ skills, carrer }) => {
+const ProgressBars = ({ skills, career, prevExperience }) => {
   return (
     <section className="progressBars">
       <Tabs>
@@ -49,6 +49,44 @@ const ProgressBars = ({ skills, carrer }) => {
         </TabPanel>
 
         <TabPanel>
+          {(prevExperience === "C++" ||
+            (career === "backend" && prevExperience === "C++")) && (
+            <>
+              <article>
+                <h3>C++</h3>
+                <div
+                  className={`bar ${
+                    skills.backend.cplusplusSkills <= 15
+                      ? "badStatus"
+                      : skills.backend.cplusplusSkills <= 50
+                      ? "mediumStatus"
+                      : "goodStatus"
+                  }`}
+                  id="c++skills"
+                >
+                  {skills.backend.cplusplusSkills}%
+                </div>
+              </article>
+            </>
+          )}
+          {career === "backend" && (
+            <article>
+              <h3>Golang</h3>
+              <div
+                className={`bar ${
+                  skills.backend.golangSkills <= 15
+                    ? "badStatus"
+                    : skills.backend.golangSkills <= 50
+                    ? "mediumStatus"
+                    : "goodStatus"
+                }`}
+                id="golangSkills"
+              >
+                {skills.backend.golangSkills}%
+              </div>
+            </article>
+          )}
+
           <article>
             <h3>Java</h3>
             <div
@@ -65,7 +103,45 @@ const ProgressBars = ({ skills, carrer }) => {
             </div>
           </article>
 
-          {carrer === "backend" && (
+          {(prevExperience === "PHP" ||
+            (career === "backend" && prevExperience === "PHP")) && (
+            <article>
+              <h3>PHP</h3>
+              <div
+                className={`bar ${
+                  skills.backend.phpSkills <= 15
+                    ? "badStatus"
+                    : skills.backend.phpSkills <= 50
+                    ? "mediumStatus"
+                    : "goodStatus"
+                }`}
+                id="phpSkills"
+              >
+                {skills.backend.phpSkills}%
+              </div>
+            </article>
+          )}
+
+          {(prevExperience === "Python" ||
+            (career === "backend" && prevExperience === "Python")) && (
+            <article>
+              <h3>Python</h3>
+              <div
+                className={`bar ${
+                  skills.backend.pythonSkills <= 15
+                    ? "badStatus"
+                    : skills.backend.pythonSkills <= 50
+                    ? "mediumStatus"
+                    : "goodStatus"
+                }`}
+                id="pythonSkills"
+              >
+                {skills.backend.pythonSkills}%
+              </div>
+            </article>
+          )}
+
+          {career === "backend" && (
             <>
               <article>
                 <h3>Ruby</h3>
@@ -80,38 +156,6 @@ const ProgressBars = ({ skills, carrer }) => {
                   id="rubySkills"
                 >
                   {skills.backend.rubySkills}%
-                </div>
-              </article>
-
-              <article>
-                <h3>Ruby</h3>
-                <div
-                  className={`bar ${
-                    skills.backend.pythonSkills <= 15
-                      ? "badStatus"
-                      : skills.backend.pythonSkills <= 50
-                      ? "mediumStatus"
-                      : "goodStatus"
-                  }`}
-                  id="pythonSkills"
-                >
-                  {skills.backend.pythonSkills}%
-                </div>
-              </article>
-
-              <article>
-                <h3>Golang</h3>
-                <div
-                  className={`bar ${
-                    skills.backend.golangSkills <= 15
-                      ? "badStatus"
-                      : skills.backend.golangSkills <= 50
-                      ? "mediumStatus"
-                      : "goodStatus"
-                  }`}
-                  id="golangSkills"
-                >
-                  {skills.backend.golangSkills}%
                 </div>
               </article>
             </>
@@ -133,6 +177,7 @@ const ProgressBars = ({ skills, carrer }) => {
             </div>
           </article>
         </TabPanel>
+
         <TabPanel>
           <article>
             <h3>HTML</h3>
@@ -179,7 +224,7 @@ const ProgressBars = ({ skills, carrer }) => {
               {skills.frontend.jsSkills}%
             </div>
           </article>
-          {carrer === "frontend" && (
+          {career === "frontend" && (
             <article>
               <h3>ReactJS</h3>
               <div
@@ -215,7 +260,7 @@ const ProgressBars = ({ skills, carrer }) => {
             </div>
           </article>
 
-          {carrer === "mobile" && (
+          {career === "mobile" && (
             <>
               <article>
                 <h3>Swift</h3>
