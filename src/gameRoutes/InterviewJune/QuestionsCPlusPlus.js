@@ -93,7 +93,7 @@ const ThirdCPlusPlusQuestion = ({ correctAnswer, wrongAnswer }) => {
       <p>Which operator C++ doesn't support?</p>
       <button onClick={correctAnswer}>?</button>
       <button onClick={wrongAnswer}>%</button>
-      <button onClick={wrongAnswer}>/{"{…}"}</button>
+      <button onClick={wrongAnswer}>/</button>
       <button onClick={wrongAnswer}>+</button>
     </div>
   );

@@ -11,7 +11,7 @@ const initialStateGame = {
         isFinished: false,
         characterPassedTheInterview: undefined
       },
-      schoolSep: { isFinished: false },
+      schoolSep: { isFinished: false, differentRoute: undefined },
       schoolDec: { isFinished: false },
       schoolMar: { isFinished: false },
       schoolJun: { isFinished: false },
