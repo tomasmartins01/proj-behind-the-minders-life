@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 // Routes
 import InterviewJune from "./InterviewJune";
 import SchoolSeptember from "./SchoolSeptember";
+import SchoolDecember from "./SchoolDecember";
 
 const GameRoutes = ({ timestamps }) => {
   return (
@@ -11,7 +12,7 @@ const GameRoutes = ({ timestamps }) => {
       {/* School */}
       <InterviewJune />
       {timestamps.interviewJune.isFinished && <SchoolSeptember />}
-      {timestamps.schoolSep.isFinished && <p>School December</p>}
+      {timestamps.schoolSep.isFinished && <SchoolDecember />}
       {timestamps.schoolDec.isFinished && <p>School March</p>}
       {timestamps.schoolMar.isFinished && <p>School June</p>}
 

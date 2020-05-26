@@ -40,7 +40,7 @@ const Game = ({ formDetails, gameDetails }) => {
             {dropdownValue === "profile" && (
               <Profile
                 formDetails={formDetails}
-                career={gameDetails.career}
+                especialization={gameDetails.especialization}
                 happiness={gameDetails.happiness}
                 bankBalance={gameDetails.bankBalance}
               />
@@ -48,7 +48,7 @@ const Game = ({ formDetails, gameDetails }) => {
             {dropdownValue === "progress" && (
               <ProgressBars
                 skills={gameDetails.skillsLevel}
-                career={gameDetails.career}
+                especialization={gameDetails.especialization}
                 prevExperience={gameDetails.prevExperience}
               />
             )}

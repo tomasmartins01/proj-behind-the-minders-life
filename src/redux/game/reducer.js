@@ -2,7 +2,7 @@ const initialStateGame = {
   gameInfo: {
     startingYear: new Date().getFullYear(),
     isGameFinished: false,
-    career: "",
+    especialization: "",
     happiness: 70,
     bankBalance: 0,
     prevExperience: "",
@@ -70,12 +70,12 @@ const initialStateGame = {
 
 const gameReducer = (state = initialStateGame, action) => {
   switch (action.type) {
-    case "UPDATE_GAME_CAREER":
+    case "UPDATE_GAME_ESPECIALIZATION":
       return {
         ...state,
         gameInfo: {
           ...state.gameInfo,
-          career: action.career
+          especialization: action.especialization
         }
       };
     case "UPDATE_GAME_HAPPINESS":

@@ -1,6 +1,6 @@
-export const updateCareerAction = career => ({
-  type: "UPDATE_GAME_CAREER",
-  career
+export const updateEspecializationAction = especialization => ({
+  type: "UPDATE_GAME_ESPECIALIZATION",
+  especialization
 });
 
 export const updateHappinessAction = happiness => ({

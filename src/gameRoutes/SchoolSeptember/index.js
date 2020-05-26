@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import StoryText from "../../components/game/StoryText";
-import Image from "../../components/utils/Image";
 
-import { endGameAction, updateTimeBoxAction } from "../../redux/game/actions";
+import {
+  endGameAction,
+  updateBankBalanceAction,
+  updateTimeBoxAction,
+  updateHappinessAction,
+  updateSkillsAction
+} from "../../redux/game/actions";
 
 import Schedule from "../../images/game/gameSchedule.png";
 
@@ -12,8 +17,12 @@ const SchoolSeptember = ({
   formDetails,
   gameDetails,
   timestamps,
+  skillsLevel,
   stayRoute,
   leaveRoute,
+  updateHappiness,
+  updateSkills,
+  increaseBalance,
   goToNext,
   endGame
 }) => {
@@ -27,7 +36,7 @@ const SchoolSeptember = ({
       isOpen={isOpen}
       onButtonClick={onButtonClick}
     >
-      <div className="gameEmail" style={{ width: "100%", marginTop: "10px" }}>
+      <div className="gameEmail">
         <p>Welcome again Mindernaut!!</p>
         <p>We're very happy to show you your schedule.</p>
         <img
@@ -50,7 +59,12 @@ const SchoolSeptember = ({
             <div className="gameQuestion">
               <p>What will you do?</p>
               <div className="buttonSelector">
-                <button onClick={() => stayRoute(timestamps)}>
+                <button
+                  onClick={() => {
+                    stayRoute(timestamps);
+                    updateHappiness(85);
+                  }}
+                >
                   Stay in Mindera
                 </button>
                 <button onClick={() => leaveRoute(timestamps)}>
@@ -82,6 +96,8 @@ const SchoolSeptember = ({
                 onClick={() => {
                   setIsOpen(false);
                   goToNext(timestamps);
+                  updateSkills(skillsLevel);
+                  increaseBalance(600 * 3);
                 }}
               >
                 NEXT
@@ -98,7 +114,8 @@ const mapStateToProps = state => {
   return {
     formDetails: state.form.formDetails,
     gameDetails: state.game.gameInfo,
-    timestamps: state.game.gameInfo.timestamps
+    timestamps: state.game.gameInfo.timestamps,
+    skillsLevel: state.game.gameInfo.skillsLevel
   };
 };
 
@@ -120,6 +137,32 @@ const mapDispatchToProps = dispatch => ({
         schoolSep: {
           ...timestamps.schoolSep,
           differentRoute: true
+        }
+      })
+    ),
+  increaseBalance: bankbalance =>
+    dispatch(updateBankBalanceAction(bankbalance)),
+  updateHappiness: happiness => dispatch(updateHappinessAction(happiness)),
+  updateSkills: skillsLevel =>
+    dispatch(
+      updateSkillsAction({
+        ...skillsLevel,
+        socialSkills: 70,
+        programmingSkills: 60,
+        backend: {
+          ...skillsLevel.backend,
+          javaSkills: 60,
+          sqlSkills: 60
+        },
+        frontend: {
+          ...skillsLevel.frontend,
+          htmlSkills: 60,
+          cssSkills: 60,
+          jsSkills: 60
+        },
+        mobile: {
+          ...skillsLevel.mobile,
+          kotlinSkills: 60
         }
       })
     ),
