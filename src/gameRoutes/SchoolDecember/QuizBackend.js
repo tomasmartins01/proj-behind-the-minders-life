@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const QuizBackend = ({ correct, wrong, setCorrect, setWrong }) => {
+const QuizBackend = () => {
   const [correctAnswersBE, setCorrectAnswersBE] = useState(0);
   const [wrongAnswersBE, setWrongAnswersBE] = useState(0);
 

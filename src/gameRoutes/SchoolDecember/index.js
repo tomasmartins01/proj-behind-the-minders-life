@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 
 import StoryText from "../../components/game/StoryText";
 
-import QuizBackend from "../SchoolSeptember/QuizBackend";
-import QuizFrontend from "../SchoolSeptember/QuizFrontend";
-import QuizMobile from "../SchoolSeptember/QuizMobile";
+import QuizBackend from "./QuizBackend";
+import QuizFrontend from "./QuizFrontend";
+import QuizMobile from "./QuizMobile";
 
 const SchoolDecember = ({ gameDetails }) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -16,30 +16,11 @@ const SchoolDecember = ({ gameDetails }) => {
   const renderQuiz = especialization => {
     switch (especialization) {
       case "Backend":
-        return (
-          <QuizBackend
-            correct={correctAnswersBE}
-            wrong={wrongAnswersBE}
-            setCorrect={() => setCorrectAnswersBE(correctAnswersBE + 1)}
-            setWrong={() => setWrongAnswersBE(wrongAnswersBE + 1)}
-          />
-        );
+        return <QuizBackend />;
       case "Frontend":
-        return (
-          <QuizFrontend
-          />
-        );
+        return <QuizFrontend />;
       case "Mobile":
-        return (
-          <QuizMobile
-            correct={correctAnswersMB}
-            wrong={wrongAnswersMB}
-            setCorrect={() => setCorrectAnswersMB(correctAnswersMB + 1)}
-            setWrong={() => setWrongAnswersMB(wrongAnswersMB + 1)}
-          />
-        );
-      default:
-        return "<h1>Don't Know</h1>";
+        return <QuizMobile />;
     }
   };
 
@@ -64,7 +45,7 @@ const SchoolDecember = ({ gameDetails }) => {
       ) : (
         <div
           style={{
-            width: "70%",
+            width: "50%",
             display: "flex",
             justifyContent: "space-between"
           }}
@@ -74,9 +55,6 @@ const SchoolDecember = ({ gameDetails }) => {
           </button>
           <button onClick={() => setEspecialization("Backend")}>Backend</button>
           <button onClick={() => setEspecialization("Mobile")}>Mobile</button>
-          <button onClick={() => setEspecialization("Need Help")}>
-            I can't decide
-          </button>
         </div>
       )}
     </StoryText>

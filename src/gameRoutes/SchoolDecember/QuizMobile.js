@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const QuizMobile = ({ correct, wrong, setCorrect, setWrong }) => {
+const QuizMobile = () => {
   const [correctAnswersMB, setCorrectAnswersMB] = useState(0);
   const [wrongAnswersMB, setWrongAnswersMB] = useState(0);
 
