@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import GameQuestion from "../../components/game/GameQuestion";
+
 import {
   updateTimeBoxAction,
   updateSkillsAction
@@ -61,55 +63,65 @@ const CPlusPlusQuestions = ({
 
 const FirstCPlusPlusQuestion = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>What is the correct syntax to output "message" in C++?</p>
-      <div className="buttonSelector">
-        <button onClick={wrongAnswer}>print —> "message"</button>
-        <button onClick={wrongAnswer}>cout {">>"} "message"</button>
-        <button onClick={correctAnswer}>cout {"<<"} "message"</button>
-        <button onClick={wrongAnswer}>console ("message")</button>
-      </div>
-    </div>
+    <GameQuestion
+      question='What is the correct syntax to output "message" in C++?'
+      op1='print —> "message"'
+      op2='cout >> "message"'
+      op3='cout << "message"'
+      op4='console ("message")'
+      onClickOp1={wrongAnswer}
+      onClickOp2={wrongAnswer}
+      onClickOp3={correctAnswer}
+      onClickOp4={wrongAnswer}
+    />
   );
 };
 
 const SecondCPlusPlusQuestion = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>How do you create a reference variable of an existing variable?</p>
-      <div className="buttonSelector">
-        <button onClick={wrongAnswer}>REF(var)</button>
-        <button onClick={correctAnswer}>& operator</button>
-        <button onClick={wrongAnswer}>* operator</button>
-        <button onClick={wrongAnswer}>ref(var)</button>
-      </div>
-    </div>
+    <GameQuestion
+      question="How do you create a reference variable of an existing variable?"
+      op1="REF(var)"
+      op2="& operator"
+      op3="* operator"
+      op4="ref(var)"
+      onClickOp1={wrongAnswer}
+      onClickOp2={correctAnswer}
+      onClickOp3={wrongAnswer}
+      onClickOp4={wrongAnswer}
+    />
   );
 };
 
 const ThirdCPlusPlusQuestion = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>Which operator C++ doesn't support?</p>
-      <button onClick={correctAnswer}>?</button>
-      <button onClick={wrongAnswer}>%</button>
-      <button onClick={wrongAnswer}>/</button>
-      <button onClick={wrongAnswer}>+</button>
-    </div>
+    <GameQuestion
+      question="Which operator C++ doesn't support?"
+      op1="?"
+      op2="%"
+      op3="/"
+      op4="+"
+      onClickOp1={correctAnswer}
+      onClickOp2={wrongAnswer}
+      onClickOp3={wrongAnswer}
+      onClickOp4={wrongAnswer}
+    />
   );
 };
 
 const FourthCPlusPlusQuestion = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>How to get a value from the console in C++?</p>
-      <div className="buttonSelector">
-        <button onClick={wrongAnswer}>read {"<<"} x </button>
-        <button onClick={wrongAnswer}>cin {">>"} x</button>
-        <button onClick={wrongAnswer}>cin {"<<"} x</button>
-        <button onClick={correctAnswer}>read {">>"} x</button>
-      </div>
-    </div>
+    <GameQuestion
+      question="How to get a value from the console in C++?"
+      op1="read << x"
+      op2="cin >> x"
+      op3="cin << x"
+      op4="read >> x"
+      onClickOp1={wrongAnswer}
+      onClickOp2={correctAnswer}
+      onClickOp3={wrongAnswer}
+      onClickOp4={wrongAnswer}
+    />
   );
 };
 

@@ -50,7 +50,7 @@ const ProgressBars = ({ skills, especialization, prevExperience }) => {
 
         <TabPanel>
           {(prevExperience === "C++" ||
-            (especialization === "backend" && prevExperience === "C++")) && (
+            (especialization === "Backend" && prevExperience === "C++")) && (
             <>
               <article>
                 <h3>C++</h3>
@@ -69,7 +69,7 @@ const ProgressBars = ({ skills, especialization, prevExperience }) => {
               </article>
             </>
           )}
-          {especialization === "backend" && (
+          {especialization === "Backend" && (
             <article>
               <h3>Golang</h3>
               <div
@@ -104,7 +104,7 @@ const ProgressBars = ({ skills, especialization, prevExperience }) => {
           </article>
 
           {(prevExperience === "PHP" ||
-            (especialization === "backend" && prevExperience === "PHP")) && (
+            (especialization === "Backend" && prevExperience === "PHP")) && (
             <article>
               <h3>PHP</h3>
               <div
@@ -123,7 +123,7 @@ const ProgressBars = ({ skills, especialization, prevExperience }) => {
           )}
 
           {(prevExperience === "Python" ||
-            (especialization === "backend" && prevExperience === "Python")) && (
+            (especialization === "Backend" && prevExperience === "Python")) && (
             <article>
               <h3>Python</h3>
               <div
@@ -141,7 +141,7 @@ const ProgressBars = ({ skills, especialization, prevExperience }) => {
             </article>
           )}
 
-          {especialization === "backend" && (
+          {especialization === "Backend" && (
             <>
               <article>
                 <h3>Ruby</h3>
@@ -224,7 +224,7 @@ const ProgressBars = ({ skills, especialization, prevExperience }) => {
               {skills.frontend.jsSkills}%
             </div>
           </article>
-          {especialization === "frontend" && (
+          {especialization === "Frontend" && (
             <article>
               <h3>ReactJS</h3>
               <div
@@ -260,7 +260,7 @@ const ProgressBars = ({ skills, especialization, prevExperience }) => {
             </div>
           </article>
 
-          {especialization === "mobile" && (
+          {especialization === "Mobile" && (
             <>
               <article>
                 <h3>Swift</h3>

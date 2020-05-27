@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import GameQuestion from "../../components/game/GameQuestion";
+
 import {
   updateTimeBoxAction,
   updateSkillsAction
@@ -61,61 +63,67 @@ const JavascriptQuestions = ({
 
 const FirstJsQuestion = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>
-        What is the correct syntax for the referring to an external script
-        called "xxx.js"?
-      </p>
-      <div className="buttonSelector">
-        <button onClick={wrongAnswer}>{"<script href='xxx.js' >"}</button>
-        <button onClick={wrongAnswer}>{"<script file='xxx.js' >"}</button>
-        <button onClick={wrongAnswer}>{"<script name='xxx.js' >"}</button>
-        <button onClick={correctAnswer}>{"<script src='xxx.js' > >"}</button>
-      </div>
-    </div>
+    <GameQuestion
+      question='What is the correct syntax for the referring to an external script
+      called "xxx.js"?'
+      op1='<script href="xxx.js" >'
+      op2='<script file="xxx.js" >'
+      op3='<script name="xxx.js" >'
+      op4='<script src="xxx.js" >'
+      onClickOp1={wrongAnswer}
+      onClickOp2={wrongAnswer}
+      onClickOp3={wrongAnswer}
+      onClickOp4={correctAnswer}
+    />
   );
 };
 
 const SecondJsQuestion = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>How do you call the function "f" in JavaScript?</p>
-      <div className="buttonSelector">
-        <button onClick={wrongAnswer}>call function f</button>
-        <button onClick={wrongAnswer}>call f</button>
-        <button onClick={correctAnswer}>f()</button>
-        <button onClick={wrongAnswer}>call function f()</button>
-      </div>
-    </div>
+    <GameQuestion
+      question='How do you call the function "f" in JavaScript?'
+      op1="call function f"
+      op2="call f"
+      op3="f()"
+      op4="call function f()"
+      onClickOp1={wrongAnswer}
+      onClickOp2={wrongAnswer}
+      onClickOp3={correctAnswer}
+      onClickOp4={wrongAnswer}
+    />
   );
 };
 
 const ThirdJsQuestion = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>Which method can't add values to an array?</p>
-      <button onClick={wrongAnswer}>concat</button>
-      <button onClick={correctAnswer}>join</button>
-      <button onClick={wrongAnswer}>push</button>
-      <button onClick={wrongAnswer}>splice</button>
-    </div>
+    <GameQuestion
+      question="Which method can't add values to an array?"
+      op1="concat"
+      op2="join"
+      op3="push"
+      op4="splice"
+      onClickOp1={wrongAnswer}
+      onClickOp2={correctAnswer}
+      onClickOp3={wrongAnswer}
+      onClickOp4={wrongAnswer}
+    />
   );
 };
 
 const FourthJsQuestion = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>
-        Which one is the correct way to convert a string with a number to number
-        type?
-      </p>
-      <div className="buttonSelector">
-        <button onClick={wrongAnswer}>String.convert("1", 1)</button>
-        <button onClick={correctAnswer}>Number("1") </button>
-        <button onClick={wrongAnswer}>String.getNumberValue("1")</button>
-        <button onClick={wrongAnswer}>Number("1", 1)</button>
-      </div>
-    </div>
+    <GameQuestion
+      question="Which one is the correct way to convert a string with a number to number
+      type?"
+      op1='String.convert("1", 1)'
+      op2='Number("1")'
+      op3='String.getNumberValue("1")'
+      op4='Number("1", 1)'
+      onClickOp1={wrongAnswer}
+      onClickOp2={correctAnswer}
+      onClickOp3={wrongAnswer}
+      onClickOp4={wrongAnswer}
+    />
   );
 };
 

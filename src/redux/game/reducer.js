@@ -12,8 +12,13 @@ const initialStateGame = {
         characterPassedTheInterview: undefined
       },
       schoolSep: { isFinished: false, differentRoute: undefined },
-      schoolDec: { isFinished: false },
-      schoolMar: { isFinished: false },
+      schoolDec: {
+        isFinished: false,
+        triedBackendQuiz: false,
+        triedFrontendQuiz: false,
+        triedMobileQuiz: false,
+      },
+      schoolMar: { isFinished: false, choiceMade: undefined, projectPicked: undefined },
       schoolJun: { isFinished: false },
 
       minderaOneSep: { isFinished: false },

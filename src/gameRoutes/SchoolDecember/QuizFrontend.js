@@ -1,6 +1,11 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 
-const QuizFrontend = () => {
+import GameQuestion from "../../components/game/GameQuestion";
+
+import { updateEspecializationAction } from "../../redux/game/actions";
+
+const QuizFrontend = ({ setFrontendAsEsp, changeEsp }) => {
   const [correctAnswersFE, setCorrectAnswersFE] = useState(0);
   const [wrongAnswersFE, setWrongAnswersFE] = useState(0);
 
@@ -49,52 +54,86 @@ const QuizFrontend = () => {
           }}
         />
       ) : null}
+      {areAllSolved && correctAnswersFE > wrongAnswersFE && (
+        <>
+          <p>You passed the Frontend Test! Congratulations!!!</p>
+          <div
+            style={{
+              width: "90%",
+              display: "flex",
+              justifyContent: "space-between"
+            }}
+          >
+            <button onClick={() => setFrontendAsEsp("Frontend")}>
+              I want to be a Frontend Developer.
+            </button>
+            <button onClick={changeEsp}>I want to try another test.</button>
+          </div>
+        </>
+      )}
+      {areAllSolved && correctAnswersFE < wrongAnswersFE && (
+        <>
+          <p>
+            We are sorry to inform you but you didn't pass the Frontend test..
+            Better luck next time!
+          </p>
+          <div
+            style={{
+              width: "50%",
+              display: "flex",
+              justifyContent: "center"
+            }}
+          >
+            <button onClick={changeEsp}>I want to try another test.</button>
+          </div>
+        </>
+      )}
     </>
   );
 };
 
 const Question1 = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>Which one is not a tag?</p>
-      <div className="buttonSelector">
-        <button onClick={wrongAnswer}>
-          {"<"}header{">"}
-        </button>
-        <button onClick={wrongAnswer}>
-          {"<"}fieldset{">"}
-        </button>
-        <button onClick={correctAnswer}>
-          {"<"}mouthbox{">"}
-        </button>
-      </div>
-    </div>
+    <GameQuestion
+      question="Which one is not a tag?"
+      op1="<header>"
+      op2="<fieldset>"
+      op3="<box>"
+      onClickOp1={wrongAnswer}
+      onClickOp2={wrongAnswer}
+      onClickOp3={correctAnswer}
+    />
   );
 };
 
 const Question2 = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>CSS property names are case sensitive.</p>
-      <div className="buttonSelector">
-        <button onClick={correctAnswer}>False</button>
-        <button onClick={wrongAnswer}>True</button>
-      </div>
-    </div>
+    <GameQuestion
+      question="CSS property names are case sensitive."
+      op1="True"
+      op2="False"
+      onClickOp1={wrongAnswer}
+      onClickOp2={correctAnswer}
+    />
   );
 };
 
 const Question3 = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>Which array method allows you to add an element to your array?</p>
-      <div className="buttonSelector">
-        <button onClick={wrongAnswer}>Filter</button>
-        <button onClick={correctAnswer}>Push</button>
-        <button onClick={wrongAnswer}>Map</button>
-      </div>
-    </div>
+    <GameQuestion
+      question="Which array method allows you to add an element to your array?"
+      op1="filter"
+      op2="push"
+      op3="map"
+      onClickOp1={wrongAnswer}
+      onClickOp2={correctAnswer}
+      onClickOp3={wrongAnswer}
+    />
   );
 };
 
-export default QuizFrontend;
+const mapDispatchToProps = dispatch => ({
+  setFrontendAsEsp: esp => dispatch(updateEspecializationAction(esp))
+});
+
+export default connect(undefined, mapDispatchToProps)(QuizFrontend);

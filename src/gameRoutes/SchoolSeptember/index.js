@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import StoryText from "../../components/game/StoryText";
+import GameQuestion from "../../components/game/GameQuestion";
 
 import {
   endGameAction,
@@ -36,7 +37,7 @@ const SchoolSeptember = ({
       isOpen={isOpen}
       onButtonClick={onButtonClick}
     >
-      <div className="gameEmail">
+      <div className="gameBox">
         <p>Welcome again Mindernaut!!</p>
         <p>We're very happy to show you your schedule.</p>
         <img
@@ -49,6 +50,9 @@ const SchoolSeptember = ({
         <>
           <p>But you also recieved an email from your dream university...</p>
           <div className="gameEmail">
+            <p>From: royaleUniversity@edu.com</p>
+            <p>To: Me</p>
+            <hr />
             <p>Hello {formDetails.fullName},</p>
             <p>
               Sorry for our late reply, but we would like you to know that you{" "}
@@ -56,22 +60,16 @@ const SchoolSeptember = ({
             </p>
           </div>
           {timestamps.schoolSep.differentRoute === undefined && (
-            <div className="gameQuestion">
-              <p>What will you do?</p>
-              <div className="buttonSelector">
-                <button
-                  onClick={() => {
-                    stayRoute(timestamps);
-                    updateHappiness(85);
-                  }}
-                >
-                  Stay in Mindera
-                </button>
-                <button onClick={() => leaveRoute(timestamps)}>
-                  Join University
-                </button>
-              </div>
-            </div>
+            <GameQuestion
+              question="What will you do?"
+              op1="Stay in Mindera"
+              op2="Join University"
+              onClickOp1={() => {
+                stayRoute(timestamps);
+                updateHappiness(85);
+              }}
+              onClickOp2={() => leaveRoute(timestamps)}
+            />
           )}
           {timestamps.schoolSep.differentRoute && (
             <>
@@ -89,21 +87,22 @@ const SchoolSeptember = ({
               </button>
             </>
           )}
-          {timestamps.schoolSep.differentRoute === false && (
-            <>
-              <p>You decided to stay in Mindera School.</p>
-              <button
-                onClick={() => {
-                  setIsOpen(false);
-                  goToNext(timestamps);
-                  updateSkills(skillsLevel);
-                  increaseBalance(600 * 3);
-                }}
-              >
-                NEXT
-              </button>
-            </>
-          )}
+          {timestamps.schoolSep.differentRoute === false &&
+            !timestamps.schoolSep.isFinished && (
+              <>
+                <p>You decided to stay in Mindera School.</p>
+                <button
+                  onClick={() => {
+                    setIsOpen(false);
+                    goToNext(timestamps);
+                    updateSkills(skillsLevel);
+                    increaseBalance(600 * 3);
+                  }}
+                >
+                  NEXT
+                </button>
+              </>
+            )}
         </>
       )}
     </StoryText>

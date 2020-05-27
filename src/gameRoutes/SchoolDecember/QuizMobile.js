@@ -1,6 +1,11 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 
-const QuizMobile = () => {
+import GameQuestion from "../../components/game/GameQuestion";
+
+import { updateEspecializationAction } from "../../redux/game/actions";
+
+const QuizMobile = ({ setMobileAsEsp, changeEsp }) => {
   const [correctAnswersMB, setCorrectAnswersMB] = useState(0);
   const [wrongAnswersMB, setWrongAnswersMB] = useState(0);
 
@@ -49,47 +54,89 @@ const QuizMobile = () => {
           }}
         />
       ) : null}
+      {areAllSolved && correctAnswersMB > wrongAnswersMB && (
+        <>
+          {" "}
+          <p>You passed the Mobile Test! Congratulations!!!</p>
+          <div
+            style={{
+              width: "90%",
+              display: "flex",
+              justifyContent: "space-between"
+            }}
+          >
+            <button onClick={() => setMobileAsEsp("Mobile")}>
+              I want to be a Mobile Developer.
+            </button>
+            <button onClick={changeEsp}>I want to try another test.</button>
+          </div>
+        </>
+      )}
+      {areAllSolved && correctAnswersMB < wrongAnswersMB && (
+        <>
+          <p>
+            We are sorry to inform you but you didn't pass the test.. Better
+            luck next time!
+          </p>
+          <div
+            style={{
+              width: "50%",
+              display: "flex",
+              justifyContent: "center"
+            }}
+          >
+            <button onClick={changeEsp}>I want to try another test.</button>
+          </div>
+        </>
+      )}
     </>
   );
 };
 
 const Question1 = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>Which one of these isn't made for mobile development?</p>
-      <div className="buttonSelector">
-        <button onClick={wrongAnswer}>Kotlin</button>
-        <button onClick={wrongAnswer}>React Native</button>
-        <button onClick={correctAnswer}>React</button>
-      </div>
-    </div>
+    <GameQuestion
+      question="Which one of these isn't made for mobile development?"
+      op1="Kotlin"
+      op2="React Native"
+      op3="React"
+      onClickOp1={wrongAnswer}
+      onClickOp2={wrongAnswer}
+      onClickOp3={correctAnswer}
+    />
   );
 };
 
 const Question2 = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>How are view elements identified in the Android program?</p>
-      <div className="buttonSelector">
-        <button onClick={correctAnswer}>findViewById keyword</button>
-        <button onClick={wrongAnswer}>view("elementName")</button>
-        <button onClick={wrongAnswer}>elementSee("name")</button>
-      </div>
-    </div>
+    <GameQuestion
+      question="How are view elements identified in the Android program?"
+      op1="findViewById keyword"
+      op2='view("elementName")'
+      op3='elementSee("name")'
+      onClickOp1={correctAnswer}
+      onClickOp2={wrongAnswer}
+      onClickOp3={wrongAnswer}
+    />
   );
 };
 
 const Question3 = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>What is the database used in Android apps?</p>
-      <div className="buttonSelector">
-        <button onClick={wrongAnswer}>MariaDB</button>
-        <button onClick={wrongAnswer}>MongoDB</button>
-        <button onClick={correctAnswer}>SQLite</button>
-      </div>
-    </div>
+    <GameQuestion
+      question="What is the database used in Android apps?"
+      op1="MariaDB"
+      op2="MongoDB"
+      op3="SQLite"
+      onClickOp1={wrongAnswer}
+      onClickOp2={wrongAnswer}
+      onClickOp3={correctAnswer}
+    />
   );
 };
 
-export default QuizMobile;
+const mapDispatchToProps = dispatch => ({
+  setMobileAsEsp: esp => dispatch(updateEspecializationAction(esp))
+});
+
+export default connect(undefined, mapDispatchToProps)(QuizMobile);

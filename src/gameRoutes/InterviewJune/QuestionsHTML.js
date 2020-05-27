@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import GameQuestion from "../../components/game/GameQuestion";
+
 import {
   updateTimeBoxAction,
   updateSkillsAction
@@ -61,63 +63,65 @@ const HtmlQuestions = ({
 
 const FirstHtmlQuestion = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>What is the correct option for creating a hyperlink?</p>
-      <div className="buttonSelector">
-        <button onClick={correctAnswer}>
-          {"<a href='link'>some text</a>"}
-        </button>
-        <button onClick={wrongAnswer}>{"<a url='link'>some text</a>}"}</button>
-        <button onClick={wrongAnswer}>
-          {"<link url='link'>some text</a>"}
-        </button>
-        <button onClick={wrongAnswer}>
-          {"<a hrefto='link'>some text</a>"}
-        </button>
-      </div>
-    </div>
+    <GameQuestion
+      question="What is the correct option for creating a hyperlink?"
+      op1='<a href="link">some text</a>'
+      op2='<a url="link">some text</a>'
+      op3='<link url="link">some text</a>'
+      op4='<a hrefto="link">some text</a>'
+      onClickOp1={correctAnswer}
+      onClickOp2={wrongAnswer}
+      onClickOp3={wrongAnswer}
+      onClickOp4={wrongAnswer}
+    />
   );
 };
 
 const SecondHtmlQuestion = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>
-        Which attribute is used to specify that an input must be filled out?
-      </p>
-      <div className="buttonSelector">
-        <button onClick={wrongAnswer}>needValue</button>
-        <button onClick={correctAnswer}>required</button>
-        <button onClick={wrongAnswer}>mustHaveValue</button>
-        <button onClick={wrongAnswer}>requiresValue</button>
-      </div>
-    </div>
+    <GameQuestion
+      question="Which attribute is used to specify that an input must be filled out?"
+      op1="needValue"
+      op2="required"
+      op3="mustHaveValue"
+      op4="requiresValue"
+      onClickOp1={wrongAnswer}
+      onClickOp2={correctAnswer}
+      onClickOp3={wrongAnswer}
+      onClickOp4={wrongAnswer}
+    />
   );
 };
 
 const ThirdHtmlQuestion = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>Which one of these isn't an input type?</p>
-      <button onClick={wrongAnswer}>checkbox</button>
-      <button onClick={wrongAnswer}>search</button>
-      <button onClick={wrongAnswer}>date</button>
-      <button onClick={correctAnswer}>calendar</button>
-    </div>
+    <GameQuestion
+      question="Which one of these isn't an input type?"
+      op1="checkbox"
+      op2="search"
+      op3="date"
+      op4="calendar"
+      onClickOp1={wrongAnswer}
+      onClickOp2={wrongAnswer}
+      onClickOp3={wrongAnswer}
+      onClickOp4={correctAnswer}
+    />
   );
 };
 
 const FourthHtmlQuestion = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>Which tag do you use for insert a page inside your page?</p>
-      <div className="buttonSelector">
-        <button onClick={wrongAnswer}>insert</button>
-        <button onClick={wrongAnswer}>include</button>
-        <button onClick={correctAnswer}>iframe</button>
-        <button onClick={wrongAnswer}>inside</button>
-      </div>
-    </div>
+    <GameQuestion
+      question="Which tag do you use for insert a page inside your page?"
+      op1="insert"
+      op2="include"
+      op3="iframe"
+      op4="inside"
+      onClickOp1={wrongAnswer}
+      onClickOp2={wrongAnswer}
+      onClickOp3={correctAnswer}
+      onClickOp4={wrongAnswer}
+    />
   );
 };
 

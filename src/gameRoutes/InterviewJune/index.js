@@ -58,12 +58,12 @@ const InterviewJune = ({
       onButtonClick={onButtonClick}
     >
       <p className="helloTitle">Hello {formDetails.fullName}!</p>
-      <p>
-        This interview will help us know if you have the characteristics and
-        abilities we're looking for.
-      </p>
       {!gameDetails.prevExperience ? (
         <>
+          <p>
+            This interview will help us know if you have the characteristics and
+            abilities we're looking for.
+          </p>
           <p>
             Tell me about your experience with coding... What language are you
             more confortable with?
@@ -96,13 +96,16 @@ const InterviewJune = ({
         <>
           <p>
             You told that you had experience in programming with{" "}
-            {gameDetails.prevExperience}.
+            {gameDetails.prevExperience} in the interview.
           </p>
           {timestamps.interviewJune.characterPassedTheInterview === undefined &&
             renderQuestion(`${selectValue}`)}
           {timestamps.interviewJune.characterPassedTheInterview && (
             <>
               <div className="gameEmail">
+                <p>From: info@school.mindera.com</p>
+                <p>To: Me</p>
+                <hr />
                 <p>Hello {formDetails.fullName}!</p>
                 <p>
                   Thank you for your interest in Mindera School and for the time
@@ -120,11 +123,11 @@ const InterviewJune = ({
                 </p>
                 <p>See you soon!!</p>
               </div>
-              {timestamps.interviewJune.isFinished ? null : (
+              {!timestamps.interviewJune.isFinished && (
                 <button
                   onClick={() => {
                     setIsOpen(false);
-                    goToNext(timestamps);
+                    goToNext(gameDetails.timestamps);
                   }}
                 >
                   NEXT
@@ -135,6 +138,9 @@ const InterviewJune = ({
           {timestamps.interviewJune.characterPassedTheInterview === false && (
             <>
               <div className="gameEmail">
+                <p>From: info@school.mindera.com</p>
+                <p>To: Me</p>
+                <hr />
                 <p>Hello {formDetails.fullName}!</p>
                 <p>
                   Thank you for your interest in Mindera School and for the time
@@ -152,7 +158,7 @@ const InterviewJune = ({
               </div>
               <button
                 onClick={() => {
-                  goToNext(timestamps);
+                  goToNext(gameDetails.timestamps);
                   endGame();
                 }}
               >

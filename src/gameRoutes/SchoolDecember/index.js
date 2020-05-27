@@ -3,11 +3,23 @@ import { connect } from "react-redux";
 
 import StoryText from "../../components/game/StoryText";
 
+import {
+  updateTimeBoxAction,
+  updateEspecializationAction, updateBankBalanceAction
+} from "../../redux/game/actions";
+
 import QuizBackend from "./QuizBackend";
 import QuizFrontend from "./QuizFrontend";
 import QuizMobile from "./QuizMobile";
 
-const SchoolDecember = ({ gameDetails }) => {
+const SchoolDecember = ({
+  gameDetails,
+  timestamps,
+  updateSchoolDec,
+  setEsp,
+  goToNext,
+  increaseBalance
+}) => {
   const [isOpen, setIsOpen] = useState(true);
   const onButtonClick = () => setIsOpen(!isOpen);
 
@@ -16,11 +28,43 @@ const SchoolDecember = ({ gameDetails }) => {
   const renderQuiz = especialization => {
     switch (especialization) {
       case "Backend":
-        return <QuizBackend />;
+        return (
+          <QuizBackend
+            changeEsp={() => {
+              setEspecialization("");
+              updateSchoolDec({
+                ...timestamps,
+                schoolDec: { ...timestamps.schoolDec, triedBackendQuiz: true }
+              });
+            }}
+          />
+        );
+
       case "Frontend":
-        return <QuizFrontend />;
+        return (
+          <QuizFrontend
+            changeEsp={() => {
+              setEspecialization("");
+              updateSchoolDec({
+                ...timestamps,
+                schoolDec: { ...timestamps.schoolDec, triedFrontendQuiz: true }
+              });
+            }}
+          />
+        );
+
       case "Mobile":
-        return <QuizMobile />;
+        return (
+          <QuizMobile
+            changeEsp={() => {
+              setEspecialization("");
+              updateSchoolDec({
+                ...timestamps,
+                schoolDec: { ...timestamps.schoolDec, triedMobileQuiz: true }
+              });
+            }}
+          />
+        );
     }
   };
 
@@ -39,22 +83,63 @@ const SchoolDecember = ({ gameDetails }) => {
           follow!
         </p>
       )}
-
-      {especialization ? (
+      {gameDetails.especialization ? (
+        <>
+          <p>You decided to be a {gameDetails.especialization} developer.</p>
+          {!timestamps.schoolDec.isFinished && <button
+            onClick={() => {
+              setIsOpen(false);
+              goToNext(timestamps);
+              increaseBalance(gameDetails.bankBalance + (600 * 3));
+            }}
+          >
+            NEXT
+          </button>}
+        </>
+      ) : especialization ? (
         renderQuiz(especialization)
       ) : (
         <div
           style={{
-            width: "50%",
+            width: "70%",
             display: "flex",
             justifyContent: "space-between"
           }}
         >
-          <button onClick={() => setEspecialization("Frontend")}>
-            Frontend
-          </button>
-          <button onClick={() => setEspecialization("Backend")}>Backend</button>
-          <button onClick={() => setEspecialization("Mobile")}>Mobile</button>
+          {timestamps.schoolDec.triedBackendQuiz &&
+          timestamps.schoolDec.triedFrontendQuiz &&
+          timestamps.schoolDec.triedMobileQuiz ? (
+            <>
+              <button onClick={() => setEsp("Frontend")}>
+                I choose Frontend
+              </button>
+              <button onClick={() => setEsp("Backend")}>
+                I choose Backend
+              </button>
+              <button onClick={() => setEsp("Mobile")}>I choose Mobile</button>
+            </>
+          ) : (
+            <>
+              <button
+                onClick={() => setEspecialization("Frontend")}
+                disabled={timestamps.schoolDec.triedFrontendQuiz}
+              >
+                Frontend
+              </button>
+              <button
+                onClick={() => setEspecialization("Backend")}
+                disabled={timestamps.schoolDec.triedBackendQuiz}
+              >
+                Backend
+              </button>
+              <button
+                onClick={() => setEspecialization("Mobile")}
+                disabled={timestamps.schoolDec.triedMobileQuiz}
+              >
+                Mobile
+              </button>
+            </>
+          )}
         </div>
       )}
     </StoryText>
@@ -68,4 +153,21 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(SchoolDecember);
+const mapDispatchToProps = dispatch => ({
+  updateSchoolDec: timestamps => dispatch(updateTimeBoxAction(timestamps)),
+  setEsp: esp => dispatch(updateEspecializationAction(esp)),
+  increaseBalance: bankbalance =>
+    dispatch(updateBankBalanceAction(bankbalance)),
+  goToNext: timestamps =>
+    dispatch(
+      updateTimeBoxAction({
+        ...timestamps,
+        schoolDec: {
+          ...timestamps.schoolDec,
+          isFinished: true
+        }
+      })
+    ),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SchoolDecember);

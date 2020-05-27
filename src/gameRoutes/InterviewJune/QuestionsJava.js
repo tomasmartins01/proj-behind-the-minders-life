@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import GameQuestion from "../../components/game/GameQuestion";
+
 import {
   updateTimeBoxAction,
   updateSkillsAction
@@ -61,72 +63,65 @@ const JavaQuestions = ({
 
 const FirstJavaQuestion = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>What is the use of "final" keyword?</p>
-      <div className="buttonSelector">
-        <button onClick={wrongAnswer}>Write on method's last line</button>
-        <button onClick={wrongAnswer}>Write on class' last line</button>
-        <button onClick={correctAnswer}>
-          Restrict the modification of something
-        </button>
-        <button onClick={wrongAnswer}>Close program</button>
-      </div>
-    </div>
+    <GameQuestion
+      question='What is the use of "final" keyword?'
+      op1="Write on method's last line"
+      op2="Write on class' last line"
+      op3="Restrict the modification of something"
+      op4="Close program"
+      onClickOp1={wrongAnswer}
+      onClickOp2={wrongAnswer}
+      onClickOp3={correctAnswer}
+      onClickOp4={wrongAnswer}
+    />
   );
 };
 
 const SecondJavaQuestion = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>
-        Which data type is used to create a variable that should store text?
-      </p>
-      <div className="buttonSelector">
-        <button onClick={wrongAnswer}>Text</button>
-        <button onClick={correctAnswer}>String</button>
-        <button onClick={wrongAnswer}>LongChar</button>
-        <button onClick={wrongAnswer}>string</button>
-      </div>
-    </div>
+    <GameQuestion
+      question="Which data type is used to create a variable that should store text?"
+      op1="Text"
+      op2="String"
+      op3="Txt"
+      op4="TextVar"
+      onClickOp1={wrongAnswer}
+      onClickOp2={correctAnswer}
+      onClickOp3={wrongAnswer}
+      onClickOp4={wrongAnswer}
+    />
   );
 };
 
 const ThirdJavaQuestion = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>
-        What is the correct code to run an infinite loop? (No variables declared
-        before)
-      </p>
-      <button onClick={correctAnswer}>
-        for({";"}
-        {";"}) {"{…}"}
-      </button>
-      <button onClick={wrongAnswer}>
-        for(int {"i = 0"}
-        {";"} i {"<"} infinity{";"} {"i++"}) {"{…}"}
-      </button>
-      <button onClick={wrongAnswer}>
-        for({";"} infinite{";"}) {"{…}"}
-      </button>
-      <button onClick={wrongAnswer}>
-        for({";"} nonstop{";"} ) {"{…}"}
-      </button>
-    </div>
+    <GameQuestion
+      question="What is the correct code to run an infinite loop?"
+      op1="for(;;) {...}"
+      op2="for(int i = 0; i < infinity; i++) {...}"
+      op3="for(; infinite ;) {...}"
+      op4="for(; nonstop ;) {...}"
+      onClickOp1={correctAnswer}
+      onClickOp2={wrongAnswer}
+      onClickOp3={wrongAnswer}
+      onClickOp4={wrongAnswer}
+    />
   );
 };
 
 const FourthJavaQuestion = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>Which one of these isn't a real access modifier?</p>
-      <div className="buttonSelector">
-        <button onClick={wrongAnswer}>private</button>
-        <button onClick={wrongAnswer}>protected</button>
-        <button onClick={wrongAnswer}>public</button>
-        <button onClick={correctAnswer}>integred</button>
-      </div>
-    </div>
+    <GameQuestion
+      question="Which one of these isn't a real access modifier?"
+      op1="private"
+      op2="protected"
+      op3="public"
+      op4="integred"
+      onClickOp1={wrongAnswer}
+      onClickOp2={wrongAnswer}
+      onClickOp3={wrongAnswer}
+      onClickOp4={correctAnswer}
+    />
   );
 };
 

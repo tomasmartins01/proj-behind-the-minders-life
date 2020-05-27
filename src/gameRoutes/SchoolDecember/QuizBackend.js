@@ -1,6 +1,11 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 
-const QuizBackend = () => {
+import GameQuestion from "../../components/game/GameQuestion";
+
+import { updateEspecializationAction } from "../../redux/game/actions";
+
+const QuizBackend = ({ setBackendAsEsp, changeEsp }) => {
   const [correctAnswersBE, setCorrectAnswersBE] = useState(0);
   const [wrongAnswersBE, setWrongAnswersBE] = useState(0);
 
@@ -49,47 +54,88 @@ const QuizBackend = () => {
           }}
         />
       ) : null}
+      {areAllSolved && correctAnswersBE > wrongAnswersBE && (
+        <>
+          <p>You passed the Backend Test! Congratulations!!!</p>
+          <div
+            style={{
+              width: "90%",
+              display: "flex",
+              justifyContent: "space-between"
+            }}
+          >
+            <button onClick={() => setBackendAsEsp("Backend")}>
+              I want to be a Backend Developer.
+            </button>
+            <button onClick={changeEsp}>I want to try another test.</button>
+          </div>
+        </>
+      )}
+      {areAllSolved && correctAnswersBE < wrongAnswersBE && (
+        <>
+          <p>
+            We are sorry to inform you but you didn't pass the test.. Better
+            luck next time!
+          </p>
+          <div
+            style={{
+              width: "50%",
+              display: "flex",
+              justifyContent: "center"
+            }}
+          >
+            <button onClick={changeEsp}>I want to try another test.</button>
+          </div>
+        </>
+      )}
     </>
   );
 };
 
 const Question1 = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>Which one is a BE language?</p>
-      <div className="buttonSelector">
-        <button onClick={wrongAnswer}>jQuery</button>
-        <button onClick={correctAnswer}>Python</button>
-        <button onClick={wrongAnswer}>PinãColada</button>
-      </div>
-    </div>
+    <GameQuestion
+      question="Which one is a backend language?"
+      op1="jQuery"
+      op2="Python"
+      op3="PinãColada"
+      onClickOp1={wrongAnswer}
+      onClickOp2={correctAnswer}
+      onClickOp3={wrongAnswer}
+    />
   );
 };
 
 const Question2 = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>In Java, which data type doesn't exist?</p>
-      <div className="buttonSelector">
-        <button onClick={wrongAnswer}>String</button>
-        <button onClick={correctAnswer}>Number</button>
-        <button onClick={wrongAnswer}>Boolean</button>
-      </div>
-    </div>
+    <GameQuestion
+      question="In Java, which data type doesn't exist?"
+      op1="String"
+      op2="Number"
+      op3="Boolean"
+      onClickOp1={wrongAnswer}
+      onClickOp2={correctAnswer}
+      onClickOp3={wrongAnswer}
+    />
   );
 };
 
 const Question3 = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>Is Java pass-by-reference or pass-by-value?</p>
-      <div className="buttonSelector">
-        <button onClick={wrongAnswer}>Reference</button>
-        <button onClick={wrongAnswer}>Value</button>
-        <button onClick={correctAnswer}>Both</button>
-      </div>
-    </div>
+    <GameQuestion
+      question="Are Java arguments pass-by-reference or pass-by-value?"
+      op1="Both"
+      op2="Reference"
+      op3="Value"
+      onClickOp1={wrongAnswer}
+      onClickOp2={wrongAnswer}
+      onClickOp3={correctAnswer}
+    />
   );
 };
 
-export default QuizBackend;
+const mapDispatchToProps = dispatch => ({
+  setBackendAsEsp: esp => dispatch(updateEspecializationAction(esp))
+});
+
+export default connect(undefined, mapDispatchToProps)(QuizBackend);

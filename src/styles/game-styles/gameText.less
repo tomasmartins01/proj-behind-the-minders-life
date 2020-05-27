@@ -27,7 +27,32 @@
         align-items: center;
         background-color: rgb(244, 244, 244);
         text-align: justify;
-        border: 5px solid @black;
+        border-width: 10px;
+        border-color: red;
+        border-style: double;
+        box-sizing: border-box;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+        * {
+          width: 95%;
+        }
+
+        p {
+          text-align: justify;
+        }
+      }
+
+      .gameBox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgb(244, 244, 244);
+        text-align: justify;
+        border-width: 5px;
+        border-color: @yellow;
+        border-style: solid;
         box-sizing: border-box;
         width: 100%;
         margin-top: 10px;

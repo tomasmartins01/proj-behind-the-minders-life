@@ -1,13 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import GameQuestion from "../../components/game/GameQuestion";
+
 import {
   updateTimeBoxAction,
   updateSkillsAction
 } from "../../redux/game/actions";
 
 const PythonQuestions = ({
-  questionId, 
+  questionId,
   correctAnswer,
   wrongAnswer,
   timestamps,
@@ -61,58 +63,63 @@ const PythonQuestions = ({
 
 const FirstPythonQuestion = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>Which one of these isn’t a conversion type?</p>
-      <div className="buttonSelector">
-        <button onClick={wrongAnswer}>ord()</button>
-        <button onClick={correctAnswer}>arr()</button>
-        <button onClick={wrongAnswer}>oct()</button>
-        <button onClick={wrongAnswer}>list()</button>
-      </div>
-    </div>
+    <GameQuestion
+      question="Which one of these isn’t a conversion type?"
+      op1="ord()"
+      op2="arr()"
+      op3="oct()"
+      op4="list()"
+      onClickOp1={wrongAnswer}
+      onClickOp2={correctAnswer}
+      onClickOp3={wrongAnswer}
+      onClickOp4={wrongAnswer}
+    />
   );
 };
 
 const SecondPythonQuestion = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>What is the function to return the number of items of an object?</p>
-      <div className="buttonSelector">
-        <button onClick={correctAnswer}>len(var)</button>
-        <button onClick={wrongAnswer}>size(var)</button>
-        <button onClick={wrongAnswer}>length(var)</button>
-        <button onClick={wrongAnswer}>lastIndex(var)</button>
-      </div>
-    </div>
+    <GameQuestion
+      question="What is the function to return the number of items of an object?"
+      op1="len(var)"
+      op2="size(var)"
+      op3="length(var)"
+      op4="lastIndex(var)"
+      onClickOp1={correctAnswer}
+      onClickOp2={wrongAnswer}
+      onClickOp3={wrongAnswer}
+      onClickOp4={wrongAnswer}
+    />
   );
 };
 
 const ThirdPythonQuestion = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>How do negative indexes work?</p>
-      <button onClick={wrongAnswer}>They doesn’t exist</button>
-      <button onClick={wrongAnswer}>
-        They work the same as positive indexes
-      </button>
-      <button onClick={correctAnswer}>
-        They start from the last index in the sequence
-      </button>
-    </div>
+    <GameQuestion
+      question="How do negative indexes work in Python?"
+      op1="They doesn’t exist"
+      op2="They work the same as positive indexes"
+      op3="They start from the last index in the sequence"
+      onClickOp1={wrongAnswer}
+      onClickOp2={wrongAnswer}
+      onClickOp3={correctAnswer}
+    />
   );
 };
 
 const FourthPythonQuestion = ({ correctAnswer, wrongAnswer }) => {
   return (
-    <div className="gameQuestion">
-      <p>Which function doesn’t add items to an array?</p>
-      <div className="buttonSelector">
-        <button onClick={wrongAnswer}>append()</button>
-        <button onClick={wrongAnswer}>insert()</button>
-        <button onClick={correctAnswer}>add()</button>
-        <button onClick={wrongAnswer}>extend()</button>
-      </div>
-    </div>
+    <GameQuestion
+      question="Which function doesn’t add items to an array?"
+      op1="append()"
+      op2="insert()"
+      op3="add()"
+      op4="extend()"
+      onClickOp1={wrongAnswer}
+      onClickOp2={wrongAnswer}
+      onClickOp3={correctAnswer}
+      onClickOp4={wrongAnswer}
+    />
   );
 };
 
