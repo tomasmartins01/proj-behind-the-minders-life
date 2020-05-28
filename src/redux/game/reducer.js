@@ -16,10 +16,14 @@ const initialStateGame = {
         isFinished: false,
         triedBackendQuiz: false,
         triedFrontendQuiz: false,
-        triedMobileQuiz: false,
+        triedMobileQuiz: false
       },
-      schoolMar: { isFinished: false, choiceMade: undefined, projectPicked: undefined },
-      schoolJun: { isFinished: false },
+      schoolMar: {
+        isFinished: false,
+        choiceMade: undefined,
+        projectPicked: undefined
+      },
+      schoolJun: { isFinished: false, presentationFeeling: undefined },
 
       minderaOneSep: { isFinished: false },
       minderaOneDec: { isFinished: false },

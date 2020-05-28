@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
-import GameQuestion from "../../components/game/GameQuestion";
+import GameQuestion from "../../../components/game/GameQuestion";
 
-import { updateEspecializationAction } from "../../redux/game/actions";
+import { updateEspecializationAction } from "../../../redux/game/actions";
 
-const QuizBackend = ({ setBackendAsEsp, changeEsp }) => {
-  const [correctAnswersBE, setCorrectAnswersBE] = useState(0);
-  const [wrongAnswersBE, setWrongAnswersBE] = useState(0);
+const QuizFrontend = ({ setFrontendAsEsp, changeEsp }) => {
+  const [correctAnswersFE, setCorrectAnswersFE] = useState(0);
+  const [wrongAnswersFE, setWrongAnswersFE] = useState(0);
 
   const [isQ1Solved, setIsQ1Solved] = useState(false);
   const [isQ2Solved, setIsQ2Solved] = useState(false);
@@ -20,11 +20,11 @@ const QuizBackend = ({ setBackendAsEsp, changeEsp }) => {
         <Question1
           correctAnswer={() => {
             setIsQ1Solved(true);
-            setCorrectAnswersBE(correctAnswersBE + 1);
+            setCorrectAnswersFE(correctAnswersFE + 1);
           }}
           wrongAnswer={() => {
             setIsQ1Solved(true);
-            setWrongAnswersBE(wrongAnswersBE + 1);
+            setWrongAnswersFE(wrongAnswersFE + 1);
           }}
         />
       )}
@@ -32,11 +32,11 @@ const QuizBackend = ({ setBackendAsEsp, changeEsp }) => {
         <Question2
           correctAnswer={() => {
             setIsQ2Solved(true);
-            setCorrectAnswersBE(correctAnswersBE + 1);
+            setCorrectAnswersFE(correctAnswersFE + 1);
           }}
           wrongAnswer={() => {
             setIsQ2Solved(true);
-            setWrongAnswersBE(wrongAnswersBE + 1);
+            setWrongAnswersFE(wrongAnswersFE + 1);
           }}
         />
       ) : null}
@@ -45,18 +45,18 @@ const QuizBackend = ({ setBackendAsEsp, changeEsp }) => {
           correctAnswer={() => {
             setIsQ3Solved(true);
             setAreAllSolved(true);
-            setCorrectAnswersBE(correctAnswersBE + 1);
+            setCorrectAnswersFE(correctAnswersFE + 1);
           }}
           wrongAnswer={() => {
             setIsQ3Solved(true);
             setAreAllSolved(true);
-            setWrongAnswersBE(wrongAnswersBE + 1);
+            setWrongAnswersFE(wrongAnswersFE + 1);
           }}
         />
       ) : null}
-      {areAllSolved && correctAnswersBE > wrongAnswersBE && (
+      {areAllSolved && correctAnswersFE > wrongAnswersFE && (
         <>
-          <p>You passed the Backend Test! Congratulations!!!</p>
+          <p>You passed the Frontend Test! Congratulations!!!</p>
           <div
             style={{
               width: "90%",
@@ -64,18 +64,18 @@ const QuizBackend = ({ setBackendAsEsp, changeEsp }) => {
               justifyContent: "space-between"
             }}
           >
-            <button onClick={() => setBackendAsEsp("Backend")}>
-              I want to be a Backend Developer.
+            <button onClick={() => setFrontendAsEsp("Frontend")}>
+              I want to be a Frontend Developer.
             </button>
             <button onClick={changeEsp}>I want to try another test.</button>
           </div>
         </>
       )}
-      {areAllSolved && correctAnswersBE < wrongAnswersBE && (
+      {areAllSolved && correctAnswersFE < wrongAnswersFE && (
         <>
           <p>
-            We are sorry to inform you but you didn't pass the test.. Better
-            luck next time!
+            We are sorry to inform you but you didn't pass the Frontend test..
+            Better luck next time!
           </p>
           <div
             style={{
@@ -95,38 +95,10 @@ const QuizBackend = ({ setBackendAsEsp, changeEsp }) => {
 const Question1 = ({ correctAnswer, wrongAnswer }) => {
   return (
     <GameQuestion
-      question="Which one is a backend language?"
-      op1="jQuery"
-      op2="Python"
-      op3="PinãColada"
-      onClickOp1={wrongAnswer}
-      onClickOp2={correctAnswer}
-      onClickOp3={wrongAnswer}
-    />
-  );
-};
-
-const Question2 = ({ correctAnswer, wrongAnswer }) => {
-  return (
-    <GameQuestion
-      question="In Java, which data type doesn't exist?"
-      op1="String"
-      op2="Number"
-      op3="Boolean"
-      onClickOp1={wrongAnswer}
-      onClickOp2={correctAnswer}
-      onClickOp3={wrongAnswer}
-    />
-  );
-};
-
-const Question3 = ({ correctAnswer, wrongAnswer }) => {
-  return (
-    <GameQuestion
-      question="Are Java arguments pass-by-reference or pass-by-value?"
-      op1="Both"
-      op2="Reference"
-      op3="Value"
+      question="Which one is not a tag?"
+      op1="<header>"
+      op2="<fieldset>"
+      op3="<box>"
       onClickOp1={wrongAnswer}
       onClickOp2={wrongAnswer}
       onClickOp3={correctAnswer}
@@ -134,8 +106,34 @@ const Question3 = ({ correctAnswer, wrongAnswer }) => {
   );
 };
 
+const Question2 = ({ correctAnswer, wrongAnswer }) => {
+  return (
+    <GameQuestion
+      question="CSS property names are case sensitive."
+      op1="True"
+      op2="False"
+      onClickOp1={wrongAnswer}
+      onClickOp2={correctAnswer}
+    />
+  );
+};
+
+const Question3 = ({ correctAnswer, wrongAnswer }) => {
+  return (
+    <GameQuestion
+      question="Which array method allows you to add an element to your array?"
+      op1="filter"
+      op2="push"
+      op3="map"
+      onClickOp1={wrongAnswer}
+      onClickOp2={correctAnswer}
+      onClickOp3={wrongAnswer}
+    />
+  );
+};
+
 const mapDispatchToProps = dispatch => ({
-  setBackendAsEsp: esp => dispatch(updateEspecializationAction(esp))
+  setFrontendAsEsp: esp => dispatch(updateEspecializationAction(esp))
 });
 
-export default connect(undefined, mapDispatchToProps)(QuizBackend);
+export default connect(undefined, mapDispatchToProps)(QuizFrontend);

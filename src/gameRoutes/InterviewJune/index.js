@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import StoryText from "../../components/game/StoryText";
+import { NextButton, EndButton } from "../../components/game/GameButtons";
+
 import {
   endGameAction,
   setPrevExperienceAction,
@@ -18,7 +20,7 @@ import PythonQuestions from "./QuestionsPython";
 const InterviewJune = ({
   formDetails,
   gameDetails,
-  timestamps,
+  interviewJune,
   setExperience,
   goToNext,
   endGame
@@ -98,9 +100,9 @@ const InterviewJune = ({
             You told that you had experience in programming with{" "}
             {gameDetails.prevExperience} in the interview.
           </p>
-          {timestamps.interviewJune.characterPassedTheInterview === undefined &&
+          {interviewJune.characterPassedTheInterview === undefined &&
             renderQuestion(`${selectValue}`)}
-          {timestamps.interviewJune.characterPassedTheInterview && (
+          {interviewJune.characterPassedTheInterview && (
             <>
               <div className="gameEmail">
                 <p>From: info@school.mindera.com</p>
@@ -123,19 +125,17 @@ const InterviewJune = ({
                 </p>
                 <p>See you soon!!</p>
               </div>
-              {!timestamps.interviewJune.isFinished && (
-                <button
-                  onClick={() => {
+              {!interviewJune.isFinished && (
+                <NextButton
+                  action={() => {
                     setIsOpen(false);
                     goToNext(gameDetails.timestamps);
                   }}
-                >
-                  NEXT
-                </button>
+                />
               )}
             </>
           )}
-          {timestamps.interviewJune.characterPassedTheInterview === false && (
+          {interviewJune.characterPassedTheInterview === false && (
             <>
               <div className="gameEmail">
                 <p>From: info@school.mindera.com</p>
@@ -156,14 +156,12 @@ const InterviewJune = ({
                   {gameDetails.startingYear} Mindera School Team.
                 </p>
               </div>
-              <button
-                onClick={() => {
+              <EndButton
+                action={() => {
                   goToNext(gameDetails.timestamps);
                   endGame();
                 }}
-              >
-                END
-              </button>
+              />
             </>
           )}
         </>
@@ -176,7 +174,7 @@ const mapStateToProps = state => {
   return {
     formDetails: state.form.formDetails,
     gameDetails: state.game.gameInfo,
-    timestamps: state.game.gameInfo.timestamps
+    interviewJune: state.game.gameInfo.timestamps.interviewJune
   };
 };
 

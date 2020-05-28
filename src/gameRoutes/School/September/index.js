@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
-import StoryText from "../../components/game/StoryText";
-import GameQuestion from "../../components/game/GameQuestion";
+import StoryText from "../../../components/game/StoryText";
+import GameQuestion from "../../../components/game/GameQuestion";
+import { NextButton, EndButton } from "../../../components/game/GameButtons";
 
 import {
   endGameAction,
@@ -10,14 +11,14 @@ import {
   updateTimeBoxAction,
   updateHappinessAction,
   updateSkillsAction
-} from "../../redux/game/actions";
+} from "../../../redux/game/actions";
 
-import Schedule from "../../images/game/gameSchedule.png";
+import Schedule from "../../../images/game/gameSchedule.png";
 
 const SchoolSeptember = ({
   formDetails,
   gameDetails,
-  timestamps,
+  schoolSep,
   skillsLevel,
   stayRoute,
   leaveRoute,
@@ -48,7 +49,7 @@ const SchoolSeptember = ({
       </div>
       {formDetails.age <= 23 && (
         <>
-          <p>But you also recieved an email from your dream university...</p>
+          <p>Oh... but I also recieved an email from my dream university...</p>
           <div className="gameEmail">
             <p>From: royaleUniversity@edu.com</p>
             <p>To: Me</p>
@@ -59,50 +60,45 @@ const SchoolSeptember = ({
               have been accepted in our university.
             </p>
           </div>
-          {timestamps.schoolSep.differentRoute === undefined && (
+          {schoolSep.differentRoute === undefined && (
             <GameQuestion
-              question="What will you do?"
+              question="What should I do?"
               op1="Stay in Mindera"
               op2="Join University"
               onClickOp1={() => {
-                stayRoute(timestamps);
+                stayRoute(gameDetails.timestamps);
                 updateHappiness(85);
               }}
-              onClickOp2={() => leaveRoute(timestamps)}
+              onClickOp2={() => leaveRoute(gameDetails.timestamps)}
             />
           )}
-          {timestamps.schoolSep.differentRoute && (
+          {schoolSep.differentRoute && (
             <>
               <p>
-                You decided to go to university first. In the future you will{" "}
-                try to join Mindera Team.
+                I think i'll to university first. Maybe in the future I'll try
+                to join Mindera Team.
               </p>
-              <button
-                onClick={() => {
-                  goToNext(timestamps);
+              <EndButton
+                action={() => {
+                  goToNext(gameDetails.timestamps);
                   endGame();
                 }}
-              >
-                END
-              </button>
+              />
             </>
           )}
-          {timestamps.schoolSep.differentRoute === false &&
-            !timestamps.schoolSep.isFinished && (
-              <>
-                <p>You decided to stay in Mindera School.</p>
-                <button
-                  onClick={() => {
-                    setIsOpen(false);
-                    goToNext(timestamps);
-                    updateSkills(skillsLevel);
-                    increaseBalance(600 * 3);
-                  }}
-                >
-                  NEXT
-                </button>
-              </>
-            )}
+          {schoolSep.differentRoute === false && !schoolSep.isFinished && (
+            <>
+              <p>I think Mindera is my best choice.. Let's go!</p>
+              <NextButton
+                action={() => {
+                  updateSkills(skillsLevel);
+                  increaseBalance(gameDetails.bankBalance + 600 * 3);
+                  setIsOpen(false);
+                  goToNext(gameDetails.timestamps);
+                }}
+              />
+            </>
+          )}
         </>
       )}
     </StoryText>
@@ -113,7 +109,7 @@ const mapStateToProps = state => {
   return {
     formDetails: state.form.formDetails,
     gameDetails: state.game.gameInfo,
-    timestamps: state.game.gameInfo.timestamps,
+    schoolSep: state.game.gameInfo.timestamps.schoolSep,
     skillsLevel: state.game.gameInfo.skillsLevel
   };
 };

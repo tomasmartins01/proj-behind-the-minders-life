@@ -1,32 +1,33 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
-import StoryText from "../../components/game/StoryText";
-import GameQuestion from "../../components/game/GameQuestion";
+import StoryText from "../../../components/game/StoryText";
+import GameQuestion from "../../../components/game/GameQuestion";
+import { NextButton } from "../../../components/game/GameButtons";
 
 import {
   updateBankBalanceAction,
   updateTimeBoxAction,
   updateHappinessAction
-} from "../../redux/game/actions";
+} from "../../../redux/game/actions";
 
 const SchoolMarch = ({
   gameDetails,
-  timestamps,
+  schoolMar,
   decreaseBalance,
   choiceMade,
   updateHappiness,
   projectPicked,
-  goToNext,
-  increaseBalance
+  increaseBalance,
+  goToNext
 }) => {
   const [isOpen, setIsOpen] = useState(true);
   const onButtonClick = () => setIsOpen(!isOpen);
 
   const decideProject = project => {
     projectPicked({
-      ...timestamps,
-      schoolMar: { ...timestamps.schoolMar, projectPicked: project }
+      ...gameDetails.timestamps,
+      schoolMar: { ...schoolMar, projectPicked: project }
     });
   };
 
@@ -36,21 +37,26 @@ const SchoolMarch = ({
       isOpen={isOpen}
       onButtonClick={onButtonClick}
     >
-      <p>Your friends invited you to go on a trip to London for the weekend.</p>
+      <p>
+        Some friends invited me to go on a trip to London for the weekend...
+      </p>
 
-      {timestamps.schoolMar.choiceMade ? (
-        <p>You decided to {timestamps.schoolMar.choiceMade}.</p>
+      {schoolMar.choiceMade ? (
+        <p>
+          I decided to {schoolMar.choiceMade}. i think I should do it more
+          often...
+        </p>
       ) : (
         <GameQuestion
-          question="Will you go?"
-          op1="Yes of course!! (this will cost you 600€)"
-          op2="No, I have to study."
+          question="Should I?"
+          op1="Let's go!!! (this will cost you 600€)"
+          op2="....I have to study."
           onClickOp1={() => {
             decreaseBalance(gameDetails.bankBalance - 600);
             choiceMade({
-              ...timestamps,
+              ...gameDetails.timestamps,
               schoolMar: {
-                ...timestamps.schoolMar,
+                ...schoolMar,
                 choiceMade: "travel with friends"
               }
             });
@@ -58,14 +64,14 @@ const SchoolMarch = ({
           onClickOp2={() => {
             updateHappiness(gameDetails.happiness - 25);
             choiceMade({
-              ...timestamps,
-              schoolMar: { ...timestamps.schoolMar, choiceMade: "study" }
+              ...gameDetails.timestamps,
+              schoolMar: { ...schoolMar, choiceMade: "study" }
             });
           }}
         />
       )}
 
-      {timestamps.schoolMar.choiceMade && !timestamps.schoolMar.projectPicked && (
+      {schoolMar.choiceMade && !schoolMar.projectPicked && (
         <>
           {gameDetails.especialization === "Backend" && (
             <GameQuestion
@@ -103,21 +109,18 @@ const SchoolMarch = ({
         </>
       )}
 
-      {timestamps.schoolMar.projectPicked && (
-        <p>You decided to build a {timestamps.schoolMar.projectPicked} app.</p>
+      {schoolMar.projectPicked && (
+        <p>I decided to build a {schoolMar.projectPicked} app. Nice!</p>
       )}
 
-      {(!timestamps.schoolMar.isFinished &&
-        timestamps.schoolMar.projectPicked) && (
-        <button
-          onClick={() => {
+      {!schoolMar.isFinished && schoolMar.projectPicked && (
+        <NextButton
+          action={() => {
             setIsOpen(false);
-            goToNext(timestamps);
+            goToNext(gameDetails.timestamps);
             increaseBalance(gameDetails.bankBalance + 600 * 3);
           }}
-        >
-          NEXT
-        </button>
+        />
       )}
     </StoryText>
   );
@@ -126,7 +129,7 @@ const SchoolMarch = ({
 const mapStateToProps = state => {
   return {
     gameDetails: state.game.gameInfo,
-    timestamps: state.game.gameInfo.timestamps
+    schoolMar: state.game.gameInfo.timestamps.schoolMar
   };
 };
 

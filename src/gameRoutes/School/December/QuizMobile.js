@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
-import GameQuestion from "../../components/game/GameQuestion";
+import GameQuestion from "../../../components/game/GameQuestion";
 
-import { updateEspecializationAction } from "../../redux/game/actions";
+import { updateEspecializationAction } from "../../../redux/game/actions";
 
-const QuizFrontend = ({ setFrontendAsEsp, changeEsp }) => {
-  const [correctAnswersFE, setCorrectAnswersFE] = useState(0);
-  const [wrongAnswersFE, setWrongAnswersFE] = useState(0);
+const QuizMobile = ({ setMobileAsEsp, changeEsp }) => {
+  const [correctAnswersMB, setCorrectAnswersMB] = useState(0);
+  const [wrongAnswersMB, setWrongAnswersMB] = useState(0);
 
   const [isQ1Solved, setIsQ1Solved] = useState(false);
   const [isQ2Solved, setIsQ2Solved] = useState(false);
@@ -20,11 +20,11 @@ const QuizFrontend = ({ setFrontendAsEsp, changeEsp }) => {
         <Question1
           correctAnswer={() => {
             setIsQ1Solved(true);
-            setCorrectAnswersFE(correctAnswersFE + 1);
+            setCorrectAnswersMB(correctAnswersMB + 1);
           }}
           wrongAnswer={() => {
             setIsQ1Solved(true);
-            setWrongAnswersFE(wrongAnswersFE + 1);
+            setWrongAnswersMB(wrongAnswersMB + 1);
           }}
         />
       )}
@@ -32,11 +32,11 @@ const QuizFrontend = ({ setFrontendAsEsp, changeEsp }) => {
         <Question2
           correctAnswer={() => {
             setIsQ2Solved(true);
-            setCorrectAnswersFE(correctAnswersFE + 1);
+            setCorrectAnswersMB(correctAnswersMB + 1);
           }}
           wrongAnswer={() => {
             setIsQ2Solved(true);
-            setWrongAnswersFE(wrongAnswersFE + 1);
+            setWrongAnswersMB(wrongAnswersMB + 1);
           }}
         />
       ) : null}
@@ -45,18 +45,19 @@ const QuizFrontend = ({ setFrontendAsEsp, changeEsp }) => {
           correctAnswer={() => {
             setIsQ3Solved(true);
             setAreAllSolved(true);
-            setCorrectAnswersFE(correctAnswersFE + 1);
+            setCorrectAnswersMB(correctAnswersMB + 1);
           }}
           wrongAnswer={() => {
             setIsQ3Solved(true);
             setAreAllSolved(true);
-            setWrongAnswersFE(wrongAnswersFE + 1);
+            setWrongAnswersMB(wrongAnswersMB + 1);
           }}
         />
       ) : null}
-      {areAllSolved && correctAnswersFE > wrongAnswersFE && (
+      {areAllSolved && correctAnswersMB > wrongAnswersMB && (
         <>
-          <p>You passed the Frontend Test! Congratulations!!!</p>
+          {" "}
+          <p>You passed the Mobile Test! Congratulations!!!</p>
           <div
             style={{
               width: "90%",
@@ -64,18 +65,18 @@ const QuizFrontend = ({ setFrontendAsEsp, changeEsp }) => {
               justifyContent: "space-between"
             }}
           >
-            <button onClick={() => setFrontendAsEsp("Frontend")}>
-              I want to be a Frontend Developer.
+            <button onClick={() => setMobileAsEsp("Mobile")}>
+              I want to be a Mobile Developer.
             </button>
             <button onClick={changeEsp}>I want to try another test.</button>
           </div>
         </>
       )}
-      {areAllSolved && correctAnswersFE < wrongAnswersFE && (
+      {areAllSolved && correctAnswersMB < wrongAnswersMB && (
         <>
           <p>
-            We are sorry to inform you but you didn't pass the Frontend test..
-            Better luck next time!
+            We are sorry to inform you but you didn't pass the test.. Better
+            luck next time!
           </p>
           <div
             style={{
@@ -95,10 +96,10 @@ const QuizFrontend = ({ setFrontendAsEsp, changeEsp }) => {
 const Question1 = ({ correctAnswer, wrongAnswer }) => {
   return (
     <GameQuestion
-      question="Which one is not a tag?"
-      op1="<header>"
-      op2="<fieldset>"
-      op3="<box>"
+      question="Which one of these isn't made for mobile development?"
+      op1="Kotlin"
+      op2="React Native"
+      op3="React"
       onClickOp1={wrongAnswer}
       onClickOp2={wrongAnswer}
       onClickOp3={correctAnswer}
@@ -109,11 +110,13 @@ const Question1 = ({ correctAnswer, wrongAnswer }) => {
 const Question2 = ({ correctAnswer, wrongAnswer }) => {
   return (
     <GameQuestion
-      question="CSS property names are case sensitive."
-      op1="True"
-      op2="False"
-      onClickOp1={wrongAnswer}
-      onClickOp2={correctAnswer}
+      question="How are view elements identified in the Android program?"
+      op1="findViewById keyword"
+      op2='view("elementName")'
+      op3='elementSee("name")'
+      onClickOp1={correctAnswer}
+      onClickOp2={wrongAnswer}
+      onClickOp3={wrongAnswer}
     />
   );
 };
@@ -121,19 +124,19 @@ const Question2 = ({ correctAnswer, wrongAnswer }) => {
 const Question3 = ({ correctAnswer, wrongAnswer }) => {
   return (
     <GameQuestion
-      question="Which array method allows you to add an element to your array?"
-      op1="filter"
-      op2="push"
-      op3="map"
+      question="What is the database used in Android apps?"
+      op1="MariaDB"
+      op2="MongoDB"
+      op3="SQLite"
       onClickOp1={wrongAnswer}
-      onClickOp2={correctAnswer}
-      onClickOp3={wrongAnswer}
+      onClickOp2={wrongAnswer}
+      onClickOp3={correctAnswer}
     />
   );
 };
 
 const mapDispatchToProps = dispatch => ({
-  setFrontendAsEsp: esp => dispatch(updateEspecializationAction(esp))
+  setMobileAsEsp: esp => dispatch(updateEspecializationAction(esp))
 });
 
-export default connect(undefined, mapDispatchToProps)(QuizFrontend);
+export default connect(undefined, mapDispatchToProps)(QuizMobile);
