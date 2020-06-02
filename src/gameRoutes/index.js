@@ -8,45 +8,64 @@ import SchoolDecember from "./School/December";
 import SchoolMarch from "./School/March";
 import SchoolJune from "./School/June";
 
+import FirstMinderaSeptember from "./FirstMindera/September";
+import FirstMinderaDecember from "./FirstMindera/December";
+import FirstMinderaMarch from "./FirstMindera/March";
+import FirstMinderaJune from "./FirstMindera/June";
+
+import SecondMinderaSeptember from "./SecondMindera/September";
+import SecondMinderaDecember from "./SecondMindera/December";
+import SecondMinderaMarch from "./SecondMindera/March";
+import SecondMinderaJune from "./SecondMindera/June";
+
+import ThirdMinderaSeptember from "./ThirdMindera/September";
+import ThirdMinderaDecember from "./ThirdMindera/December";
+import ThirdMinderaMarch from "./ThirdMindera/March";
+import ThirdMinderaJune from "./ThirdMindera/June";
+
+import FourthMinderaSeptember from "./FourthMindera/September";
+import FourthMinderaDecember from "./FourthMindera/December";
+import FourthMinderaMarch from "./FourthMindera/March";
+import FourthMinderaJune from "./FourthMindera/June";
+
+import FifthMinderaSeptember from "./FifthMindera/September";
+import FifthMinderaDecember from "./FifthMindera/December";
+import FifthMinderaMarch from "./FifthMindera/March";
+import FifthMinderaJune from "./FifthMindera/June";
+
 const GameRoutes = ({ timestamps }) => {
   return (
     <>
-      {/* School */}
       <InterviewJune />
       {timestamps.interviewJune.isFinished && <SchoolSeptember />}
       {timestamps.schoolSep.isFinished && <SchoolDecember />}
       {timestamps.schoolDec.isFinished && <SchoolMarch />}
       {timestamps.schoolMar.isFinished && <SchoolJune />}
 
-      {/* Mindera 1 */}
-      {timestamps.schoolJun.isFinished && <p>Mindera 1 September</p>}
-      {timestamps.minderaOneSep.isFinished && <p>Mindera 1 December</p>}
-      {timestamps.minderaOneDec.isFinished && <p>Mindera 1 March</p>}
-      {timestamps.minderaOneMar.isFinished && <p>Mindera 1 June</p>}
+      {timestamps.schoolJun.isFinished && <FirstMinderaSeptember />}
+      {timestamps.minderaOneSep.isFinished && <FirstMinderaDecember />}
+      {timestamps.minderaOneDec.isFinished && <FirstMinderaMarch />}
+      {timestamps.minderaOneMar.isFinished && <FirstMinderaJune />}
 
-      {/* Mindera 2 */}
-      {timestamps.minderaOneJun.isFinished && <p>Mindera 2 September</p>}
-      {timestamps.minderaTwoSep.isFinished && <p>Mindera 2 December</p>}
-      {timestamps.minderaTwoDec.isFinished && <p>Mindera 2 March</p>}
-      {timestamps.minderaTwoMar.isFinished && <p>Mindera 2 June</p>}
+      {timestamps.minderaOneJun.isFinished && <SecondMinderaSeptember />}
+      {timestamps.minderaTwoSep.isFinished && <SecondMinderaDecember />}
+      {timestamps.minderaTwoDec.isFinished && <SecondMinderaMarch />}
+      {timestamps.minderaTwoMar.isFinished && <SecondMinderaJune />}
 
-      {/* Mindera 3 */}
-      {timestamps.minderaTwoJun.isFinished && <p>Mindera 3 September</p>}
-      {timestamps.minderaThreeSep.isFinished && <p>Mindera 3 December</p>}
-      {timestamps.minderaThreeDec.isFinished && <p>Mindera 3 March</p>}
-      {timestamps.minderaThreeMar.isFinished && <p>Mindera 3 June</p>}
+      {timestamps.minderaTwoJun.isFinished && <ThirdMinderaSeptember />}
+      {timestamps.minderaThreeSep.isFinished && <ThirdMinderaDecember />}
+      {timestamps.minderaThreeDec.isFinished && <ThirdMinderaMarch />}
+      {timestamps.minderaThreeMar.isFinished && <ThirdMinderaJune />}
 
-      {/* Mindera 4 */}
-      {timestamps.minderaThreeJun.isFinished && <p>Mindera 4 September</p>}
-      {timestamps.minderaFourSep.isFinished && <p>Mindera 4 December</p>}
-      {timestamps.minderaFourDec.isFinished && <p>Mindera 4 March</p>}
-      {timestamps.minderaFourMar.isFinished && <p>Mindera 4 June</p>}
+      {timestamps.minderaThreeJun.isFinished && <FourthMinderaSeptember />}
+      {timestamps.minderaFourSep.isFinished && <FourthMinderaDecember />}
+      {timestamps.minderaFourDec.isFinished && <FourthMinderaMarch />}
+      {timestamps.minderaFourMar.isFinished && <FourthMinderaJune />}
 
-      {/* Mindera 5 */}
-      {timestamps.minderaFourJun.isFinished && <p>Mindera 5 September</p>}
-      {timestamps.minderaFiveSep.isFinished && <p>Mindera 5 December</p>}
-      {timestamps.minderaFiveDec.isFinished && <p>Mindera 5 March</p>}
-      {timestamps.minderaFiveMar.isFinished && <p>Mindera 5 June</p>}
+      {timestamps.minderaFourJun.isFinished && <FifthMinderaSeptember />}
+      {timestamps.minderaFiveSep.isFinished && <FifthMinderaDecember />}
+      {timestamps.minderaFiveDec.isFinished && <FifthMinderaMarch />}
+      {timestamps.minderaFiveMar.isFinished && <FifthMinderaJune />}
     </>
   );
 };
