@@ -95,11 +95,11 @@ const EndGameResume = ({ formDetails, gameDetails, timestamps }) => {
             )}
 
             {timestamps.schoolDec.correctAnswersBE <
-              timestamps.schoolDec.quizNumberOfQuestions &&
+              timestamps.schoolDec.quizNumberOfQuestions / 2 &&
               timestamps.schoolDec.correctAnswersFE <
-                timestamps.schoolDec.quizNumberOfQuestions &&
+                timestamps.schoolDec.quizNumberOfQuestions / 2 &&
               timestamps.schoolDec.correctAnswersMB <
-                timestamps.schoolDec.quizNumberOfQuestions && (
+                timestamps.schoolDec.quizNumberOfQuestions / 2 && (
                 <article>
                   Since you failed all the quizzes, you couldn't continue in{" "}
                   Mindera School.
@@ -114,13 +114,15 @@ const EndGameResume = ({ formDetails, gameDetails, timestamps }) => {
 
             {timestamps.schoolDec.wentToMinderaParty && (
               <article>
-                Mindera threw a Christmas party and you decided to go and have fun.
-              </article> 
+                Mindera threw a Christmas party and you decided to go and have
+                fun.
+              </article>
             )}
             {timestamps.schoolDec.wentToMinderaParty === false && (
               <article>
-              Mindera threw a Christmas party but you decided to bail and go home.
-              </article> 
+                Mindera threw a Christmas party but you decided to bail and go
+                home.
+              </article>
             )}
           </>
         )}
@@ -128,18 +130,14 @@ const EndGameResume = ({ formDetails, gameDetails, timestamps }) => {
         {/* School March Choices */}
         {timestamps.schoolMar.isFinished && (
           <>
-          <article>
-          You chose to {timestamps.schoolMar.choiceMade}.
-          </article>
+            <article>You chose to {timestamps.schoolMar.choiceMade}.</article>
 
-          <article>
-            You decided to make a {gameDetails.specialization} project about {timestamps.schoolMar.projectPicked}.
-          </article>
-        
+            <article>
+              You decided to make a {gameDetails.specialization} project about{" "}
+              {timestamps.schoolMar.projectPicked}.
+            </article>
           </>
-        )
-        
-        }
+        )}
 
         {/* School June Choices */}
         {timestamps.schoolJun.isFinished && (
