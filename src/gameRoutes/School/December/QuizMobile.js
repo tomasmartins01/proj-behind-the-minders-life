@@ -3,9 +3,17 @@ import { connect } from "react-redux";
 
 import GameQuestion from "../../../components/game/GameQuestion";
 
-import { updateEspecializationAction } from "../../../redux/game/actions";
+import {
+  updatespecializationAction,
+  updateTimeBoxAction
+} from "../../../redux/game/actions";
 
-const QuizMobile = ({ setMobileAsEsp, changeEsp }) => {
+const QuizMobile = ({
+  timestamps,
+  increaseCorrect,
+  setMobileAsEsp,
+  changeEsp
+}) => {
   const [correctAnswersMB, setCorrectAnswersMB] = useState(0);
   const [wrongAnswersMB, setWrongAnswersMB] = useState(0);
 
@@ -13,6 +21,13 @@ const QuizMobile = ({ setMobileAsEsp, changeEsp }) => {
   const [isQ2Solved, setIsQ2Solved] = useState(false);
   const [isQ3Solved, setIsQ3Solved] = useState(false);
   const [areAllSolved, setAreAllSolved] = useState(false);
+
+  const setFinalCorrect = number => {
+    increaseCorrect({
+      ...timestamps,
+      schoolDec: { ...timestamps.schoolDec, correctAnswersMB: number }
+    });
+  };
 
   return (
     <>
@@ -44,13 +59,15 @@ const QuizMobile = ({ setMobileAsEsp, changeEsp }) => {
         <Question3
           correctAnswer={() => {
             setIsQ3Solved(true);
-            setAreAllSolved(true);
             setCorrectAnswersMB(correctAnswersMB + 1);
+            setAreAllSolved(true);
+            setFinalCorrect(correctAnswersMB);
           }}
           wrongAnswer={() => {
             setIsQ3Solved(true);
-            setAreAllSolved(true);
             setWrongAnswersMB(wrongAnswersMB + 1);
+            setAreAllSolved(true);
+            setFinalCorrect(correctAnswersMB);
           }}
         />
       ) : null}
@@ -135,8 +152,15 @@ const Question3 = ({ correctAnswer, wrongAnswer }) => {
   );
 };
 
+const mapStateToProps = state => {
+  return {
+    timestamps: state.game.gameInfo.timestamps
+  };
+};
+
 const mapDispatchToProps = dispatch => ({
-  setMobileAsEsp: esp => dispatch(updateEspecializationAction(esp))
+  setMobileAsEsp: esp => dispatch(updatespecializationAction(esp)),
+  increaseCorrect: timestamps => dispatch(updateTimeBoxAction(timestamps))
 });
 
-export default connect(undefined, mapDispatchToProps)(QuizMobile);
+export default connect(mapStateToProps, mapDispatchToProps)(QuizMobile);

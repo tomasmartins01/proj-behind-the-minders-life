@@ -125,6 +125,7 @@ const InterviewJune = ({
                 </p>
                 <p>See you soon!!</p>
               </div>
+              
               {!interviewJune.isFinished && (
                 <NextButton
                   action={() => {
@@ -135,6 +136,7 @@ const InterviewJune = ({
               )}
             </>
           )}
+
           {interviewJune.characterPassedTheInterview === false && (
             <>
               <div className="gameEmail">

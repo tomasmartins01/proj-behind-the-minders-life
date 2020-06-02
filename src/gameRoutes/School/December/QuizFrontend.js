@@ -3,9 +3,17 @@ import { connect } from "react-redux";
 
 import GameQuestion from "../../../components/game/GameQuestion";
 
-import { updateEspecializationAction } from "../../../redux/game/actions";
+import {
+  updatespecializationAction,
+  updateTimeBoxAction
+} from "../../../redux/game/actions";
 
-const QuizFrontend = ({ setFrontendAsEsp, changeEsp }) => {
+const QuizFrontend = ({
+  timestamps,
+  increaseCorrect,
+  setFrontendAsEsp,
+  changeEsp
+}) => {
   const [correctAnswersFE, setCorrectAnswersFE] = useState(0);
   const [wrongAnswersFE, setWrongAnswersFE] = useState(0);
 
@@ -13,6 +21,13 @@ const QuizFrontend = ({ setFrontendAsEsp, changeEsp }) => {
   const [isQ2Solved, setIsQ2Solved] = useState(false);
   const [isQ3Solved, setIsQ3Solved] = useState(false);
   const [areAllSolved, setAreAllSolved] = useState(false);
+
+  const setFinalCorrect = number => {
+    increaseCorrect({
+      ...timestamps,
+      schoolDec: { ...timestamps.schoolDec, correctAnswersFE: number }
+    });
+  };
 
   return (
     <>
@@ -44,13 +59,15 @@ const QuizFrontend = ({ setFrontendAsEsp, changeEsp }) => {
         <Question3
           correctAnswer={() => {
             setIsQ3Solved(true);
-            setAreAllSolved(true);
             setCorrectAnswersFE(correctAnswersFE + 1);
+            setAreAllSolved(true);
+            setFinalCorrect(correctAnswersFE);
           }}
           wrongAnswer={() => {
             setIsQ3Solved(true);
-            setAreAllSolved(true);
             setWrongAnswersFE(wrongAnswersFE + 1);
+            setAreAllSolved(true);
+            setFinalCorrect(correctAnswersFE);
           }}
         />
       ) : null}
@@ -132,8 +149,15 @@ const Question3 = ({ correctAnswer, wrongAnswer }) => {
   );
 };
 
+const mapStateToProps = state => {
+  return {
+    timestamps: state.game.gameInfo.timestamps
+  };
+};
+
 const mapDispatchToProps = dispatch => ({
-  setFrontendAsEsp: esp => dispatch(updateEspecializationAction(esp))
+  setFrontendAsEsp: esp => dispatch(updatespecializationAction(esp)),
+  increaseCorrect: timestamps => dispatch(updateTimeBoxAction(timestamps))
 });
 
-export default connect(undefined, mapDispatchToProps)(QuizFrontend);
+export default connect(mapStateToProps, mapDispatchToProps)(QuizFrontend);

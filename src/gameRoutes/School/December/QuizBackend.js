@@ -3,9 +3,17 @@ import { connect } from "react-redux";
 
 import GameQuestion from "../../../components/game/GameQuestion";
 
-import { updateEspecializationAction } from "../../../redux/game/actions";
+import {
+  updatespecializationAction,
+  updateTimeBoxAction
+} from "../../../redux/game/actions";
 
-const QuizBackend = ({ setBackendAsEsp, changeEsp }) => {
+const QuizBackend = ({
+  timestamps,
+  increaseCorrect,
+  setBackendAsEsp,
+  changeEsp
+}) => {
   const [correctAnswersBE, setCorrectAnswersBE] = useState(0);
   const [wrongAnswersBE, setWrongAnswersBE] = useState(0);
 
@@ -13,6 +21,13 @@ const QuizBackend = ({ setBackendAsEsp, changeEsp }) => {
   const [isQ2Solved, setIsQ2Solved] = useState(false);
   const [isQ3Solved, setIsQ3Solved] = useState(false);
   const [areAllSolved, setAreAllSolved] = useState(false);
+
+  const setFinalCorrect = number => {
+    increaseCorrect({
+      ...timestamps,
+      schoolDec: { ...timestamps.schoolDec, correctAnswersBE: number }
+    });
+  };
 
   return (
     <>
@@ -44,13 +59,15 @@ const QuizBackend = ({ setBackendAsEsp, changeEsp }) => {
         <Question3
           correctAnswer={() => {
             setIsQ3Solved(true);
-            setAreAllSolved(true);
             setCorrectAnswersBE(correctAnswersBE + 1);
+            setAreAllSolved(true);
+            setFinalCorrect(correctAnswersBE);
           }}
           wrongAnswer={() => {
             setIsQ3Solved(true);
-            setAreAllSolved(true);
             setWrongAnswersBE(wrongAnswersBE + 1);
+            setAreAllSolved(true);
+            setFinalCorrect(correctAnswersBE);
           }}
         />
       ) : null}
@@ -134,8 +151,15 @@ const Question3 = ({ correctAnswer, wrongAnswer }) => {
   );
 };
 
+const mapStateToProps = state => {
+  return {
+    timestamps: state.game.gameInfo.timestamps
+  };
+};
+
 const mapDispatchToProps = dispatch => ({
-  setBackendAsEsp: esp => dispatch(updateEspecializationAction(esp))
+  setBackendAsEsp: esp => dispatch(updatespecializationAction(esp)),
+  increaseCorrect: timestamps => dispatch(updateTimeBoxAction(timestamps))
 });
 
-export default connect(undefined, mapDispatchToProps)(QuizBackend);
+export default connect(mapStateToProps, mapDispatchToProps)(QuizBackend);

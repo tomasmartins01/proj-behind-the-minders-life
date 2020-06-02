@@ -6,8 +6,8 @@ import Footer from "../components/utils/Footer";
 import Profile from "../components/game/Profile";
 import ProgressBars from "../components/game/ProgressBars";
 import MindersPreview from "../components/game/MindersPreview";
-import EndGameResume from "../components/game/EndGameResume";
 import GameRoutes from "../gameRoutes";
+import EndGameResume from "../gameRoutes/EndGameResume";
 
 import "../styles/game-styles/gamePage.less";
 import "../styles/game-styles/gameButton.less";
@@ -40,7 +40,7 @@ const Game = ({ formDetails, gameDetails }) => {
             {dropdownValue === "profile" && (
               <Profile
                 formDetails={formDetails}
-                especialization={gameDetails.especialization}
+                specialization={gameDetails.specialization}
                 happiness={gameDetails.happiness}
                 bankBalance={gameDetails.bankBalance}
               />
@@ -48,7 +48,7 @@ const Game = ({ formDetails, gameDetails }) => {
             {dropdownValue === "progress" && (
               <ProgressBars
                 skills={gameDetails.skillsLevel}
-                especialization={gameDetails.especialization}
+                specialization={gameDetails.specialization}
                 prevExperience={gameDetails.prevExperience}
               />
             )}

@@ -11,12 +11,16 @@ import {
   endGameAction
 } from "../../../redux/game/actions";
 
+import { updateAgeAction } from "../../../redux/formInfo/actions";
+
 const SchoolJune = ({
+  formAge,
   gameDetails,
   schoolMar,
   schoolJun,
   presentationFeeling,
   increaseBalance,
+  increaseAge,
   endGame,
   goToNext
 }) => {
@@ -66,7 +70,7 @@ const SchoolJune = ({
         <>
           <p>
             I think my presentation about a {schoolMar.projectPicked} app went
-            really great, all the teachers seemed to like the project!.
+            really great, all the teachers seemed to like the project!
           </p>
         </>
       )}
@@ -74,17 +78,19 @@ const SchoolJune = ({
         <>
           <p>
             The teachers loved my project ideia of a {schoolMar.projectPicked}{" "}
-            app but I should have practiced more..
+            app but I should have practiced more.
           </p>
         </>
       )}
-      {schoolJun.presentationFeeling &&
+      {!schoolJun.isFinished &&
+        schoolJun.presentationFeeling &&
         schoolJun.presentationFeeling !== "nervous" && (
           <NextButton
             action={() => {
               setIsOpen(false);
               goToNext(gameDetails.timestamps);
-              increaseBalance(gameDetails.bankBalance + 600 * 3);
+              increaseBalance(gameDetails.bankBalance + 300 * 3);
+              increaseAge(formAge + 1);
             }}
           />
         )}
@@ -94,6 +100,7 @@ const SchoolJune = ({
 
 const mapStateToProps = state => {
   return {
+    formAge: state.form.formDetails.age,
     gameDetails: state.game.gameInfo,
     schoolMar: state.game.gameInfo.timestamps.schoolMar,
     schoolJun: state.game.gameInfo.timestamps.schoolJun
@@ -104,6 +111,7 @@ const mapDispatchToProps = dispatch => ({
   presentationFeeling: timestamps => dispatch(updateTimeBoxAction(timestamps)),
   increaseBalance: bankbalance =>
     dispatch(updateBankBalanceAction(bankbalance)),
+  increaseAge: age => dispatch(updateAgeAction(age)),
   goToNext: timestamps =>
     dispatch(
       updateTimeBoxAction({

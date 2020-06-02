@@ -22,15 +22,56 @@ const SchoolSeptember = ({
   skillsLevel,
   stayRoute,
   leaveRoute,
+  setBirthdayResponse,
+  increaseBalance,
   updateHappiness,
   updateSkills,
-  increaseBalance,
   goToNext,
   endGame
 }) => {
   const [isOpen, setIsOpen] = useState(true);
 
   const onButtonClick = () => setIsOpen(!isOpen);
+
+  const updateSocial = skillsLevel => {
+    updateSkills({
+      ...skillsLevel,
+      socialSkills: 50
+    });
+  };
+
+  const updateSkillsFinal = skillsLevel => {
+    updateSkills({
+      ...skillsLevel,
+      socialSkills: 70,
+      programmingSkills: 60,
+      backend: {
+        ...skillsLevel.backend,
+        javaSkills: 60,
+        sqlSkills: 60
+      },
+      frontend: {
+        ...skillsLevel.frontend,
+        htmlSkills: 60,
+        cssSkills: 60,
+        jsSkills: 60
+      },
+      mobile: {
+        ...skillsLevel.mobile,
+        kotlinSkills: 60
+      }
+    });
+  };
+
+  const birthdayResponse = (timestamps, value) => {
+    setBirthdayResponse({
+      ...timestamps,
+      schoolSep: {
+        ...timestamps.schoolSep,
+        wentToMinderaParty: value
+      }
+    });
+  };
 
   return (
     <StoryText
@@ -47,9 +88,15 @@ const SchoolSeptember = ({
           style={{ width: "500px", height: "180px" }}
         />
       </div>
+
       {formDetails.age <= 23 && (
         <>
-          <p>Oh... but I also recieved an email from my dream university...</p>
+          <p>
+            Oh... but I also recieved an email from my dream university...
+            {schoolSep.differentRoute === false &&
+              schoolSep.isFinished &&
+              " But I decided to stay in Mindera School."}
+          </p>
           <div className="gameEmail">
             <p>From: royaleUniversity@edu.com</p>
             <p>To: Me</p>
@@ -60,6 +107,7 @@ const SchoolSeptember = ({
               have been accepted in our university.
             </p>
           </div>
+
           {schoolSep.differentRoute === undefined && (
             <GameQuestion
               question="What should I do?"
@@ -72,10 +120,11 @@ const SchoolSeptember = ({
               onClickOp2={() => leaveRoute(gameDetails.timestamps)}
             />
           )}
+
           {schoolSep.differentRoute && (
             <>
               <p>
-                I think i'll to university first. Maybe in the future I'll try
+                I think i'll to university first. Maybe in the future I'll try{" "}
                 to join Mindera Team.
               </p>
               <EndButton
@@ -86,17 +135,61 @@ const SchoolSeptember = ({
               />
             </>
           )}
+
           {schoolSep.differentRoute === false && !schoolSep.isFinished && (
             <>
-              <p>I think Mindera is my best choice.. Let's go!</p>
-              <NextButton
-                action={() => {
-                  updateSkills(skillsLevel);
-                  increaseBalance(gameDetails.bankBalance + 600 * 3);
-                  setIsOpen(false);
-                  goToNext(gameDetails.timestamps);
-                }}
-              />
+              <p>
+                I think Mindera is my best choice.
+                {formDetails.region !== "Porto" &&
+                  " So I moved to Porto to start Mindera School."}
+                {formDetails.country !== "Portugal" &&
+                  " Travelling to a different country is really thrilling."}
+              </p>
+            </>
+          )}
+
+          {schoolSep.differentRoute === false && (
+            <>
+              {schoolSep.wentToMinderaParty === undefined && (
+                <>
+                  <p>I was invited to Mindera's birthday party.</p>
+                  <GameQuestion
+                    question="Will I go?"
+                    op1="Yes"
+                    op2="No, I have things to do"
+                    onClickOp1={() => {
+                      updateHappiness(90);
+                      updateSocial(gameDetails.skillsLevel);
+                      birthdayResponse(gameDetails.timestamps, true);
+                    }}
+                    onClickOp2={() => {
+                      updateHappiness(60);
+                      birthdayResponse(gameDetails.timestamps, false);
+                    }}
+                  />
+                </>
+              )}
+              {schoolSep.wentToMinderaParty && (
+                <p>I went to Mindera's birthday party and had a lot of fun.</p>
+              )}
+              {schoolSep.wentToMinderaParty === false && (
+                <p>
+                  I stayed home while all my colleagues and teachers were having{" "}
+                  fun at Mindera's birthday party.
+                </p>
+              )}
+
+              {schoolSep.wentToMinderaParty !== undefined &&
+                !schoolSep.isFinished && (
+                  <NextButton
+                    action={() => {
+                      updateSkills(gameDetails.skillsLevel);
+                      increaseBalance(gameDetails.bankBalance + 300 * 3);
+                      setIsOpen(false);
+                      goToNext(gameDetails.timestamps);
+                    }}
+                  />
+                )}
             </>
           )}
         </>
@@ -109,8 +202,7 @@ const mapStateToProps = state => {
   return {
     formDetails: state.form.formDetails,
     gameDetails: state.game.gameInfo,
-    schoolSep: state.game.gameInfo.timestamps.schoolSep,
-    skillsLevel: state.game.gameInfo.skillsLevel
+    schoolSep: state.game.gameInfo.timestamps.schoolSep
   };
 };
 
@@ -135,32 +227,11 @@ const mapDispatchToProps = dispatch => ({
         }
       })
     ),
+  setBirthdayResponse: timestamps => dispatch(updateTimeBoxAction(timestamps)),
   increaseBalance: bankbalance =>
     dispatch(updateBankBalanceAction(bankbalance)),
   updateHappiness: happiness => dispatch(updateHappinessAction(happiness)),
-  updateSkills: skillsLevel =>
-    dispatch(
-      updateSkillsAction({
-        ...skillsLevel,
-        socialSkills: 70,
-        programmingSkills: 60,
-        backend: {
-          ...skillsLevel.backend,
-          javaSkills: 60,
-          sqlSkills: 60
-        },
-        frontend: {
-          ...skillsLevel.frontend,
-          htmlSkills: 60,
-          cssSkills: 60,
-          jsSkills: 60
-        },
-        mobile: {
-          ...skillsLevel.mobile,
-          kotlinSkills: 60
-        }
-      })
-    ),
+  updateSkills: skillsLevel => dispatch(updateSkillsAction(skillsLevel)),
   goToNext: timestamps =>
     dispatch(
       updateTimeBoxAction({

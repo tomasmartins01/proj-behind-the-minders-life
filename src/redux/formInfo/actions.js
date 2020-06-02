@@ -15,6 +15,11 @@ export const saveInfoAction = (
   avatarUrl
 });
 
+export const updateAgeAction = age => ({
+  type: "UPDATE_CHARACTER_AGE",
+  age
+});
+
 export const deleteInfoAction = () => ({
   type: "DELETE_CHARACTER_INFO"
 });

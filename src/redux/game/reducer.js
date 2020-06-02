@@ -2,7 +2,7 @@ const initialStateGame = {
   gameInfo: {
     startingYear: new Date().getFullYear(),
     isGameFinished: false,
-    especialization: "",
+    specialization: undefined,
     happiness: 70,
     bankBalance: 0,
     prevExperience: "",
@@ -11,12 +11,21 @@ const initialStateGame = {
         isFinished: false,
         characterPassedTheInterview: undefined
       },
-      schoolSep: { isFinished: false, differentRoute: undefined },
+      schoolSep: {
+        isFinished: false,
+        differentRoute: undefined,
+        wentToMinderaParty: undefined
+      },
       schoolDec: {
         isFinished: false,
+        quizNumberOfQuestions: 3,
         triedBackendQuiz: false,
+        correctAnswersBE: 0,
         triedFrontendQuiz: false,
-        triedMobileQuiz: false
+        correctAnswersFE: 0,
+        triedMobileQuiz: false,
+        correctAnswersMB: 0,
+        wentToChristmasParty: undefined
       },
       schoolMar: {
         isFinished: false,
@@ -66,7 +75,9 @@ const initialStateGame = {
         htmlSkills: 0,
         cssSkills: 0,
         jsSkills: 0,
-        reactjsSkills: 0
+        angularSkills: 0,
+        reactjsSkills: 0,
+        vueSkills: 0
       },
       mobile: {
         kotlinSkills: 0,
@@ -79,12 +90,12 @@ const initialStateGame = {
 
 const gameReducer = (state = initialStateGame, action) => {
   switch (action.type) {
-    case "UPDATE_GAME_ESPECIALIZATION":
+    case "UPDATE_GAME_SPECIALZATION":
       return {
         ...state,
         gameInfo: {
           ...state.gameInfo,
-          especialization: action.especialization
+          specialization: action.specialization
         }
       };
     case "UPDATE_GAME_HAPPINESS":

@@ -23,10 +23,16 @@ const formReducer = (state = initialStateForm, action) => {
           avatarUrl: action.avatarUrl
         }
       };
+    case "UPDATE_CHARACTER_AGE":
+      return {
+        ...state,
+        formDetails: { ...state.formDetails, age: action.age }
+      };
     case "DELETE_CHARACTER_INFO":
       return {
         ...state,
         formDetails: {
+          ...state.formDetails,
           fullName: "",
           age: 18,
           gender: "",

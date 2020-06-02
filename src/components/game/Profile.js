@@ -4,7 +4,7 @@ import ReactCountryFlag from "react-country-flag";
 import Image from "../utils/Image";
 import getShortCode from "../../helpers/shortcode";
 
-const Profile = ({ formDetails, especialization, happiness, bankBalance }) => {
+const Profile = ({ formDetails, specialization, happiness, bankBalance }) => {
   const emojiArray = [
     "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/320/facebook/230/crying-face_1f622.png",
     "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/facebook/230/pensive-face_1f614.png",
@@ -53,10 +53,10 @@ const Profile = ({ formDetails, especialization, happiness, bankBalance }) => {
           {formDetails.country}
         </p>
         <p>Gender: {formDetails.gender === "F" ? "Female" : "Male"}</p>
-        {especialization && (
+        {specialization && (
           <p>
             Vocation:
-            {especialization.charAt(0).toUpperCase() + especialization.slice(1)}
+            {specialization.charAt(0).toUpperCase() + specialization.slice(1)}
           </p>
         )}
         <p>Bank Balance: {bankBalance} euros</p>

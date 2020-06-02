@@ -73,7 +73,7 @@ const SchoolMarch = ({
 
       {schoolMar.choiceMade && !schoolMar.projectPicked && (
         <>
-          {gameDetails.especialization === "Backend" && (
+          {gameDetails.specialization === "Backend" && (
             <GameQuestion
               question="Now is time to choose a project..."
               op1="Build a bill splitter app"
@@ -84,7 +84,7 @@ const SchoolMarch = ({
               onClickOp3={() => decideProject("music suggestion")}
             />
           )}
-          {gameDetails.especialization === "Frontend" && (
+          {gameDetails.specialization === "Frontend" && (
             <GameQuestion
               question="Now is time to choose a project..."
               op1="Build a movie search app"
@@ -95,7 +95,7 @@ const SchoolMarch = ({
               onClickOp3={() => decideProject("bets with friends")}
             />
           )}
-          {gameDetails.especialization === "Mobile" && (
+          {gameDetails.specialization === "Mobile" && (
             <GameQuestion
               question="Now is time to choose a project..."
               op1="Build a restaurant reservation app"
@@ -118,7 +118,7 @@ const SchoolMarch = ({
           action={() => {
             setIsOpen(false);
             goToNext(gameDetails.timestamps);
-            increaseBalance(gameDetails.bankBalance + 600 * 3);
+            increaseBalance(gameDetails.bankBalance + 300 * 3);
           }}
         />
       )}

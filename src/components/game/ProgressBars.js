@@ -4,7 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "../../styles/game-styles/progressBars.less";
 
-const ProgressBars = ({ skills, especialization, prevExperience }) => {
+const ProgressBars = ({ skills, specialization, prevExperience }) => {
   return (
     <section className="progressBars">
       <Tabs>
@@ -49,8 +49,7 @@ const ProgressBars = ({ skills, especialization, prevExperience }) => {
         </TabPanel>
 
         <TabPanel>
-          {(prevExperience === "C++" ||
-            (especialization === "Backend" && prevExperience === "C++")) && (
+          {(prevExperience === "C++" || specialization === "Backend") && (
             <>
               <article>
                 <h3>C++</h3>
@@ -62,14 +61,13 @@ const ProgressBars = ({ skills, especialization, prevExperience }) => {
                       ? "mediumStatus"
                       : "goodStatus"
                   }`}
-                  id="c++skills"
                 >
                   {skills.backend.cplusplusSkills}%
                 </div>
               </article>
             </>
           )}
-          {especialization === "Backend" && (
+          {specialization === "Backend" && (
             <article>
               <h3>Golang</h3>
               <div
@@ -80,7 +78,6 @@ const ProgressBars = ({ skills, especialization, prevExperience }) => {
                     ? "mediumStatus"
                     : "goodStatus"
                 }`}
-                id="golangSkills"
               >
                 {skills.backend.golangSkills}%
               </div>
@@ -97,14 +94,12 @@ const ProgressBars = ({ skills, especialization, prevExperience }) => {
                   ? "mediumStatus"
                   : "goodStatus"
               }`}
-              id="javaSkills"
             >
               {skills.backend.javaSkills}%
             </div>
           </article>
 
-          {(prevExperience === "PHP" ||
-            (especialization === "Backend" && prevExperience === "PHP")) && (
+          {(prevExperience === "PHP" || specialization === "Backend") && (
             <article>
               <h3>PHP</h3>
               <div
@@ -115,15 +110,13 @@ const ProgressBars = ({ skills, especialization, prevExperience }) => {
                     ? "mediumStatus"
                     : "goodStatus"
                 }`}
-                id="phpSkills"
               >
                 {skills.backend.phpSkills}%
               </div>
             </article>
           )}
 
-          {(prevExperience === "Python" ||
-            (especialization === "Backend" && prevExperience === "Python")) && (
+          {(prevExperience === "Python" || specialization === "Backend") && (
             <article>
               <h3>Python</h3>
               <div
@@ -134,14 +127,13 @@ const ProgressBars = ({ skills, especialization, prevExperience }) => {
                     ? "mediumStatus"
                     : "goodStatus"
                 }`}
-                id="pythonSkills"
               >
                 {skills.backend.pythonSkills}%
               </div>
             </article>
           )}
 
-          {especialization === "Backend" && (
+          {specialization === "Backend" && (
             <>
               <article>
                 <h3>Ruby</h3>
@@ -153,7 +145,6 @@ const ProgressBars = ({ skills, especialization, prevExperience }) => {
                       ? "mediumStatus"
                       : "goodStatus"
                   }`}
-                  id="rubySkills"
                 >
                   {skills.backend.rubySkills}%
                 </div>
@@ -171,7 +162,6 @@ const ProgressBars = ({ skills, especialization, prevExperience }) => {
                   ? "mediumStatus"
                   : "goodStatus"
               }`}
-              id="sqlSkills"
             >
               {skills.backend.sqlSkills}%
             </div>
@@ -224,22 +214,51 @@ const ProgressBars = ({ skills, especialization, prevExperience }) => {
               {skills.frontend.jsSkills}%
             </div>
           </article>
-          {especialization === "Frontend" && (
-            <article>
-              <h3>ReactJS</h3>
-              <div
-                className={`bar ${
-                  skills.frontend.reactjsSkills <= 15
-                    ? "badStatus"
-                    : skills.frontend.reactjsSkills <= 50
-                    ? "mediumStatus"
-                    : "goodStatus"
-                }`}
-                id="reactjsSkills"
-              >
-                {skills.frontend.reactjsSkills}%
-              </div>
-            </article>
+          {specialization === "Frontend" && (
+            <>
+              <article>
+                <h3>AngularJS</h3>
+                <div
+                  className={`bar ${
+                    skills.frontend.angularSkills <= 15
+                      ? "badStatus"
+                      : skills.frontend.angularSkills <= 50
+                      ? "mediumStatus"
+                      : "goodStatus"
+                  }`}
+                >
+                  {skills.frontend.angularSkills}%
+                </div>
+              </article>
+              <article>
+                <h3>ReactJS</h3>
+                <div
+                  className={`bar ${
+                    skills.frontend.reactjsSkills <= 15
+                      ? "badStatus"
+                      : skills.frontend.reactjsSkills <= 50
+                      ? "mediumStatus"
+                      : "goodStatus"
+                  }`}
+                >
+                  {skills.frontend.reactjsSkills}%
+                </div>
+              </article>
+              <article>
+                <h3>VueJS</h3>
+                <div
+                  className={`bar ${
+                    skills.frontend.vueSkills <= 15
+                      ? "badStatus"
+                      : skills.frontend.vueSkills <= 50
+                      ? "mediumStatus"
+                      : "goodStatus"
+                  }`}
+                >
+                  {skills.frontend.vueSkills}%
+                </div>
+              </article>
+            </>
           )}
         </TabPanel>
 
@@ -254,13 +273,12 @@ const ProgressBars = ({ skills, especialization, prevExperience }) => {
                   ? "mediumStatus"
                   : "goodStatus"
               }`}
-              id="kotlinSkills"
             >
               {skills.mobile.kotlinSkills}%
             </div>
           </article>
 
-          {especialization === "Mobile" && (
+          {specialization === "Mobile" && (
             <>
               <article>
                 <h3>Swift</h3>
@@ -272,7 +290,6 @@ const ProgressBars = ({ skills, especialization, prevExperience }) => {
                       ? "mediumStatus"
                       : "goodStatus"
                   }`}
-                  id="swiftSkills"
                 >
                   {skills.mobile.swiftSkills}%
                 </div>
@@ -287,7 +304,6 @@ const ProgressBars = ({ skills, especialization, prevExperience }) => {
                       ? "mediumStatus"
                       : "goodStatus"
                   }`}
-                  id="reactNativeSkills"
                 >
                   {skills.mobile.reactNativeSkills}%
                 </div>
