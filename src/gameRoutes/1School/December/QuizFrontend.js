@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import GameQuestion from "../../../components/game/GameQuestion";
 
 import {
-  updatespecializationAction,
+  updateSpecializationAction,
   updateTimeBoxAction
 } from "../../../redux/game/actions";
 
@@ -156,7 +156,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  setFrontendAsEsp: esp => dispatch(updatespecializationAction(esp)),
+  setFrontendAsEsp: esp => dispatch(updateSpecializationAction(esp)),
   increaseCorrect: timestamps => dispatch(updateTimeBoxAction(timestamps))
 });
 

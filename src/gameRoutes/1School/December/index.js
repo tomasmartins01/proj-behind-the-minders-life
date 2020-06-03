@@ -7,7 +7,7 @@ import { NextButton, EndButton } from "../../../components/game/GameButtons";
 
 import {
   updateTimeBoxAction,
-  updatespecializationAction,
+  updateSpecializationAction,
   updateBankBalanceAction,
   updateSkillsAction,
   updateHappinessAction,
@@ -307,7 +307,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   updateSchoolDec: timestamps => dispatch(updateTimeBoxAction(timestamps)),
-  setEsp: esp => dispatch(updatespecializationAction(esp)),
+  setEsp: esp => dispatch(updateSpecializationAction(esp)),
   increaseBalance: bankbalance =>
     dispatch(updateBankBalanceAction(bankbalance)),
   updateHappiness: happiness => dispatch(updateHappinessAction(happiness)),

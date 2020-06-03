@@ -40,43 +40,41 @@ const SchoolDecChoices = ({ timestamps, gameDetails }) => {
     <article>
       {timestamps.schoolDec.isFinished && (
         <>
-          <div>
-            {timestamps.schoolDec.triedBackendQuiz && (
-              <p>
-                You made a Backend quiz. Your results were{" "}
-                {timestamps.schoolDec.correctAnswersBE} out of{" "}
-                {timestamps.schoolDec.quizNumberOfQuestions}.
-                {timestamps.schoolDec.correctAnswersBE >=
-                  timestamps.schoolDec.quizNumberOfQuestions / 2 && (
-                  <span> Congratulations.</span>
-                )}
-              </p>
-            )}
+          {timestamps.schoolDec.triedBackendQuiz && (
+            <p>
+              You made a Backend quiz. Your results were{" "}
+              {timestamps.schoolDec.correctAnswersBE} out of{" "}
+              {timestamps.schoolDec.quizNumberOfQuestions}.
+              {timestamps.schoolDec.correctAnswersBE >=
+                timestamps.schoolDec.quizNumberOfQuestions / 2 && (
+                <span> Congratulations.</span>
+              )}
+            </p>
+          )}
 
-            {timestamps.schoolDec.triedFrontendQuiz && (
-              <p>
-                You made a Frontend quiz. Your results were{" "}
-                {timestamps.schoolDec.correctAnswersFE} out of{" "}
-                {timestamps.schoolDec.quizNumberOfQuestions}.
-                {timestamps.schoolDec.correctAnswersFE >=
-                  timestamps.schoolDec.quizNumberOfQuestions / 2 && (
-                  <span> Congratulations.</span>
-                )}
-              </p>
-            )}
+          {timestamps.schoolDec.triedFrontendQuiz && (
+            <p>
+              You made a Frontend quiz. Your results were{" "}
+              {timestamps.schoolDec.correctAnswersFE} out of{" "}
+              {timestamps.schoolDec.quizNumberOfQuestions}.
+              {timestamps.schoolDec.correctAnswersFE >=
+                timestamps.schoolDec.quizNumberOfQuestions / 2 && (
+                <span> Congratulations.</span>
+              )}
+            </p>
+          )}
 
-            {timestamps.schoolDec.triedMobileQuiz && (
-              <p>
-                You made a Mobile quiz. Your results were{" "}
-                {timestamps.schoolDec.correctAnswersMB} out of{" "}
-                {timestamps.schoolDec.quizNumberOfQuestions}.
-                {timestamps.schoolDec.correctAnswersMB >=
-                  timestamps.schoolDec.quizNumberOfQuestions / 2 && (
-                  <span>Congratulations.</span>
-                )}
-              </p>
-            )}
-          </div>
+          {timestamps.schoolDec.triedMobileQuiz && (
+            <p>
+              You made a Mobile quiz. Your results were{" "}
+              {timestamps.schoolDec.correctAnswersMB} out of{" "}
+              {timestamps.schoolDec.quizNumberOfQuestions}.
+              {timestamps.schoolDec.correctAnswersMB >=
+                timestamps.schoolDec.quizNumberOfQuestions / 2 && (
+                <span>Congratulations.</span>
+              )}
+            </p>
+          )}
 
           {timestamps.schoolDec.correctAnswersBE <
             timestamps.schoolDec.quizNumberOfQuestions / 2 &&
@@ -91,9 +89,7 @@ const SchoolDecChoices = ({ timestamps, gameDetails }) => {
             )}
 
           {gameDetails.specialization && (
-            <p>
-              You choose to be a {gameDetails.specialization} developer.
-            </p>
+            <p>You choose to be a {gameDetails.specialization} developer.</p>
           )}
 
           {timestamps.schoolDec.wentToMinderaParty && (

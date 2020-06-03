@@ -3,9 +3,10 @@ const initialStateGame = {
     startingYear: new Date().getFullYear(),
     isGameFinished: false,
     specialization: undefined,
+    career: undefined,
     happiness: 70,
     bankBalance: 0,
-    prevExperience: "",
+    prevExperience: undefined,
     timestamps: {
       interviewJune: {
         isFinished: false,
@@ -31,11 +32,16 @@ const initialStateGame = {
         isFinished: false,
         choiceMade: undefined,
         projectPicked: undefined,
-        languagePicked: undefined,
+        languagePicked: undefined
       },
       schoolJun: { isFinished: false, presentationFeeling: undefined },
 
-      minderaOneSep: { isFinished: false },
+      minderaOneSep: {
+        isFinished: false,
+        optionAfterSchool: undefined,
+        passedTheInterview: undefined,
+        acceptedContract: undefined,
+      },
       minderaOneDec: { isFinished: false },
       minderaOneMar: { isFinished: false },
       minderaOneJun: { isFinished: false },
@@ -98,6 +104,14 @@ const gameReducer = (state = initialStateGame, action) => {
         gameInfo: {
           ...state.gameInfo,
           specialization: action.specialization
+        }
+      };
+    case "UPDATE_GAME_CAREER":
+      return {
+        ...state,
+        gameInfo: {
+          ...state.gameInfo,
+          career: action.career
         }
       };
     case "UPDATE_GAME_HAPPINESS":

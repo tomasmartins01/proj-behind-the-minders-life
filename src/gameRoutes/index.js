@@ -2,36 +2,36 @@ import React from "react";
 import { connect } from "react-redux";
 
 // Routes
-import InterviewJune from "./InterviewJune";
-import SchoolSeptember from "./School/September";
-import SchoolDecember from "./School/December";
-import SchoolMarch from "./School/March";
-import SchoolJune from "./School/June";
+import InterviewJune from "./0InterviewJune";
+import SchoolSeptember from "./1School/September";
+import SchoolDecember from "./1School/December";
+import SchoolMarch from "./1School/March";
+import SchoolJune from "./1School/June";
 
-import FirstMinderaSeptember from "./FirstMindera/September";
-import FirstMinderaDecember from "./FirstMindera/December";
-import FirstMinderaMarch from "./FirstMindera/March";
-import FirstMinderaJune from "./FirstMindera/June";
+import FirstMinderaSeptember from "./2FirstMindera/September";
+import FirstMinderaDecember from "./2FirstMindera/December";
+import FirstMinderaMarch from "./2FirstMindera/March";
+import FirstMinderaJune from "./2FirstMindera/June";
 
-import SecondMinderaSeptember from "./SecondMindera/September";
-import SecondMinderaDecember from "./SecondMindera/December";
-import SecondMinderaMarch from "./SecondMindera/March";
-import SecondMinderaJune from "./SecondMindera/June";
+import SecondMinderaSeptember from "./3SecondMindera/September";
+import SecondMinderaDecember from "./3SecondMindera/December";
+import SecondMinderaMarch from "./3SecondMindera/March";
+import SecondMinderaJune from "./3SecondMindera/June";
 
-import ThirdMinderaSeptember from "./ThirdMindera/September";
-import ThirdMinderaDecember from "./ThirdMindera/December";
-import ThirdMinderaMarch from "./ThirdMindera/March";
-import ThirdMinderaJune from "./ThirdMindera/June";
+import ThirdMinderaSeptember from "./4ThirdMindera/September";
+import ThirdMinderaDecember from "./4ThirdMindera/December";
+import ThirdMinderaMarch from "./4ThirdMindera/March";
+import ThirdMinderaJune from "./4ThirdMindera/June";
 
-import FourthMinderaSeptember from "./FourthMindera/September";
-import FourthMinderaDecember from "./FourthMindera/December";
-import FourthMinderaMarch from "./FourthMindera/March";
-import FourthMinderaJune from "./FourthMindera/June";
+import FourthMinderaSeptember from "./5FourthMindera/September";
+import FourthMinderaDecember from "./5FourthMindera/December";
+import FourthMinderaMarch from "./5FourthMindera/March";
+import FourthMinderaJune from "./5FourthMindera/June";
 
-import FifthMinderaSeptember from "./FifthMindera/September";
-import FifthMinderaDecember from "./FifthMindera/December";
-import FifthMinderaMarch from "./FifthMindera/March";
-import FifthMinderaJune from "./FifthMindera/June";
+import FifthMinderaSeptember from "./6FifthMindera/September";
+import FifthMinderaDecember from "./6FifthMindera/December";
+import FifthMinderaMarch from "./6FifthMindera/March";
+import FifthMinderaJune from "./6FifthMindera/June";
 
 const GameRoutes = ({ timestamps }) => {
   return (

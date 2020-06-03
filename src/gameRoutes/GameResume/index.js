@@ -6,6 +6,7 @@ import InterviewChoices from "./InterviewChoices";
 
 import "react-tabs/style/react-tabs.css";
 import SchoolChoices from "./SchoolChoices";
+import MinderaFirstChoices from "./MinderaFirst";
 
 const GameResume = ({ formDetails, gameDetails, timestamps }) => {
   const isSchoolDisabled =
@@ -82,8 +83,11 @@ const GameResume = ({ formDetails, gameDetails, timestamps }) => {
           <SchoolChoices timestamps={timestamps} gameDetails={gameDetails} />
         </TabPanel>
 
-        <TabPanel>
-          <h3>Mindera First Year</h3>
+        <TabPanel style={panelStyle}>
+          <MinderaFirstChoices
+            timestamps={timestamps}
+            gameDetails={gameDetails}
+          />
         </TabPanel>
 
         <TabPanel>

@@ -146,53 +146,66 @@ const SchoolSeptember = ({
               </p>
             </>
           )}
-
-          {schoolSep.differentRoute === false && (
-            <>
-              {schoolSep.wentToMinderaParty === undefined && (
-                <>
-                  <p>I was invited to Mindera's birthday party.</p>
-                  <GameQuestion
-                    question="Will I go?"
-                    op1="Yes"
-                    op2="No, I have things to do"
-                    onClickOp1={() => {
-                      updateHappiness(90);
-                      updateSocial(gameDetails.skillsLevel);
-                      birthdayResponse(gameDetails.timestamps, true);
-                    }}
-                    onClickOp2={() => {
-                      updateHappiness(60);
-                      birthdayResponse(gameDetails.timestamps, false);
-                    }}
-                  />
-                </>
-              )}
-              {schoolSep.wentToMinderaParty && (
-                <p>I went to Mindera's birthday party and had a lot of fun.</p>
-              )}
-              {schoolSep.wentToMinderaParty === false && (
-                <p>
-                  I stayed home while all my colleagues and teachers were having{" "}
-                  fun at Mindera's birthday party.
-                </p>
-              )}
-
-              {schoolSep.wentToMinderaParty !== undefined &&
-                !schoolSep.isFinished && (
-                  <NextButton
-                    action={() => {
-                      updateSkillsFinal(gameDetails.skillsLevel);
-                      increaseBalance(gameDetails.bankBalance + 300 * 3);
-                      setIsOpen(false);
-                      goToNext(gameDetails.timestamps);
-                    }}
-                  />
-                )}
-            </>
-          )}
         </>
       )}
+
+      {((formDetails.age <= 23 && schoolSep.differentRoute === false) ||
+        (formDetails.age > 23 && schoolSep.differentRoute === undefined)) && (
+          <>
+            <p>
+              {formDetails.region !== "Porto" &&
+                "So I moved to Porto to start Mindera School. "}
+              {formDetails.country !== "Portugal" &&
+                "Travelling to a different country is really thrilling."}
+            </p>
+            {!schoolSep.differentRoute && (
+              <>
+                {schoolSep.wentToMinderaParty === undefined && (
+                  <>
+                    <p>I was invited to Mindera's birthday party.</p>
+                    <GameQuestion
+                      question="Will I go?"
+                      op1="Yes"
+                      op2="No, I have things to do"
+                      onClickOp1={() => {
+                        updateHappiness(90);
+                        updateSocial(gameDetails.skillsLevel);
+                        birthdayResponse(gameDetails.timestamps, true);
+                      }}
+                      onClickOp2={() => {
+                        updateHappiness(60);
+                        birthdayResponse(gameDetails.timestamps, false);
+                      }}
+                    />
+                  </>
+                )}
+                {schoolSep.wentToMinderaParty && (
+                  <p>
+                    I went to Mindera's birthday party and had a lot of fun.
+                  </p>
+                )}
+                {schoolSep.wentToMinderaParty === false && (
+                  <p>
+                    I stayed home while all my colleagues and teachers were
+                    having fun at Mindera's birthday party.
+                  </p>
+                )}
+
+                {schoolSep.wentToMinderaParty !== undefined &&
+                  !schoolSep.isFinished && (
+                    <NextButton
+                      action={() => {
+                        updateSkillsFinal(gameDetails.skillsLevel);
+                        increaseBalance(gameDetails.bankBalance + 300 * 3);
+                        setIsOpen(false);
+                        goToNext(gameDetails.timestamps);
+                      }}
+                    />
+                  )}
+              </>
+            )}
+          </>
+        )}
     </StoryText>
   );
 };

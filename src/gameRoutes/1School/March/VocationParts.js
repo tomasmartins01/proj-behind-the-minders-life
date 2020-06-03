@@ -19,7 +19,7 @@ export const BackendProject = ({ op1Click, op2Click, op3Click }) => {
 export const BackendLanguage = ({ op1Click, op2Click, op3Click }) => {
   return (
     <GameQuestion
-      question="Even though you learned Java, you are considering what language will you choose for your project..."
+      question="Even though you learned Java, what language are you considering using?"
       op1="Java"
       op2="Golang"
       op3="Python"
@@ -47,7 +47,7 @@ export const FrontendProject = ({ op1Click, op2Click, op3Click }) => {
 export const FrontendLanguage = ({ op1Click, op2Click, op3Click }) => {
   return (
     <GameQuestion
-      question="Even though you learned Javascript, you are considering what framework will you choose for your project..."
+      question="Even though you learned Javascript, what framework are you considering using?"
       op1="Javascript"
       op2="React"
       op3="Angular"
@@ -75,7 +75,7 @@ export const MobileProject = ({ op1Click, op2Click, op3Click }) => {
 export const MobileLanguage = ({ op1Click, op2Click, op3Click }) => {
   return (
     <GameQuestion
-      question="Even though you learned Kotlin, you are considering what language will you choose for your project..."
+      question="Even though you learned Kotlin, what language are you considering using?"
       op1="Kotlin"
       op2="Swift"
       op3="React Native"
