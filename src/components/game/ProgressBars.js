@@ -31,21 +31,6 @@ const ProgressBars = ({ skills, specialization, prevExperience }) => {
               {skills.socialSkills}%
             </div>
           </article>
-          <article>
-            <h3>Programming Skills</h3>
-            <div
-              className={`bar ${
-                skills.programmingSkills <= 15
-                  ? "badStatus"
-                  : skills.programmingSkills <= 50
-                  ? "mediumStatus"
-                  : "goodStatus"
-              }`}
-              id="programmingSkills"
-            >
-              {skills.programmingSkills}%
-            </div>
-          </article>
         </TabPanel>
 
         <TabPanel>

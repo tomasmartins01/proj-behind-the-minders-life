@@ -42,7 +42,6 @@ const SchoolDecember = ({
         updateSkills({
           ...skillsLevel,
           socialSkills: 85,
-          programmingSkills: 72.5,
           backend: {
             ...skillsLevel.backend,
             javaSkills: 65,
@@ -64,7 +63,6 @@ const SchoolDecember = ({
         updateSkills({
           ...skillsLevel,
           socialSkills: 80,
-          programmingSkills: 70,
           backend: {
             ...skillsLevel.backend,
             javaSkills: 80,
@@ -86,7 +84,6 @@ const SchoolDecember = ({
         updateSkills({
           ...skillsLevel,
           socialSkills: 80,
-          programmingSkills: 67.5,
           backend: {
             ...skillsLevel.backend,
             javaSkills: 65,

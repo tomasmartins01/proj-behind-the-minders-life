@@ -44,7 +44,6 @@ const SchoolSeptember = ({
     updateSkills({
       ...skillsLevel,
       socialSkills: 70,
-      programmingSkills: 60,
       backend: {
         ...skillsLevel.backend,
         javaSkills: 60,

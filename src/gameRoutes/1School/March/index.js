@@ -8,7 +8,8 @@ import { NextButton } from "../../../components/game/GameButtons";
 import {
   updateBankBalanceAction,
   updateTimeBoxAction,
-  updateHappinessAction
+  updateHappinessAction,
+  updateSkillsAction
 } from "../../../redux/game/actions";
 
 import {
@@ -28,6 +29,7 @@ const SchoolMarch = ({
   updateHappiness,
   projectChoices,
   increaseBalance,
+  updateSkills,
   goToNext
 }) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -45,6 +47,92 @@ const SchoolMarch = ({
       ...gameDetails.timestamps,
       schoolMar: { ...schoolMar, languagePicked: language }
     });
+  };
+
+  const getAvg = arr => {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+      sum += arr[i];
+    }
+    return sum / arr.length;
+  };
+
+  const increaseSkills = projectLanguage => {
+    switch (projectLanguage) {
+      case "Java":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          backend: { ...gameDetails.skillsLevel.backend, javaSkills: 90 }
+        });
+        break;
+      case "Golang":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          backend: { ...gameDetails.skillsLevel.backend, golangSkills: 60 }
+        });
+        break;
+      case "Python":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          backend: { ...gameDetails.skillsLevel.backend, pythonSkills: 60 }
+        });
+        break;
+
+      case "Javascript":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          frontend: {
+            ...gameDetails.skillsLevel.frontend,
+            htmlSkills: 90,
+            cssSkills: 90,
+            jsSkills: 90
+          }
+        });
+        break;
+      case "React":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          frontend: {
+            ...gameDetails.skillsLevel.frontend,
+            htmlSkills: 90,
+            cssSkills: 90,
+            jsSkills: 90,
+            reactjsSkills: 60
+          }
+        });
+        break;
+      case "Angular":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          frontend: {
+            ...gameDetails.skillsLevel.frontend,
+            htmlSkills: 90,
+            cssSkills: 90,
+            jsSkills: 90,
+            angularSkills: 60
+          }
+        });
+        break;
+
+      case "Kotlin":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          mobile: { ...gameDetails.skillsLevel.mobile, kotlinSkills: 90 }
+        });
+        break;
+      case "Swift":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          mobile: { ...gameDetails.skillsLevel.mobile, swiftSkills: 60 }
+        });
+        break;
+      case "React Native":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          mobile: { ...gameDetails.skillsLevel.mobile, reactNativeSkills: 60 }
+        });
+        break;
+    }
   };
 
   return (
@@ -151,9 +239,10 @@ const SchoolMarch = ({
       {!schoolMar.isFinished && schoolMar.projectPicked && (
         <NextButton
           action={() => {
+            increaseBalance(gameDetails.bankBalance + 300 * 3);
+            increaseSkills(schoolMar.languagePicked);
             setIsOpen(false);
             goToNext(gameDetails.timestamps);
-            increaseBalance(gameDetails.bankBalance + 300 * 3);
           }}
         />
       )}
@@ -176,6 +265,7 @@ const mapDispatchToProps = dispatch => ({
   projectChoices: timestamps => dispatch(updateTimeBoxAction(timestamps)),
   increaseBalance: bankbalance =>
     dispatch(updateBankBalanceAction(bankbalance)),
+  updateSkills: skillsLevel => dispatch(updateSkillsAction(skillsLevel)),
   goToNext: timestamps =>
     dispatch(
       updateTimeBoxAction({

@@ -87,10 +87,10 @@ const SchoolJune = ({
         schoolJun.presentationFeeling !== "nervous" && (
           <NextButton
             action={() => {
-              setIsOpen(false);
-              goToNext(gameDetails.timestamps);
               increaseBalance(gameDetails.bankBalance + 300 * 3);
               increaseAge(formAge + 1);
+              setIsOpen(false);
+              goToNext(gameDetails.timestamps);
             }}
           />
         )}

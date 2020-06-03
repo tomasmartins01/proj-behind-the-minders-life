@@ -62,7 +62,6 @@ const initialStateGame = {
     },
     skillsLevel: {
       socialSkills: 0,
-      programmingSkills: 0,
       backend: {
         cplusplusSkills: 0,
         golangSkills: 0,
