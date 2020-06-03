@@ -7,7 +7,7 @@ import Profile from "../components/game/Profile";
 import ProgressBars from "../components/game/ProgressBars";
 import MindersPreview from "../components/game/MindersPreview";
 import GameRoutes from "../gameRoutes";
-import EndGameResume from "../gameRoutes/EndGameResume";
+import GameResume from "../gameRoutes/GameResume";
 
 import "../styles/game-styles/gamePage.less";
 import "../styles/game-styles/gameButton.less";
@@ -24,7 +24,7 @@ const Game = ({ formDetails, gameDetails }) => {
       <Header />
       <main className="gameParts">
         <div className="game">
-          {gameDetails.isGameFinished ? <EndGameResume /> : <GameRoutes />}
+          {gameDetails.isGameFinished ? <GameResume /> : <GameRoutes />}
         </div>
         <aside>
           <select

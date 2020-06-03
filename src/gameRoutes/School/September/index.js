@@ -183,7 +183,7 @@ const SchoolSeptember = ({
                 !schoolSep.isFinished && (
                   <NextButton
                     action={() => {
-                      updateSkills(gameDetails.skillsLevel);
+                      updateSkillsFinal(gameDetails.skillsLevel);
                       increaseBalance(gameDetails.bankBalance + 300 * 3);
                       setIsOpen(false);
                       goToNext(gameDetails.timestamps);

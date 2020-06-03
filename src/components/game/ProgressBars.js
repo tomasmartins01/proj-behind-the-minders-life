@@ -280,6 +280,35 @@ const ProgressBars = ({ skills, specialization, prevExperience }) => {
 
           {specialization === "Mobile" && (
             <>
+            <article>
+                <h3>Dart</h3>
+                <div
+                  className={`bar ${
+                    skills.mobile.dartSkills <= 15
+                      ? "badStatus"
+                      : skills.mobile.dartSkills <= 50
+                      ? "mediumStatus"
+                      : "goodStatus"
+                  }`}
+                >
+                  {skills.mobile.dartSkills}%
+                </div>
+              </article>
+              <article>
+                <h3>Flutter</h3>
+                <div
+                  className={`bar ${
+                    skills.mobile.flutterSkills <= 15
+                      ? "badStatus"
+                      : skills.mobile.flutterSkills <= 50
+                      ? "mediumStatus"
+                      : "goodStatus"
+                  }`}
+                >
+                  {skills.mobile.flutterSkills}%
+                </div>
+              </article>
+
               <article>
                 <h3>Swift</h3>
                 <div

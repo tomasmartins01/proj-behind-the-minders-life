@@ -30,7 +30,8 @@ const initialStateGame = {
       schoolMar: {
         isFinished: false,
         choiceMade: undefined,
-        projectPicked: undefined
+        projectPicked: undefined,
+        languagePicked: undefined,
       },
       schoolJun: { isFinished: false, presentationFeeling: undefined },
 
@@ -81,6 +82,8 @@ const initialStateGame = {
       },
       mobile: {
         kotlinSkills: 0,
+        dartSkills: 0,
+        flutterSkills: 0,
         swiftSkills: 0,
         reactNativeSkills: 0
       }

@@ -13,31 +13,17 @@ const Profile = ({ formDetails, specialization, happiness, bankBalance }) => {
     "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/facebook/230/grinning-face_1f600.png"
   ];
 
-  const selectedEmoji = happinessLevel => {
+  const happinessPart = happinessLevel => {
     if (happinessLevel <= 20) {
-      return emojiArray[0];
+      return { emoji: emojiArray[0], text: "Super Sad" };
     } else if (happinessLevel <= 40) {
-      return emojiArray[1];
+      return { emoji: emojiArray[1], text: "Sad" };
     } else if (happinessLevel <= 60) {
-      return emojiArray[2];
+      return { emoji: emojiArray[2], text: "Neutral" };
     } else if (happinessLevel <= 80) {
-      return emojiArray[3];
+      return { emoji: emojiArray[3], text: "Happy" };
     } else {
-      return emojiArray[4];
-    }
-  };
-
-  const selectedHappiness = happinessLevel => {
-    if (happinessLevel <= 20) {
-      return "Super Sad";
-    } else if (happinessLevel <= 40) {
-      return "Sad";
-    } else if (happinessLevel <= 60) {
-      return "Neutral";
-    } else if (happinessLevel <= 80) {
-      return "Happy";
-    } else {
-      return "The Happiest I Could Ever Be";
+      return { emoji: emojiArray[4], text: "The Happiest I Could Ever Be" };
     }
   };
 
@@ -62,11 +48,11 @@ const Profile = ({ formDetails, specialization, happiness, bankBalance }) => {
         <p>Bank Balance: {bankBalance} euros</p>
 
         <Image
-          imageSrc={selectedEmoji(happiness)}
+          imageSrc={happinessPart(happiness).emoji}
           cName="happiness"
-          alt={selectedHappiness(happiness)}
+          alt={happinessPart(happiness).text}
         />
-        <p>Mood: {selectedHappiness(happiness)}</p>
+        <p>Mood: {happinessPart(happiness).text}</p>
       </article>
     </div>
   );
