@@ -147,12 +147,14 @@ const FirstMinderaSeptember = ({
           {minderaOneSep.acceptedContract && (
             <>
               <p>I am now a {gameDetails.career} Developer.</p>
-              <NextButton
-                action={() => {
-                  setIsOpen(false);
-                  goToNext(gameDetails.timestamps);
-                }}
-              />
+              {!minderaOneSep.isFinished && (
+                <NextButton
+                  action={() => {
+                    setIsOpen(false);
+                    goToNext(gameDetails.timestamps);
+                  }}
+                />
+              )}
             </>
           )}
 

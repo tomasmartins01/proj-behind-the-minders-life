@@ -38,13 +38,17 @@ const initialStateGame = {
 
       minderaOneSep: {
         isFinished: false,
-        optionAfterSchool: undefined,
+        optionAfterSchool: "",
         passedTheInterview: undefined,
-        acceptedContract: undefined,
+        acceptedContract: undefined
       },
-      minderaOneDec: { isFinished: false },
-      minderaOneMar: { isFinished: false },
-      minderaOneJun: { isFinished: false },
+      minderaOneDec: {
+        isFinished: false,
+        partyOrProject: "",
+        christmasPresent: ""
+      },
+      minderaOneMar: { isFinished: false, dinnerFood: "" },
+      minderaOneJun: { isFinished: false, newProject: "" },
 
       minderaTwoSep: { isFinished: false },
       minderaTwoDec: { isFinished: false },
