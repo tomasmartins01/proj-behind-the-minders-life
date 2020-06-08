@@ -43,7 +43,7 @@ const FirstMinderaDecember = ({
   const mindersName = mindersList.map(minder => minder.name);
 
   const [minderSelected, setMinderSelected] = useState(
-    mindersList[(Math.random() * mindersName.length).toFixed()]
+    mindersName[(Math.random() * mindersName.length).toFixed()]
   );
 
   return (
@@ -55,7 +55,7 @@ const FirstMinderaDecember = ({
       {!minderaOneDec.partyOrProject && (
         <>
           <p>
-            You are having difficulties with your project, but your best friend{" "}
+            I am having difficulties with your project, but your best friend{" "}
             is celebrating his birthday and is going to throw a big party.
           </p>
           <GameQuestion
@@ -63,17 +63,18 @@ const FirstMinderaDecember = ({
             op1="Stay Home and finish the project"
             op2="Party all night with my best friend"
             onClickOp1={() => optionPartyStudy("finish the project")}
-            onClickOp2={() => optionPartyStudy("party all night with my best friend")}
+            onClickOp2={() =>
+              optionPartyStudy("party all night with my best friend")
+            }
           />
         </>
       )}
       {minderaOneDec.partyOrProject && (
         <p>I decided to {minderaOneDec.partyOrProject}.</p>
       )}
-
       {minderaOneDec.partyOrProject && !minderaOneDec.christmasPresent && (
         <GameQuestion
-          question={`It's secret santa party, you have to give a gift to ${minderSelected.name} what will you give?`}
+          question={`It's secret santa party, you have to give a gift to ${minderSelected} what will you give?`}
           op1="a book"
           op2="a gaming keyboard"
           op3="a soap"
@@ -85,14 +86,18 @@ const FirstMinderaDecember = ({
         />
       )}
       {minderaOneDec.partyOrProject && minderaOneDec.christmasPresent && (
-        <p>I gave {minderSelected.name} {minderaOneDec.christmasPresent}.</p>
+        <p>
+          I gave {minderSelected.name} {minderaOneDec.christmasPresent}.
+        </p>
       )}
+      {minderaOneDec.christmasPresent && !minderaOneDec.isFinished && (
         <NextButton
-        action={() => {
-          setIsOpen(false);
-          goToNext(gameDetails.timestamps);
-        }}
-      />
+          action={() => {
+            setIsOpen(false);
+            goToNext(gameDetails.timestamps);
+          }}
+        />
+      )}
     </StoryText>
   );
 };

@@ -236,7 +236,7 @@ const SchoolMarch = ({
         </p>
       )}
 
-      {!schoolMar.isFinished && schoolMar.projectPicked && (
+      {!schoolMar.isFinished && schoolMar.languagePicked && (
         <NextButton
           action={() => {
             increaseBalance(gameDetails.bankBalance + 300 * 3);

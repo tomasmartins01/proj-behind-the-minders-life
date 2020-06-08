@@ -53,7 +53,9 @@ const FirstMinderaMarch = ({
       )}
 
       {minderaOneMar.dinnerFood === "eat bifanas" && (
-        <p>I don't feel so good... Those bifanas are going to make me throw up.</p>
+        <p>
+          I don't feel so good... Those bifanas are going to make me throw up.
+        </p>
       )}
 
       {minderaOneMar.dinnerFood === "eat bacalhau" && (
@@ -61,13 +63,16 @@ const FirstMinderaMarch = ({
       )}
 
       {minderaOneMar.dinnerFood === "eat francesinha" && (
-        <p>I think I got food poisoning because I ate a francesinha..</p>
+        <p>I think I got food poisoning because I ate a francesinha.</p>
       )}
 
       {minderaOneMar.dinnerFood === "eat polvo à lagareiro" && (
         <>
           <p>I think that thing I ate was alive...</p>
-          <p>I unfortunately died due to eating a live animal from polvo à lagareiro.</p>
+          <p>
+            I unfortunately died due to eating a live animal from polvo à
+            lagareiro.
+          </p>
         </>
       )}
 

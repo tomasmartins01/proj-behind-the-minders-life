@@ -134,18 +134,6 @@ const SchoolSeptember = ({
               />
             </>
           )}
-
-          {schoolSep.differentRoute === false && !schoolSep.isFinished && (
-            <>
-              <p>
-                I think Mindera is my best choice.
-                {formDetails.region !== "Porto" &&
-                  " So I moved to Porto to start Mindera School."}
-                {formDetails.country !== "Portugal" &&
-                  " Travelling to a different country is really thrilling."}
-              </p>
-            </>
-          )}
         </>
       )}
 

@@ -50,10 +50,10 @@ const initialStateGame = {
       minderaOneMar: { isFinished: false, dinnerFood: "" },
       minderaOneJun: { isFinished: false, newProject: "" },
 
-      minderaTwoSep: { isFinished: false },
-      minderaTwoDec: { isFinished: false },
-      minderaTwoMar: { isFinished: false },
-      minderaTwoJun: { isFinished: false },
+      minderaTwoSep: { isFinished: false, birthdayAction: "" },
+      minderaTwoDec: { isFinished: false, tripDecision: undefined },
+      minderaTwoMar: { isFinished: false, pcbrokeToDo: "", pcInformation: undefined },
+      minderaTwoJun: { isFinished: false, wentToLanParty: undefined },
 
       minderaThreeSep: { isFinished: false },
       minderaThreeDec: { isFinished: false },

@@ -2,15 +2,31 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import StoryText from "../../../components/game/StoryText";
+import GameQuestion from "../../../components/game/GameQuestion";
 
 import { updateTimeBoxAction } from "../../../redux/game/actions";
 
 import { NextButton } from "../../../components/game/GameButtons";
 
-const SecondMinderaJune = ({ gameDetails, minderaTwoJun, goToNext }) => {
+const SecondMinderaJune = ({
+  gameDetails,
+  minderaTwoJun,
+  updateBox,
+  goToNext
+}) => {
   const [isOpen, setIsOpen] = useState(true);
 
   const onButtonClick = () => setIsOpen(!isOpen);
+
+  const wentToLanParty = () => {
+    updateBox({
+      ...gameDetails.timestamps,
+      minderaTwoJun: {
+        ...gameDetails.timestamps.minderaTwoJun,
+        wentToLanParty: true
+      }
+    });
+  };
 
   return (
     <StoryText
@@ -18,12 +34,36 @@ const SecondMinderaJune = ({ gameDetails, minderaTwoJun, goToNext }) => {
       isOpen={isOpen}
       onButtonClick={onButtonClick}
     >
-      <NextButton
-        action={() => {
-          setIsOpen(false);
-          goToNext(gameDetails.timestamps);
-        }}
-      />
+      <p>
+        The Frontend developers want to go for a picnic in the Parque da Cidade{" "}
+        while the Backend developers want to have a LAN Party.
+      </p>
+      {!minderaTwoJun.wentToLanParty && (
+        <GameQuestion
+          question="Which one will you choose?"
+          op1="LAN PARTY LIKE A BOSS"
+          op2="Go to the Lan party"
+          op3="Join my bros in Lan"
+          op4="Lan party"
+          onClickOp1={() => wentToLanParty()}
+          onClickOp2={() => wentToLanParty()}
+          onClickOp3={() => wentToLanParty()}
+          onClickOp4={() => wentToLanParty()}
+        />
+      )}
+
+      {minderaTwoJun.wentToLanParty && (
+        <p>I went to Backend developers' LAN Party.</p>
+      )}
+
+      {minderaTwoJun.wentToLanParty && !minderaTwoJun.isFinished && (
+        <NextButton
+          action={() => {
+            setIsOpen(false);
+            goToNext(gameDetails.timestamps);
+          }}
+        />
+      )}
     </StoryText>
   );
 };
@@ -36,6 +76,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
+  updateBox: timestamps => dispatch(updateTimeBoxAction(timestamps)),
   goToNext: timestamps =>
     dispatch(
       updateTimeBoxAction({
