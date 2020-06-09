@@ -11,8 +11,9 @@ import PedroTeixeira from "../images/minders/Pedro.png";
 import LuisSimoes from "../images/minders/Luis.png";
 import IrinaPrioteasa from "../images/minders/Irina.png";
 import TiagoReis from "../images/minders/Tiago.png";
+import TiagoCaldas from "../images/minders/Caldas.png";
 
-const getMinderProfilePic = name => {
+const getMinderProfilePic = (name) => {
   switch (name) {
     case "Sara Cardoso":
       return SaraCardoso;
@@ -38,6 +39,8 @@ const getMinderProfilePic = name => {
       return IrinaPrioteasa;
     case "Tiago Reis":
       return TiagoReis;
+    case "Tiago Caldas":
+      return TiagoCaldas;
     default:
       return RandomPic;
   }

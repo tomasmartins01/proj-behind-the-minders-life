@@ -20,6 +20,7 @@
       flex-direction: column;
       align-items: center;
       padding-right: 8px;
+      transition: 0.5s background;
 
       .gameEmail {
         display: flex;
@@ -77,8 +78,8 @@
         font-size: 16px;
         border-radius: 4px;
 
-        &:hover{
-          background-color:@yellow; 
+        &:hover {
+          background-color: @yellow;
         }
       }
     }
@@ -105,6 +106,32 @@
         border-radius: 50%;
         font-size: 16px;
         font-weight: 900;
+      }
+    }
+  }
+}
+
+.night-mode {
+  .gameEmail {
+    p {
+      color: black;
+    }
+  }
+  .gameBox {
+    background-color: rgb(34, 34, 34);
+    border: 4px solid white;
+    border-radius: 3px;
+    p {
+      color: black;
+    }
+  }
+  .storyPart {
+    article {
+      border: 1px solid white;
+      &.open {
+        background: @black;
+        transition: 0.5s background;
+        color: white;
       }
     }
   }

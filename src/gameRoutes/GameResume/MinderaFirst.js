@@ -31,10 +31,32 @@ const Mindera1Sep = ({ timestamps }) => {
   );
 };
 
+// const Mindera1Dec = ({ timestamps }) => {
+//   return (
+//     <article>
+//       {timestamps.Mindera1Dec.isFinished && (
+//         <>
+//           {timestamps.Mindera1Dec.partyOrProject && (
+//             <p>You dedided to {timestamps.Mindera1Dec.partyOrProject}</p>
+//           )}
+
+//           {/* {timestamps.Mindera1Dec.christmasPresent && (
+//             <p>
+//               You gave {timesstamp.minderSelected} a
+//               {timestamps.christmasPresent}
+//             </p>
+//           )} */}
+//         </>
+//       )}
+//     </article>
+//   );
+// };
+
 const MinderaFirstChoices = ({ timestamps, gameDetails }) => {
   return (
     <>
       <Mindera1Sep timestamps={timestamps} />
+      {/* <Mindera1Dec timestamps={timestamps} /> */}
     </>
   );
 };

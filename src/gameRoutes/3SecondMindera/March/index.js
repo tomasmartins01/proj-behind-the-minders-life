@@ -6,7 +6,7 @@ import GameQuestion from "../../../components/game/GameQuestion";
 
 import {
   updateTimeBoxAction,
-  updateBankBalanceAction
+  updateBankBalanceAction,
 } from "../../../redux/game/actions";
 
 import { NextButton, EndButton } from "../../../components/game/GameButtons";
@@ -19,7 +19,7 @@ const SecondMinderaMarch = ({
   setOption,
   updateBalance,
   goToNext,
-  endGame
+  endGame,
 }) => {
   const [isOpen, setIsOpen] = useState(true);
   const onButtonClick = () => setIsOpen(!isOpen);
@@ -27,23 +27,23 @@ const SecondMinderaMarch = ({
   const [pcValue, setPcValue] = useState(0);
   const checkPcValue = pcValue < 325 || pcValue > gameDetails.bankBalance;
 
-  const pcbroke = op => {
+  const pcbroke = (op) => {
     setOption({
       ...gameDetails.timestamps,
       minderaTwoMar: {
         ...gameDetails.timestamps.minderaTwoMar,
-        pcbrokeToDo: op
-      }
+        pcbrokeToDo: op,
+      },
     });
   };
 
-  const setPcInfo = pcValue => {
+  const setPcInfo = (pcValue) => {
     setOption({
       ...gameDetails.timestamps,
       minderaTwoMar: {
         ...gameDetails.timestamps.minderaTwoMar,
-        pcInformation: getParts(pcValue)
-      }
+        pcInformation: getParts(pcValue),
+      },
     });
     updateBalance(gameDetails.bankBalance - getParts(pcValue).total);
   };
@@ -107,7 +107,7 @@ const SecondMinderaMarch = ({
               min="325"
               max={gameDetails.bankBalance}
               value={pcValue}
-              onChange={e => setPcValue(e.target.value)}
+              onChange={(e) => setPcValue(e.target.value)}
             />
             <button disabled={checkPcValue} onClick={() => setPcInfo(pcValue)}>
               I'm ready to build a computer!
@@ -119,11 +119,11 @@ const SecondMinderaMarch = ({
         <div>
           {pcInformation.amount > pcInformation.total ? (
             <p>
-              I was able to spend {pcInformation.total} of{" "}
-              {pcInformation.amount} for my new computer.
+              I was able to spend {pcInformation.total} euros of{" "}
+              {pcInformation.amount} euros for my new computer.
             </p>
           ) : (
-            <p>I spent {pcInformation.amount} for my new computer.</p>
+            <p>I spent {pcInformation.amount} euros for my new computer.</p>
           )}
           <p>The computer was built with these pieces:</p>
           <ul>
@@ -181,28 +181,29 @@ const SecondMinderaMarch = ({
     </StoryText>
   );
 };
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     gameDetails: state.game.gameInfo,
     minderaTwoMar: state.game.gameInfo.timestamps.minderaTwoMar,
-    pcInformation: state.game.gameInfo.timestamps.minderaTwoMar.pcInformation
+    pcInformation: state.game.gameInfo.timestamps.minderaTwoMar.pcInformation,
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  setOption: timestamps => dispatch(updateTimeBoxAction(timestamps)),
-  updateBalance: bankBalance => dispatch(updateBankBalanceAction(bankBalance)),
-  goToNext: timestamps =>
+const mapDispatchToProps = (dispatch) => ({
+  setOption: (timestamps) => dispatch(updateTimeBoxAction(timestamps)),
+  updateBalance: (bankBalance) =>
+    dispatch(updateBankBalanceAction(bankBalance)),
+  goToNext: (timestamps) =>
     dispatch(
       updateTimeBoxAction({
         ...timestamps,
         minderaTwoMar: {
           ...timestamps.minderaTwoMar,
-          isFinished: true
-        }
+          isFinished: true,
+        },
       })
     ),
-  endGame: () => dispatch(endGameAction())
+  endGame: () => dispatch(endGameAction()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SecondMinderaMarch);

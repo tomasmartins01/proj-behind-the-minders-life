@@ -7,7 +7,7 @@ import GameQuestion from "../../../components/game/GameQuestion";
 import {
   updateTimeBoxAction,
   updateBankBalanceAction,
-  updateHappinessAction
+  updateHappinessAction,
 } from "../../../redux/game/actions";
 
 import { NextButton } from "../../../components/game/GameButtons";
@@ -18,19 +18,19 @@ const SecondMinderaDecember = ({
   updateBalance,
   updateHappiness,
   updateBox,
-  goToNext
+  goToNext,
 }) => {
   const [isOpen, setIsOpen] = useState(true);
 
   const onButtonClick = () => setIsOpen(!isOpen);
 
-  const tripDecision = value => {
+  const tripDecision = (value) => {
     updateBox({
       ...gameDetails.timestamps,
       minderaTwoDec: {
         ...gameDetails.timestamps.minderaTwoDec,
-        tripDecision: value
-      }
+        tripDecision: value,
+      },
     });
   };
 
@@ -60,7 +60,9 @@ const SecondMinderaDecember = ({
       {minderaTwoDec.tripDecision && <p>I decided to go to the Alps.</p>}
 
       {minderaTwoDec.tripDecision === false && (
-        <p>I decided to not go to the Alps.</p>
+        <p>
+          I decided to not go to the Alps with my team and I had a lot of fun.
+        </p>
       )}
 
       {minderaTwoDec.tripDecision !== undefined && !minderaTwoDec.isFinished && (
@@ -75,27 +77,28 @@ const SecondMinderaDecember = ({
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     gameDetails: state.game.gameInfo,
-    minderaTwoDec: state.game.gameInfo.timestamps.minderaTwoDec
+    minderaTwoDec: state.game.gameInfo.timestamps.minderaTwoDec,
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  updateBalance: bankBalance => dispatch(updateBankBalanceAction(bankBalance)),
-  updateHappiness: happiness => dispatch(updateHappinessAction(happiness)),
-  updateBox: timestamps => dispatch(updateTimeBoxAction(timestamps)),
-  goToNext: timestamps =>
+const mapDispatchToProps = (dispatch) => ({
+  updateBalance: (bankBalance) =>
+    dispatch(updateBankBalanceAction(bankBalance)),
+  updateHappiness: (happiness) => dispatch(updateHappinessAction(happiness)),
+  updateBox: (timestamps) => dispatch(updateTimeBoxAction(timestamps)),
+  goToNext: (timestamps) =>
     dispatch(
       updateTimeBoxAction({
         ...timestamps,
         minderaTwoDec: {
           ...timestamps.minderaTwoDec,
-          isFinished: true
-        }
+          isFinished: true,
+        },
       })
-    )
+    ),
 });
 
 export default connect(
