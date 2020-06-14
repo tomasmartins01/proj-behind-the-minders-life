@@ -2,16 +2,24 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import StoryText from "../../../components/game/StoryText";
-
-import { updateTimeBoxAction } from "../../../redux/game/actions";
-
 import { NextButton } from "../../../components/game/GameButtons";
 import GameQuestion from "../../../components/game/GameQuestion";
 
+import {
+  updateTimeBoxAction,
+  updateBankBalanceAction,
+  updateSkillsAction
+} from "../../../redux/game/actions";
+import { updateAgeAction } from "../../../redux/formInfo/actions";
+
 const FirstMinderaJune = ({
+  formAge,
   gameDetails,
   minderaOneJun,
+  updateSkills,
   setOption,
+  increaseAge,
+  increaseBalance,
   goToNext
 }) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -23,6 +31,44 @@ const FirstMinderaJune = ({
       ...gameDetails.timestamps,
       minderaOneJun: { ...gameDetails.timestamps.minderaOneJun, newProject: op }
     });
+  };
+
+  const updateSkillsLevel = esp => {
+    switch (esp) {
+      case "Frontend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 97,
+          frontend: {
+            ...gameDetails.skillsLevel.frontend,
+            htmlSkills: 97,
+            cssSkills: 97,
+            jsSkills: 97
+          }
+        });
+        break;
+      case "Backend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 97,
+          backend: {
+            ...gameDetails.skillsLevel.backend,
+            javaSkills: 97,
+            sqlSkills: 97
+          }
+        });
+        break;
+      case "Mobile":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 97,
+          mobile: {
+            ...gameDetails.skillsLevel.mobile,
+            kotlinSkills: 97
+          }
+        });
+        break;
+    }
   };
 
   return (
@@ -37,7 +83,7 @@ const FirstMinderaJune = ({
             I finished my current project and now it's time to decide in which{" "}
             project I will be in.
           </p>
-          {gameDetails.carrer !== "Mobile" && (
+          {gameDetails.career !== "Mobile" && (
             <GameQuestion
               question="What project will you choose?"
               op1="betting website"
@@ -51,7 +97,7 @@ const FirstMinderaJune = ({
             />
           )}
 
-          {gameDetails.carrer === "Mobile" && (
+          {gameDetails.career === "Mobile" && (
             <GameQuestion
               question="What project will you choose?"
               op1="game"
@@ -77,6 +123,9 @@ const FirstMinderaJune = ({
       {minderaOneJun.newProject && !minderaOneJun.isFinished && (
         <NextButton
           action={() => {
+            updateSkillsLevel(gameDetails.career);
+            increaseBalance(gameDetails.bankBalance + 600 * 3);
+            increaseAge(formAge + 1);
             setIsOpen(false);
             goToNext(gameDetails.timestamps);
           }}
@@ -88,13 +137,18 @@ const FirstMinderaJune = ({
 
 const mapStateToProps = state => {
   return {
+    formAge: state.form.formDetails.age,
     gameDetails: state.game.gameInfo,
     minderaOneJun: state.game.gameInfo.timestamps.minderaOneJun
   };
 };
 
 const mapDispatchToProps = dispatch => ({
+  increaseAge: age => dispatch(updateAgeAction(age)),
   setOption: timestamps => dispatch(updateTimeBoxAction(timestamps)),
+  updateSkills: skillsLevel => dispatch(updateSkillsAction(skillsLevel)),
+  increaseBalance: bankBalance =>
+    dispatch(updateBankBalanceAction(bankBalance)),
   goToNext: timestamps =>
     dispatch(
       updateTimeBoxAction({

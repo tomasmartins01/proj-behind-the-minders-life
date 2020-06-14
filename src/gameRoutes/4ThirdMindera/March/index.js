@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import StoryText from "../../../components/game/StoryText";
-
-import { updateTimeBoxAction } from "../../../redux/game/actions";
-
 import { NextButton } from "../../../components/game/GameButtons";
 
-const ThirdMinderaMarch = ({ gameDetails, minderaThreeMar, goToNext }) => {
+import {
+  updateTimeBoxAction,
+  updateBankBalanceAction
+} from "../../../redux/game/actions";
+
+const ThirdMinderaMarch = ({ gameDetails, updateBankBalance, goToNext }) => {
   const [isOpen, setIsOpen] = useState(true);
 
   const onButtonClick = () => setIsOpen(!isOpen);
@@ -18,8 +20,13 @@ const ThirdMinderaMarch = ({ gameDetails, minderaThreeMar, goToNext }) => {
       isOpen={isOpen}
       onButtonClick={onButtonClick}
     >
+      <p>
+        I received superpositive feedback from the clients and the whole team{" "}
+        received a bonus.
+      </p>
       <NextButton
         action={() => {
+          updateBankBalance(gameDetails.bankBalance + 600 * 3 + 200);
           setIsOpen(false);
           goToNext(gameDetails.timestamps);
         }}
@@ -30,12 +37,13 @@ const ThirdMinderaMarch = ({ gameDetails, minderaThreeMar, goToNext }) => {
 
 const mapStateToProps = state => {
   return {
-    gameDetails: state.game.gameInfo,
-    minderaThreeMar: state.game.gameInfo.timestamps.minderaThreeMar
+    gameDetails: state.game.gameInfo
   };
 };
 
 const mapDispatchToProps = dispatch => ({
+  updateBankBalance: bankBalance =>
+    dispatch(updateBankBalanceAction(bankBalance)),
   goToNext: timestamps =>
     dispatch(
       updateTimeBoxAction({

@@ -5,8 +5,11 @@ import { connect } from "react-redux";
 import InterviewChoices from "./InterviewChoices";
 
 import "react-tabs/style/react-tabs.css";
+
 import SchoolChoices from "./SchoolChoices";
 import MinderaFirstChoices from "./MinderaFirst";
+import MinderaSecondChoices from "./MinderaSecond";
+import MinderaThirdChoices from "./MinderaThird";
 
 const GameResume = ({ formDetails, gameDetails, timestamps }) => {
   const isSchoolDisabled =
@@ -91,11 +94,11 @@ const GameResume = ({ formDetails, gameDetails, timestamps }) => {
         </TabPanel>
 
         <TabPanel>
-          <h3>Mindera Second Year</h3>
+          <MinderaSecondChoices timestamps={timestamps}/>
         </TabPanel>
 
         <TabPanel>
-          <h3>Mindera Third Year</h3>
+          <MinderaThirdChoices timestamps={timestamps} />
         </TabPanel>
 
         <TabPanel>

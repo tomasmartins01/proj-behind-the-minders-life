@@ -49,14 +49,6 @@ const SchoolMarch = ({
     });
   };
 
-  const getAvg = arr => {
-    let sum = 0;
-    for (let i = 0; i < arr.length; i++) {
-      sum += arr[i];
-    }
-    return sum / arr.length;
-  };
-
   const increaseSkills = projectLanguage => {
     switch (projectLanguage) {
       case "Java":
@@ -97,7 +89,7 @@ const SchoolMarch = ({
             htmlSkills: 90,
             cssSkills: 90,
             jsSkills: 90,
-            reactjsSkills: 60
+            reactjsSkills: 50
           }
         });
         break;
@@ -109,7 +101,7 @@ const SchoolMarch = ({
             htmlSkills: 90,
             cssSkills: 90,
             jsSkills: 90,
-            angularSkills: 60
+            angularSkills: 50
           }
         });
         break;
@@ -239,8 +231,8 @@ const SchoolMarch = ({
       {!schoolMar.isFinished && schoolMar.languagePicked && (
         <NextButton
           action={() => {
-            increaseBalance(gameDetails.bankBalance + 300 * 3);
             increaseSkills(schoolMar.languagePicked);
+            increaseBalance(gameDetails.bankBalance + 300 * 3);
             setIsOpen(false);
             goToNext(gameDetails.timestamps);
           }}

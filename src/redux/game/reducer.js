@@ -52,13 +52,21 @@ const initialStateGame = {
 
       minderaTwoSep: { isFinished: false, birthdayAction: "" },
       minderaTwoDec: { isFinished: false, tripDecision: undefined },
-      minderaTwoMar: { isFinished: false, pcbrokeToDo: "", pcInformation: undefined },
+      minderaTwoMar: {
+        isFinished: false,
+        pcbrokeToDo: "",
+        pcInformation: undefined
+      },
       minderaTwoJun: { isFinished: false, wentToLanParty: undefined },
 
-      minderaThreeSep: { isFinished: false },
-      minderaThreeDec: { isFinished: false },
+      minderaThreeSep: { isFinished: false, robberyAction: undefined },
+      minderaThreeDec: { isFinished: false, giftDecision: "" },
       minderaThreeMar: { isFinished: false },
-      minderaThreeJun: { isFinished: false },
+      minderaThreeJun: {
+        isFinished: false,
+        vacationPlace: "",
+        vacationMoney: undefined
+      },
 
       minderaFourSep: { isFinished: false },
       minderaFourDec: { isFinished: false },

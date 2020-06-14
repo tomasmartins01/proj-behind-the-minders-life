@@ -8,7 +8,8 @@ import { NextButton } from "../../../components/game/GameButtons";
 import {
   updateTimeBoxAction,
   updateBankBalanceAction,
-  updateHappinessAction
+  updateHappinessAction,
+  updateSkillsAction
 } from "../../../redux/game/actions";
 
 import mindersList from "../../../helpers/mindersList";
@@ -19,6 +20,7 @@ const SecondMinderaSeptember = ({
   birthday,
   updateBalance,
   updateHappiness,
+  updateSkills,
   goToNext
 }) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -28,7 +30,7 @@ const SecondMinderaSeptember = ({
   const mindersName = mindersList.map(minder => minder.name);
 
   const [minderSelected, setMinderSelected] = useState(
-    mindersList[(Math.random() * mindersName.length).toFixed()]
+    mindersName[(Math.random() * mindersName.length).toFixed()]
   );
 
   const birthdayText = text => {
@@ -41,6 +43,44 @@ const SecondMinderaSeptember = ({
     });
   };
 
+  const updateSkillsLevel = esp => {
+    switch (esp) {
+      case "Frontend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          frontend: {
+            ...gameDetails.skillsLevel.frontend,
+            htmlSkills: 100,
+            cssSkills: 100,
+            jsSkills: 100
+          }
+        });
+        break;
+      case "Backend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          backend: {
+            ...gameDetails.skillsLevel.backend,
+            javaSkills: 100,
+            sqlSkills: 100
+          }
+        });
+        break;
+      case "Mobile":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          mobile: {
+            ...gameDetails.skillsLevel.mobile,
+            kotlinSkills: 100
+          }
+        });
+        break;
+    }
+  };
+
   return (
     <StoryText
       hashtag={`#september${gameDetails.startingYear + 2}`}
@@ -48,7 +88,7 @@ const SecondMinderaSeptember = ({
       onButtonClick={onButtonClick}
     >
       <p>
-        I have been invited to {minderSelected.name}'s birthday party at Pérola
+        I have been invited to {minderSelected}'s birthday party at Pérola
         Negra.
       </p>
       {!minderaTwoSep.birthdayAction ? (
@@ -78,6 +118,8 @@ const SecondMinderaSeptember = ({
         <NextButton
           action={() => {
             setIsOpen(false);
+            updateSkillsLevel(gameDetails.career);
+            updateBalance(gameDetails.bankBalance + 600 * 3);
             goToNext(gameDetails.timestamps);
           }}
         />
@@ -97,6 +139,7 @@ const mapDispatchToProps = dispatch => ({
   birthday: timestamps => dispatch(updateTimeBoxAction(timestamps)),
   updateBalance: bankBalance => dispatch(updateBankBalanceAction(bankBalance)),
   updateHappiness: happiness => dispatch(updateHappinessAction(happiness)),
+  updateSkills: skillsLevel => dispatch(updateSkillsAction(skillsLevel)),
   goToNext: timestamps =>
     dispatch(
       updateTimeBoxAction({

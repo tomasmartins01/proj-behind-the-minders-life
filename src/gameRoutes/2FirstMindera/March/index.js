@@ -6,6 +6,8 @@ import GameQuestion from "../../../components/game/GameQuestion";
 
 import {
   updateTimeBoxAction,
+  updateBankBalanceAction,
+  updateSkillsAction,
   endGameAction
 } from "../../../redux/game/actions";
 
@@ -15,6 +17,8 @@ const FirstMinderaMarch = ({
   gameDetails,
   minderaOneMar,
   setOption,
+  increaseBalance,
+  updateSkills,
   endGame,
   goToNext
 }) => {
@@ -30,6 +34,44 @@ const FirstMinderaMarch = ({
         dinnerFood: op
       }
     });
+  };
+
+  const updateSkillsLevel = esp => {
+    switch (esp) {
+      case "Frontend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 95,
+          frontend: {
+            ...gameDetails.skillsLevel.frontend,
+            htmlSkills: 95,
+            cssSkills: 95,
+            jsSkills: 95
+          }
+        });
+        break;
+      case "Backend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 95,
+          backend: {
+            ...gameDetails.skillsLevel.backend,
+            javaSkills: 95,
+            sqlSkills: 95
+          }
+        });
+        break;
+      case "Mobile":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 95,
+          mobile: {
+            ...gameDetails.skillsLevel.mobile,
+            kotlinSkills: 95
+          }
+        });
+        break;
+    }
   };
 
   return (
@@ -91,6 +133,8 @@ const FirstMinderaMarch = ({
         !minderaOneMar.isFinished && (
           <NextButton
             action={() => {
+              updateSkillsLevel(gameDetails.career);
+              increaseBalance(gameDetails.bankBalance + 600 * 3);
               setIsOpen(false);
               goToNext(gameDetails.timestamps);
             }}
@@ -109,6 +153,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   setOption: timestamps => dispatch(updateTimeBoxAction(timestamps)),
+  updateSkills: skillsLevel => dispatch(updateSkillsAction(skillsLevel)),
+  increaseBalance: bankBalance =>
+    dispatch(updateBankBalanceAction(bankBalance)),
   endGame: () => dispatch(endGameAction()),
   goToNext: timestamps =>
     dispatch(

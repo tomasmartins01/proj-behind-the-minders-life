@@ -1,16 +1,12 @@
 import React from "react";
 
-const Mindera1Sep = ({ timestamps }) => {
+const Mindera1Sep = ({ gameDetails, timestamps }) => {
   return (
     <article>
       {timestamps.minderaOneSep.isFinished && (
         <>
           {timestamps.minderaOneSep.optionAfterSchool && (
-            <p>You decided to {timestamps.minderaOneSep.optionAfterSchool}</p>
-          )}
-
-          {timestamps.minderaOneSep.optionAfterSchool && (
-            <p>You decided to {timestamps.minderaOneSep.optionAfterSchool}</p>
+            <p>You decided to {timestamps.minderaOneSep.optionAfterSchool}.</p>
           )}
 
           {timestamps.minderaOneSep.passedTheInterview === false && (
@@ -21,7 +17,7 @@ const Mindera1Sep = ({ timestamps }) => {
             <p>
               You've done the interview and passed. They offered you a contract{" "}
               {timestamps.minderaOneSep.acceptedContract
-                ? `and you were part of Mindera as ${career}.`
+                ? `and you were part of Mindera as ${gameDetails.career}.`
                 : "but you changed your mind."}
             </p>
           )}
@@ -31,32 +27,63 @@ const Mindera1Sep = ({ timestamps }) => {
   );
 };
 
-// const Mindera1Dec = ({ timestamps }) => {
-//   return (
-//     <article>
-//       {timestamps.Mindera1Dec.isFinished && (
-//         <>
-//           {timestamps.Mindera1Dec.partyOrProject && (
-//             <p>You dedided to {timestamps.Mindera1Dec.partyOrProject}</p>
-//           )}
+const Mindera1Dec = ({ timestamps }) => {
+  return (
+    <article>
+      {timestamps.minderaOneDec.isFinished && (
+        <>
+          {timestamps.minderaOneDec.partyOrProject && (
+            <p>You decided to {timestamps.minderaOneDec.partyOrProject}.</p>
+          )}
 
-//           {/* {timestamps.Mindera1Dec.christmasPresent && (
-//             <p>
-//               You gave {timesstamp.minderSelected} a
-//               {timestamps.christmasPresent}
-//             </p>
-//           )} */}
-//         </>
-//       )}
-//     </article>
-//   );
-// };
+          {timestamps.minderaOneDec.christmasPresent && (
+            <p>
+              You offered {timestamps.minderaOneDec.christmasPresent} for
+              Christmas.
+            </p>
+          )}
+        </>
+      )}
+    </article>
+  );
+};
 
+const Mindera1Mar = ({ timestamps }) => {
+  return (
+    <article>
+      {timestamps.minderaOneMar.isFinished && (
+        <>
+        {timestamps.minderaOneMar.dinnerFood && (
+          <p>You ate {timestamps.minderaOneMar.dinnerFood}.</p>
+        )}   
+        </>
+      )}
+    </article>
+  );
+};
+
+const Mindera1Jun = ({ timestamps}) => {
+  return (
+    <article>
+      {timestamps.minderaOneJun.isFinished && (
+        <>
+        {timestamps.minderaOneJun.newProject && (
+          <p>You chose to do {timestamps.minderaOneJun.newProject} for your new project.</p>
+        )}
+        </>
+      )}
+    </article>
+
+  )
+}
+ 
 const MinderaFirstChoices = ({ timestamps, gameDetails }) => {
   return (
     <>
-      <Mindera1Sep timestamps={timestamps} />
-      {/* <Mindera1Dec timestamps={timestamps} /> */}
+      <Mindera1Sep timestamps={timestamps} gameDetails={gameDetails} />
+      <Mindera1Dec timestamps={timestamps} />
+      <Mindera1Mar timestamps={timestamps} />
+      <Mindera1Jun timestamps={timestamps} />
     </>
   );
 };

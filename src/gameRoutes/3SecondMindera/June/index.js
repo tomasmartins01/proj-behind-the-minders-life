@@ -3,15 +3,23 @@ import { connect } from "react-redux";
 
 import StoryText from "../../../components/game/StoryText";
 import GameQuestion from "../../../components/game/GameQuestion";
-
-import { updateTimeBoxAction } from "../../../redux/game/actions";
-
 import { NextButton } from "../../../components/game/GameButtons";
 
+import {
+  updateTimeBoxAction,
+  updateSkillsAction,
+  updateBankBalanceAction
+} from "../../../redux/game/actions";
+import { updateAgeAction } from "../../../redux/formInfo/actions";
+
 const SecondMinderaJune = ({
+  formAge,
   gameDetails,
   minderaTwoJun,
+  increaseBalance,
+  updateSkills,
   updateBox,
+  increaseAge,
   goToNext
 }) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -26,6 +34,44 @@ const SecondMinderaJune = ({
         wentToLanParty: true
       }
     });
+  };
+
+  const updateSkillsLevel = esp => {
+    switch (esp) {
+      case "Frontend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          frontend: {
+            ...gameDetails.skillsLevel.frontend,
+            htmlSkills: 100,
+            cssSkills: 100,
+            jsSkills: 100
+          }
+        });
+        break;
+      case "Backend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          backend: {
+            ...gameDetails.skillsLevel.backend,
+            javaSkills: 100,
+            sqlSkills: 100
+          }
+        });
+        break;
+      case "Mobile":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          mobile: {
+            ...gameDetails.skillsLevel.mobile,
+            kotlinSkills: 100
+          }
+        });
+        break;
+    }
   };
 
   return (
@@ -60,6 +106,9 @@ const SecondMinderaJune = ({
         <NextButton
           action={() => {
             setIsOpen(false);
+            increaseAge(formAge + 1);
+            updateSkillsLevel(gameDetails.career);
+            increaseBalance(gameDetails.bankBalance + 600 * 3);
             goToNext(gameDetails.timestamps);
           }}
         />
@@ -70,13 +119,18 @@ const SecondMinderaJune = ({
 
 const mapStateToProps = state => {
   return {
+    formAge: state.form.formDetails.age,
     gameDetails: state.game.gameInfo,
     minderaTwoJun: state.game.gameInfo.timestamps.minderaTwoJun
   };
 };
 
 const mapDispatchToProps = dispatch => ({
+  increaseAge: age => dispatch(updateAgeAction(age)),
   updateBox: timestamps => dispatch(updateTimeBoxAction(timestamps)),
+  updateSkills: skillsLevel => dispatch(updateSkillsAction(skillsLevel)),
+  increaseBalance: bankBalance =>
+    dispatch(updateBankBalanceAction(bankBalance)),
   goToNext: timestamps =>
     dispatch(
       updateTimeBoxAction({

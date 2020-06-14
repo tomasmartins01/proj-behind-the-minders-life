@@ -8,6 +8,7 @@ import { NextButton, EndButton } from "../../../components/game/GameButtons";
 import {
   updateTimeBoxAction,
   updateBankBalanceAction,
+  updateSkillsAction,
   endGameAction
 } from "../../../redux/game/actions";
 
@@ -21,6 +22,7 @@ const SchoolJune = ({
   presentationFeeling,
   increaseBalance,
   increaseAge,
+  updateSkills,
   endGame,
   goToNext
 }) => {
@@ -31,6 +33,22 @@ const SchoolJune = ({
     presentationFeeling({
       ...gameDetails.timestamps,
       schoolJun: { ...schoolJun, presentationFeeling: feeling }
+    });
+  };
+
+  const setSkills = () => {
+    updateSkills({
+      ...gameDetails.skillsLevel,
+      backend: { ...gameDetails.skillsLevel.backend, javaSkills: 80 },
+      frontend: {
+        ...gameDetails.skillsLevel.frontend,
+        reactjsSkills: 60
+      },
+      mobile: {
+        ...gameDetails.skillsLevel.mobile,
+        reactNativeSkills: 60,
+        kotlinSkills: 60
+      }
     });
   };
 
@@ -87,6 +105,7 @@ const SchoolJune = ({
         schoolJun.presentationFeeling !== "nervous" && (
           <NextButton
             action={() => {
+              setSkills();
               increaseBalance(gameDetails.bankBalance + 300 * 3);
               increaseAge(formAge + 1);
               setIsOpen(false);
@@ -112,6 +131,7 @@ const mapDispatchToProps = dispatch => ({
   increaseBalance: bankbalance =>
     dispatch(updateBankBalanceAction(bankbalance)),
   increaseAge: age => dispatch(updateAgeAction(age)),
+  updateSkills: skillsLevel => dispatch(updateSkillsAction(skillsLevel)),
   goToNext: timestamps =>
     dispatch(
       updateTimeBoxAction({

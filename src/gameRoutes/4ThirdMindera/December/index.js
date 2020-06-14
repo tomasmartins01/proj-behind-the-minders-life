@@ -2,15 +2,30 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import StoryText from "../../../components/game/StoryText";
+import GameQuestion from "../../../components/game/GameQuestion";
+import { NextButton } from "../../../components/game/GameButtons";
 
 import { updateTimeBoxAction } from "../../../redux/game/actions";
 
-import { NextButton } from "../../../components/game/GameButtons";
-
-const ThirdMinderaDecember = ({ gameDetails, minderaThreeDec, goToNext }) => {
+const ThirdMinderaDecember = ({
+  gameDetails,
+  minderaThreeDec,
+  updateBox,
+  goToNext
+}) => {
   const [isOpen, setIsOpen] = useState(true);
 
   const onButtonClick = () => setIsOpen(!isOpen);
+
+  const setOption = decision => {
+    updateBox({
+      ...gameDetails.timestamps,
+      minderaThreeDec: {
+        ...gameDetails.timestamps.minderaThreeDec,
+        giftDecision: decision
+      }
+    });
+  };
 
   return (
     <StoryText
@@ -18,12 +33,35 @@ const ThirdMinderaDecember = ({ gameDetails, minderaThreeDec, goToNext }) => {
       isOpen={isOpen}
       onButtonClick={onButtonClick}
     >
-      <NextButton
-        action={() => {
-          setIsOpen(false);
-          goToNext(gameDetails.timestamps);
-        }}
-      />
+      <p>
+        This year at the secret friend's party you received an ugly pair of
+        socks.
+      </p>
+      {!minderaThreeDec.giftDecision && (
+        <GameQuestion
+          question="How are you going to react?"
+          op1="thank although I don't like it very much"
+          op2="throw the socks off the balcony of the 404"
+          op3="I really enjoyed this gift"
+          onClickOp1={() => setOption("be thankful for the gift")}
+          onClickOp2={() => setOption("be rude to your coworkers")}
+          onClickOp3={() => setOption("be super nice to your coworkers")}
+        />
+      )}
+      {minderaThreeDec.giftDecision && (
+        <p>
+          After you received the gift, you decided to{" "}
+          {minderaThreeDec.giftDecision}.
+        </p>
+      )}
+      {minderaThreeDec.giftDecision && !minderaThreeDec.isFinished && (
+        <NextButton
+          action={() => {
+            setIsOpen(false);
+            goToNext(gameDetails.timestamps);
+          }}
+        />
+      )}
     </StoryText>
   );
 };
@@ -36,6 +74,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
+  updateBox: timestamps => dispatch(updateTimeBoxAction(timestamps)),
   goToNext: timestamps =>
     dispatch(
       updateTimeBoxAction({

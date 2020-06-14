@@ -44,7 +44,7 @@ const SchoolDecember = ({
           socialSkills: 85,
           backend: {
             ...skillsLevel.backend,
-            javaSkills: 65,
+            javaSkills: 85,
             sqlSkills: 65
           },
           frontend: {
@@ -215,7 +215,7 @@ const SchoolDecember = ({
               {schoolDec.quizNumberOfQuestions / 2 >
                 schoolDec.correctAnswersBE &&
                 schoolDec.quizNumberOfQuestions / 2 >
-                schoolDec.correctAnswersFE &&
+                  schoolDec.correctAnswersFE &&
                 schoolDec.quizNumberOfQuestions / 2 >
                   schoolDec.correctAnswersMB && (
                   <>

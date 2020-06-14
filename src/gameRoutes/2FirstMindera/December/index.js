@@ -4,7 +4,11 @@ import { connect } from "react-redux";
 import StoryText from "../../../components/game/StoryText";
 import GameQuestion from "../../../components/game/GameQuestion";
 
-import { updateTimeBoxAction } from "../../../redux/game/actions";
+import {
+  updateTimeBoxAction,
+  updateBankBalanceAction,
+  updateSkillsAction
+} from "../../../redux/game/actions";
 
 import { NextButton } from "../../../components/game/GameButtons";
 
@@ -14,6 +18,8 @@ const FirstMinderaDecember = ({
   gameDetails,
   minderaOneDec,
   setOption,
+  updateSkills,
+  increaseBalance,
   goToNext
 }) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -46,6 +52,44 @@ const FirstMinderaDecember = ({
     mindersName[(Math.random() * mindersName.length).toFixed()]
   );
 
+  const updateSkillsLevel = esp => {
+    switch (esp) {
+      case "Frontend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 90,
+          frontend: {
+            ...gameDetails.skillsLevel.frontend,
+            htmlSkills: 90,
+            cssSkills: 90,
+            jsSkills: 90
+          }
+        });
+        break;
+      case "Backend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 90,
+          backend: {
+            ...gameDetails.skillsLevel.backend,
+            javaSkills: 90,
+            sqlSkills: 90
+          }
+        });
+        break;
+      case "Mobile":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 90,
+          mobile: {
+            ...gameDetails.skillsLevel.mobile,
+            kotlinSkills: 90
+          }
+        });
+        break;
+    }
+  };
+
   return (
     <StoryText
       hashtag={`#december${gameDetails.startingYear + 1}`}
@@ -55,8 +99,8 @@ const FirstMinderaDecember = ({
       {!minderaOneDec.partyOrProject && (
         <>
           <p>
-            I am having difficulties with your project, but your best friend{" "}
-            is celebrating his birthday and is going to throw a big party.
+            I am having difficulties with your project, but your best friend is{" "}
+            celebrating his birthday and is going to throw a big party.
           </p>
           <GameQuestion
             question="Are you going to party or decide to stay home and finish the project?"
@@ -87,12 +131,14 @@ const FirstMinderaDecember = ({
       )}
       {minderaOneDec.partyOrProject && minderaOneDec.christmasPresent && (
         <p>
-          I gave {minderSelected.name} {minderaOneDec.christmasPresent}.
+          I gave {minderSelected} {minderaOneDec.christmasPresent}.
         </p>
       )}
       {minderaOneDec.christmasPresent && !minderaOneDec.isFinished && (
         <NextButton
           action={() => {
+            updateSkillsLevel(gameDetails.career);
+            increaseBalance(gameDetails.bankBalance + 600 * 3);
             setIsOpen(false);
             goToNext(gameDetails.timestamps);
           }}
@@ -111,6 +157,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   setOption: timestamps => dispatch(updateTimeBoxAction(timestamps)),
+  updateSkills: skillsLevel => dispatch(updateSkillsAction(skillsLevel)),
+  increaseBalance: bankBalance =>
+    dispatch(updateBankBalanceAction(bankBalance)),
   goToNext: timestamps =>
     dispatch(
       updateTimeBoxAction({

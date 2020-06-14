@@ -128,7 +128,7 @@ const Question2 = ({ correctAnswer, wrongAnswer }) => {
     <GameQuestion
       question="In Java, which data type doesn't exist?"
       op1="String"
-      op2="Number"
+      op2="Const"
       op3="Boolean"
       onClickOp1={wrongAnswer}
       onClickOp2={correctAnswer}

@@ -8,6 +8,7 @@ import {
   updateTimeBoxAction,
   updateBankBalanceAction,
   updateHappinessAction,
+  updateSkillsAction
 } from "../../../redux/game/actions";
 
 import { NextButton } from "../../../components/game/GameButtons";
@@ -15,23 +16,62 @@ import { NextButton } from "../../../components/game/GameButtons";
 const SecondMinderaDecember = ({
   gameDetails,
   minderaTwoDec,
-  updateBalance,
+  increaseBalance,
+  updateSkills,
   updateHappiness,
   updateBox,
-  goToNext,
+  goToNext
 }) => {
   const [isOpen, setIsOpen] = useState(true);
 
   const onButtonClick = () => setIsOpen(!isOpen);
 
-  const tripDecision = (value) => {
+  const tripDecision = value => {
     updateBox({
       ...gameDetails.timestamps,
       minderaTwoDec: {
         ...gameDetails.timestamps.minderaTwoDec,
-        tripDecision: value,
-      },
+        tripDecision: value
+      }
     });
+  };
+
+  const updateSkillsLevel = esp => {
+    switch (esp) {
+      case "Frontend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          frontend: {
+            ...gameDetails.skillsLevel.frontend,
+            htmlSkills: 100,
+            cssSkills: 100,
+            jsSkills: 100
+          }
+        });
+        break;
+      case "Backend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          backend: {
+            ...gameDetails.skillsLevel.backend,
+            javaSkills: 100,
+            sqlSkills: 100
+          }
+        });
+        break;
+      case "Mobile":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          mobile: {
+            ...gameDetails.skillsLevel.mobile,
+            kotlinSkills: 100
+          }
+        });
+        break;
+    }
   };
 
   return (
@@ -47,7 +87,7 @@ const SecondMinderaDecember = ({
           op2="No"
           onClickOp1={() => {
             updateHappiness(100);
-            updateBalance(gameDetails.bankBalance - 500);
+            increaseBalance(gameDetails.bankBalance - 500);
             tripDecision(true);
           }}
           onClickOp2={() => {
@@ -61,7 +101,7 @@ const SecondMinderaDecember = ({
 
       {minderaTwoDec.tripDecision === false && (
         <p>
-          I decided to not go to the Alps with my team and I had a lot of fun.
+          I decided to not go to the Alps with my team.
         </p>
       )}
 
@@ -69,6 +109,8 @@ const SecondMinderaDecember = ({
         <NextButton
           action={() => {
             setIsOpen(false);
+            updateSkillsLevel(gameDetails.career);
+            increaseBalance(gameDetails.bankBalance + 600 * 3);
             goToNext(gameDetails.timestamps);
           }}
         />
@@ -77,28 +119,30 @@ const SecondMinderaDecember = ({
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     gameDetails: state.game.gameInfo,
-    minderaTwoDec: state.game.gameInfo.timestamps.minderaTwoDec,
+    minderaTwoDec: state.game.gameInfo.timestamps.minderaTwoDec
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  updateBalance: (bankBalance) =>
+const mapDispatchToProps = dispatch => ({
+  updateBalance: bankBalance => dispatch(updateBankBalanceAction(bankBalance)),
+  updateHappiness: happiness => dispatch(updateHappinessAction(happiness)),
+  increaseBalance: bankBalance =>
     dispatch(updateBankBalanceAction(bankBalance)),
-  updateHappiness: (happiness) => dispatch(updateHappinessAction(happiness)),
-  updateBox: (timestamps) => dispatch(updateTimeBoxAction(timestamps)),
-  goToNext: (timestamps) =>
+  updateSkills: skillsLevel => dispatch(updateSkillsAction(skillsLevel)),
+  updateBox: timestamps => dispatch(updateTimeBoxAction(timestamps)),
+  goToNext: timestamps =>
     dispatch(
       updateTimeBoxAction({
         ...timestamps,
         minderaTwoDec: {
           ...timestamps.minderaTwoDec,
-          isFinished: true,
-        },
+          isFinished: true
+        }
       })
-    ),
+    )
 });
 
 export default connect(

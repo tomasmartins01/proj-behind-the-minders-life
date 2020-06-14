@@ -7,7 +7,9 @@ import GameQuestion from "../../../components/game/GameQuestion";
 
 import {
   updateTimeBoxAction,
+  updateSkillsAction,
   updateCareerAction,
+  updateBankBalanceAction,
   endGameAction
 } from "../../../redux/game/actions";
 import BackendInterview from "./BackendInterview";
@@ -19,6 +21,8 @@ const FirstMinderaSeptember = ({
   minderaOneSep,
   setOption,
   setMinderCareer,
+  updateSkills,
+  increaseBalance,
   goToNext,
   endGame
 }) => {
@@ -56,6 +60,44 @@ const FirstMinderaSeptember = ({
         return <FrontendInterview />;
       case "Mobile":
         return <MobileInterview />;
+    }
+  };
+
+  const updateSkillsLevel = esp => {
+    switch (esp) {
+      case "Frontend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 85,
+          frontend: {
+            ...gameDetails.skillsLevel.frontend,
+            htmlSkills: 85,
+            cssSkills: 85,
+            jsSkills: 85
+          }
+        });
+        break;
+      case "Backend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 85,
+          backend: {
+            ...gameDetails.skillsLevel.backend,
+            javaSkills: 85,
+            sqlSkills: 85
+          }
+        });
+        break;
+      case "Mobile":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 85,
+          mobile: {
+            ...gameDetails.skillsLevel.mobile,
+            kotlinSkills: 85
+          }
+        });
+        break;
     }
   };
 
@@ -150,6 +192,8 @@ const FirstMinderaSeptember = ({
               {!minderaOneSep.isFinished && (
                 <NextButton
                   action={() => {
+                    updateSkillsLevel(gameDetails.career);
+                    increaseBalance(gameDetails.bankBalance + 600 * 3);
                     setIsOpen(false);
                     goToNext(gameDetails.timestamps);
                   }}
@@ -185,6 +229,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   setOption: timestamps => dispatch(updateTimeBoxAction(timestamps)),
   setMinderCareer: career => dispatch(updateCareerAction(career)),
+  increaseBalance: bankbalance =>
+    dispatch(updateBankBalanceAction(bankbalance)),
+  updateSkills: skillsLevel => dispatch(updateSkillsAction(skillsLevel)),
   goToNext: timestamps =>
     dispatch(
       updateTimeBoxAction({
