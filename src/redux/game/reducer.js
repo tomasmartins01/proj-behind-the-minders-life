@@ -68,10 +68,10 @@ const initialStateGame = {
         vacationMoney: undefined
       },
 
-      minderaFourSep: { isFinished: false },
-      minderaFourDec: { isFinished: false },
-      minderaFourMar: { isFinished: false },
-      minderaFourJun: { isFinished: false },
+      minderaFourSep: { isFinished: false, newLanguageProject: undefined },
+      minderaFourDec: { isFinished: false, doneWorkshop: undefined },
+      minderaFourMar: { isFinished: false, minderaTechDay: undefined },
+      minderaFourJun: { isFinished: false, surf: "" },
 
       minderaFiveSep: { isFinished: false },
       minderaFiveDec: { isFinished: false },

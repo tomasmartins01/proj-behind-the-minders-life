@@ -49,7 +49,7 @@ const FirstMinderaDecember = ({
   const mindersName = mindersList.map(minder => minder.name);
 
   const [minderSelected, setMinderSelected] = useState(
-    mindersName[(Math.random() * mindersName.length).toFixed()]
+    mindersName[(Math.random() * (mindersName.length -1)).toFixed()]
   );
 
   const updateSkillsLevel = esp => {

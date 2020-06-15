@@ -40,7 +40,11 @@ const Game = ({ formDetails, gameDetails }) => {
             {dropdownValue === "profile" && (
               <Profile
                 formDetails={formDetails}
-                specialization={gameDetails.specialization}
+                specialization={
+                  gameDetails.career
+                    ? gameDetails.career
+                    : gameDetails.specialization
+                }
                 happiness={gameDetails.happiness}
                 bankBalance={gameDetails.bankBalance}
               />

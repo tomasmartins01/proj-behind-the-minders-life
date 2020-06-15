@@ -80,14 +80,15 @@ const SecondMinderaDecember = ({
       isOpen={isOpen}
       onButtonClick={onButtonClick}
     >
+      <p>Mindera decided to make a trip do the Alps!</p>
       {minderaTwoDec.tripDecision === undefined && (
         <GameQuestion
-          question="Mindera decided to make a trip do the Alps! Are you coming?"
+          question="Are you coming? (it will cost 1k)"
           op1="Yes"
           op2="No"
           onClickOp1={() => {
             updateHappiness(100);
-            increaseBalance(gameDetails.bankBalance - 500);
+            increaseBalance(gameDetails.bankBalance - 1000);
             tripDecision(true);
           }}
           onClickOp2={() => {

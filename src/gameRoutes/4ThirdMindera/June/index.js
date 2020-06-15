@@ -15,7 +15,8 @@ const ThirdMinderaJune = ({
   formAge, 
   gameDetails,
   minderaThreeJun,
-  updateBankBalance,
+  increaseAge,
+  updateBalance,
   updateBox,
   goToNext
 }) => {
@@ -24,7 +25,7 @@ const ThirdMinderaJune = ({
   const onButtonClick = () => setIsOpen(!isOpen);
 
   const setOptions = (place, money) => {
-    updateBankBalance(gameDetails.bankBalance - money);
+    updateBalance(gameDetails.bankBalance - money);
     updateBox({
       ...gameDetails.timestamps,
       minderaThreeJun: {
@@ -94,7 +95,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   increaseAge: age => dispatch(updateAgeAction(age)),
-  updateBankBalance: bankBalance =>
+  updateBalance: bankBalance =>
     dispatch(updateBankBalanceAction(bankBalance)),
   updateBox: timestamps => dispatch(updateTimeBoxAction(timestamps)),
   goToNext: timestamps =>

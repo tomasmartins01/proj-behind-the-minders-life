@@ -9,7 +9,11 @@ import {
   updateBankBalanceAction
 } from "../../../redux/game/actions";
 
-const ThirdMinderaMarch = ({ gameDetails, updateBankBalance, goToNext }) => {
+const ThirdMinderaMarch = ({
+  gameDetails,
+  updateBankBalance,
+  goToNext
+}) => {
   const [isOpen, setIsOpen] = useState(true);
 
   const onButtonClick = () => setIsOpen(!isOpen);

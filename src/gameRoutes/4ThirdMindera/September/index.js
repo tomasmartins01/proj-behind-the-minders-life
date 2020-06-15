@@ -53,12 +53,12 @@ const ThirdMinderaSeptember = ({
           op3="Cry and try to call your mom."
           op4="FIGHT LIKE A BOSS"
           onClickOp1={() => {
-            robberyText("you gave him all your money");
+            robberyText("give the thief all your money");
             updateBalance(0);
           }}
-          onClickOp2={() => robberyText("you started running")}
-          onClickOp2={() => {
-            robberyText("you cried and called your mom");
+          onClickOp2={() => robberyText("start running from the thief")}
+          onClickOp3={() => {
+            robberyText("cry and call your mom. The thief stole your phone.");
             updateBalance(gameDetails.bankBalance - 500);
             updateHappiness(70);
           }}

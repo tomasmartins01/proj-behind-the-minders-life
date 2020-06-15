@@ -5,25 +5,7 @@ const Mindera3Sep = ({ timestamps }) => {
   return (
     <article>
       {timestamps.minderaThreeSep.isFinished && (
-        <>
-          {robberyAction && (
-            <p>
-              You decided to {robberyAction}.
-              {robberyAction === "you gave him all your money" && (
-                <span> You gave the thief all your money.</span>
-              )}
-              {robberyAction === "you started running" && (
-                <span> You ran away from the thief.</span>
-              )}
-              {robberyAction === "you cried and called your mom" && (
-                <span> You decided to cry and call your mom...</span>
-              )}
-              {robberyAction === "you fought like a boss" && (
-                <span> You decided to fight the thief.</span>
-              )}
-            </p>
-          )}
-        </>
+        <>{robberyAction && <p>You decided to {robberyAction}.</p>}</>
       )}
     </article>
   );
@@ -84,4 +66,4 @@ const MinderaThirdChoices = ({ timestamps }) => {
   );
 };
 
-export default MinderaSecondChoices;
+export default MinderaThirdChoices;
