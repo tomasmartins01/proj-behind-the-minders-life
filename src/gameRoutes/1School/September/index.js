@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import LazyLoad from "react-lazyload";
 
 import StoryText from "../../../components/game/StoryText";
 import GameQuestion from "../../../components/game/GameQuestion";
@@ -81,7 +82,9 @@ const SchoolSeptember = ({
       <div className="gameBox">
         <p>Welcome again Mindernaut!!</p>
         <p>We're very happy to show you your schedule.</p>
-        <img src={Schedule} alt="schedule" />
+        <LazyLoad once>
+          <img src={Schedule} alt="schedule" />
+        </LazyLoad>
       </div>
 
       {formDetails.age <= 23 && (

@@ -1,6 +1,7 @@
 import React from "react";
 import ReactPlayer from "react-player";
 import { Link, useParams } from "react-router-dom";
+import LazyLoad from "react-lazyload";
 
 import Header from "../components/utils/Header";
 import Image from "../components/utils/Image";
@@ -12,11 +13,10 @@ import "../styles/minders-styles/characters.less";
 
 const MinderPage = () => {
   const { name } = useParams();
-  let otherMinders = [{}, {}, {}];
-
   const minderInfo = mindersList.find(minder => minder.urlName === name);
   document.title = minderInfo.name;
 
+  let otherMinders = [{}, {}, {}];
   const minders = mindersList.filter(minder => minder.urlName !== name);
 
   const getMinders = () => {
@@ -49,13 +49,15 @@ const MinderPage = () => {
       <main className="characterPage">
         <section className="Characters">
           <h1 id="characterTitle">{minderInfo.name}</h1>
-          <ReactPlayer
-            controls
-            url={minderInfo.youtubeVideo}
-            width="100%"
-            height="100%"
-            className="minderVideo"
-          />
+          <LazyLoad once>
+            <ReactPlayer
+              controls
+              url={minderInfo.youtubeVideo}
+              width="100%"
+              height="100%"
+              className="minderVideo"
+            />
+          </LazyLoad>
         </section>
 
         <section className="displayMinders">

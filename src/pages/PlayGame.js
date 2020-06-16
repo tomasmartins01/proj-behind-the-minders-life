@@ -51,7 +51,7 @@ const PlayGame = ({ saveInfo, startGame, history }) => {
         .toUpperCase() + lastName.slice(1);
 
     const fullName = firstNameCapitalized + " " + lastNameCapitalized;
-    saveInfo(fullName, age, gender, country, region, avatarImage);
+    saveInfo(fullName, Number(age), gender, country, region, avatarImage);
     startGame();
     history.push("/game");
   };

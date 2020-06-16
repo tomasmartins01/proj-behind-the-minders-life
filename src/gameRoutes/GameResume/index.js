@@ -57,59 +57,69 @@ const GameResume = ({ formDetails, gameDetails, timestamps }) => {
   };
 
   return (
-    <div className="endGame">
-      <section>
-        <h3>{formDetails.fullName}'s life choices</h3>
-      </section>
+    <>
+      <p id="thankyouforplaying"
+        style={{
+          textAlign: "center",
+          fontSize: "30px",
+          fontFamily: "Dosis",
+          textTransform: "uppercase"
+        }}
+      >
+        Thank you for playing!
+      </p>
+      <div className="endGame">
+        <section>
+          <h3>{formDetails.fullName}'s life choices</h3>
+        </section>
 
-      <Tabs>
-        <TabList>
-          <Tab>Status</Tab>
-          <Tab>Interview</Tab>
-          <Tab disabled={isSchoolDisabled}>School Year</Tab>
-          <Tab disabled={isMindera1Disabled}>Mindera First Year</Tab>
-          <Tab disabled={isMindera2Disabled}>Mindera Second Year</Tab>
-          <Tab disabled={isMindera3Disabled}>Mindera Third Year</Tab>
-          <Tab disabled={isMindera4Disabled}>Mindera Fourth Year</Tab>
-          <Tab disabled={isMindera5Disabled}>Mindera Fifth Year</Tab>
-        </TabList>
+        <Tabs>
+          <TabList>
+            <Tab>Interview</Tab>
+            <Tab disabled={isSchoolDisabled}>School Year</Tab>
+            <Tab disabled={isMindera1Disabled}>Mindera First Year</Tab>
+            <Tab disabled={isMindera2Disabled}>Mindera Second Year</Tab>
+            <Tab disabled={isMindera3Disabled}>Mindera Third Year</Tab>
+            <Tab disabled={isMindera4Disabled}>Mindera Fourth Year</Tab>
+            <Tab disabled={isMindera5Disabled}>Mindera Fifth Year</Tab>
+          </TabList>
 
-        <TabPanel>
-          <h3>Status</h3>
-        </TabPanel>
+          <TabPanel style={panelStyle}>
+            <InterviewChoices
+              timestamps={timestamps}
+              gameDetails={gameDetails}
+            />
+          </TabPanel>
 
-        <TabPanel style={panelStyle}>
-          <InterviewChoices timestamps={timestamps} gameDetails={gameDetails} />
-        </TabPanel>
+          <TabPanel style={panelStyle}>
+            <SchoolChoices timestamps={timestamps} gameDetails={gameDetails} />
+          </TabPanel>
 
-        <TabPanel style={panelStyle}>
-          <SchoolChoices timestamps={timestamps} gameDetails={gameDetails} />
-        </TabPanel>
+          <TabPanel style={panelStyle}>
+            <MinderaFirstChoices
+              timestamps={timestamps}
+              gameDetails={gameDetails}
+            />
+          </TabPanel>
 
-        <TabPanel style={panelStyle}>
-          <MinderaFirstChoices
-            timestamps={timestamps}
-            gameDetails={gameDetails}
-          />
-        </TabPanel>
+          <TabPanel style={panelStyle}>
+            <MinderaSecondChoices timestamps={timestamps} />
+          </TabPanel>
 
-        <TabPanel>
-          <MinderaSecondChoices timestamps={timestamps}/>
-        </TabPanel>
+          <TabPanel style={panelStyle}>
+            <MinderaThirdChoices timestamps={timestamps} />
+          </TabPanel>
 
-        <TabPanel>
-          <MinderaThirdChoices timestamps={timestamps} />
-        </TabPanel>
+          <TabPanel style={panelStyle}>
+            <h3>Mindera Fourth Year</h3>
+          </TabPanel>
 
-        <TabPanel>
-          <h3>Mindera Fourth Year</h3>
-        </TabPanel>
-
-        <TabPanel>
-          <h3>Mindera Fifth Year</h3>
-        </TabPanel>
-      </Tabs>
-    </div>
+          <TabPanel style={panelStyle}>
+            <h3>Mindera Fifth Year</h3>
+          </TabPanel>
+        </Tabs>
+      </div>
+    </>
   );
 };
 

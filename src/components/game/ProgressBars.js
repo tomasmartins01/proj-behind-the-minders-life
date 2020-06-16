@@ -164,7 +164,6 @@ const ProgressBars = ({ skills, specialization, prevExperience }) => {
                   ? "mediumStatus"
                   : "goodStatus"
               }`}
-              id="htmlSkills"
             >
               {skills.frontend.htmlSkills}%
             </div>
@@ -179,7 +178,6 @@ const ProgressBars = ({ skills, specialization, prevExperience }) => {
                   ? "mediumStatus"
                   : "goodStatus"
               }`}
-              id="cssSkills"
             >
               {skills.frontend.cssSkills}%
             </div>
@@ -194,7 +192,6 @@ const ProgressBars = ({ skills, specialization, prevExperience }) => {
                   ? "mediumStatus"
                   : "goodStatus"
               }`}
-              id="jsSkills"
             >
               {skills.frontend.jsSkills}%
             </div>

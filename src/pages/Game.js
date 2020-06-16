@@ -52,7 +52,9 @@ const Game = ({ formDetails, gameDetails }) => {
             {dropdownValue === "progress" && (
               <ProgressBars
                 skills={gameDetails.skillsLevel}
-                specialization={gameDetails.specialization}
+                specialization={gameDetails.career
+                  ? gameDetails.career
+                  : gameDetails.specialization}
                 prevExperience={gameDetails.prevExperience}
               />
             )}

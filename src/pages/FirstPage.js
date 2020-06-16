@@ -12,7 +12,6 @@ import logoBlack from "../images/logoBlack.png";
 import logoWhite from "../images/logoWhite.png";
 import logoLife from "../images/logoLife.png";
 import logoLifeBlack from "../images/logoLifeBlack.png";
-import room404 from "../images/room404.png";
 
 import "../styles/index.less";
 
@@ -76,7 +75,6 @@ const FirstPage = ({ loginUser, logoutUser, isNightMode }) => {
           />
         ) : (
           <ErrorPage
-            image={room404}
             handleClick={() => {
               auth.signOut();
               setIsSignedIn(false);
@@ -85,11 +83,11 @@ const FirstPage = ({ loginUser, logoutUser, isNightMode }) => {
         )
       ) : (
         <div id="toLogin">
-          <Image
-            imageSrc={isNightMode ? logoWhite : logoBlack}
-            alt="Logo Site"
-            cName="login-logo"
-          />
+            <Image
+              imageSrc={isNightMode ? logoWhite : logoBlack}
+              alt="Logo Site"
+              cName="login-logo"
+            />
           <h1> Behind The Minder's Life </h1>
           <h2> Get ready for the adventure </h2>
           <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />

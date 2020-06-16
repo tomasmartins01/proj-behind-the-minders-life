@@ -58,7 +58,7 @@ const ThirdMinderaSeptember = ({
           }}
           onClickOp2={() => robberyText("start running from the thief")}
           onClickOp3={() => {
-            robberyText("cry and call your mom. The thief stole your phone.");
+            robberyText("cry and call your mom. The thief stole your phone");
             updateBalance(gameDetails.bankBalance - 500);
             updateHappiness(70);
           }}
@@ -79,7 +79,7 @@ const ThirdMinderaSeptember = ({
 
       {minderaThreeSep.robberyAction &&
         (minderaThreeSep.robberyAction === "you fought like a boss" ||
-          minderaThreeSep.robberyAction === "you gave him all your money") && (
+          minderaThreeSep.robberyAction === "give the thief all your money") && (
           <EndButton
             action={() => {
               goToNext(gameDetails.timestamps);
@@ -90,9 +90,9 @@ const ThirdMinderaSeptember = ({
 
       {!minderaThreeSep.isFinished &&
         minderaThreeSep.robberyAction &&
-        (minderaThreeSep.robberyAction === "you started running" ||
+        (minderaThreeSep.robberyAction === "start running from the thief" ||
           minderaThreeSep.robberyAction ===
-            "you cried and called your mom") && (
+            "cry and call your mom. The thief stole your phone") && (
           <NextButton
             action={() => {
               updateBalance(gameDetails.bankBalance + 600 * 3);

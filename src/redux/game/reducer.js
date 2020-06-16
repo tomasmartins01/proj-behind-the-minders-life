@@ -73,10 +73,10 @@ const initialStateGame = {
       minderaFourMar: { isFinished: false, minderaTechDay: undefined },
       minderaFourJun: { isFinished: false, surf: "" },
 
-      minderaFiveSep: { isFinished: false },
-      minderaFiveDec: { isFinished: false },
-      minderaFiveMar: { isFinished: false },
-      minderaFiveJun: { isFinished: false }
+      minderaFiveSep: { isFinished: false, hasAskedQuestion: undefined, helpTests: "", helpSeo: "" },
+      minderaFiveDec: { isFinished: false, gifts: "" },
+      minderaFiveMar: { isFinished: false, talkChoice: undefined, excuseText: "" },
+      minderaFiveJun: { isFinished: false, helpChoice: undefined, birthdayText: "" }
     },
     skillsLevel: {
       socialSkills: 0,

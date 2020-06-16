@@ -48,7 +48,7 @@ const FourthMinderaDecember = ({
           onClickOp1={() => {
             setOption(true);
             updateBalance(gameDetails.bankBalance - 1000);
-            updateHappiness(100);
+            updateHappiness(gameDetails.happiness - 30);
           }}
           onClickOp2={() => {
             setOption(false);
