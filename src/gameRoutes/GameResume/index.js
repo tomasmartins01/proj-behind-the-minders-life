@@ -10,6 +10,7 @@ import SchoolChoices from "./SchoolChoices";
 import MinderaFirstChoices from "./MinderaFirst";
 import MinderaSecondChoices from "./MinderaSecond";
 import MinderaThirdChoices from "./MinderaThird";
+import MinderaFourthChoices from "./MinderaFourth";
 
 const GameResume = ({ formDetails, gameDetails, timestamps }) => {
   const isSchoolDisabled =
@@ -111,7 +112,7 @@ const GameResume = ({ formDetails, gameDetails, timestamps }) => {
           </TabPanel>
 
           <TabPanel style={panelStyle}>
-            <h3>Mindera Fourth Year</h3>
+            <MinderaFourthChoices timestamps={timestamps}/>
           </TabPanel>
 
           <TabPanel style={panelStyle}>

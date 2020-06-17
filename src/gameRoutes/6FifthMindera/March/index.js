@@ -100,9 +100,9 @@ const FifthMinderaMarch = ({
               op1="I don't feel very good, I'm going home"
               op2="I'm with some problems with my project"
               op3="My grandfather is pregnant and needs my help"
-              onClickOp1={() => setOption("excuse", "sickness")}
-              onClickOp2={() => setOption("excuse", "project")}
-              onClickOp3={() => setOption("excuse", "pregnant grandfather")}
+              onClickOp1={() => setOption("excuse", "were feeling sick")}
+              onClickOp2={() => setOption("excuse", "had project problems to solve")}
+              onClickOp3={() => setOption("excuse", "had a pregnant grandfather")}
             />
           )}
 

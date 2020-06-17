@@ -26,7 +26,7 @@ const Mindera4Dec = ({ timestamps }) => {
                     <p>You decided to do a mindfulness workshop .</p>
                 )}
                 {!timestamps.minderaFourDec.doneWorkshop && (
-                    <p>You decided to work on your project instead of going to the mindfulness workshop.</p>
+                    <p>You decided to focus on your project instead of going to the mindfulness workshop.</p>
                 )}
                 </>
             )}

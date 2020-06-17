@@ -6,17 +6,11 @@ import mindersList from "../../helpers/mindersList";
 const MindersPreview = () => {
   const [videoUrl, setVideoUrl] = useState("");
 
-  const handleClickMinder = minder => {
-    setVideoUrl(minder.youtubeVideo);
-  };
+  const handleClickMinder = minder => setVideoUrl(minder.youtubeVideo);
 
   const getOrder = (a, b) => {
-    if (a > b) {
-      return 1;
-    }
-    if (b > a) {
-      return -1;
-    }
+    if (a > b) return 1;
+    if (b > a) return -1;
     return 0;
   };
 

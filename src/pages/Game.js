@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { Modal } from "react-responsive-modal";
 
 import Header from "../components/utils/Header";
 import Footer from "../components/utils/Footer";
@@ -13,6 +14,27 @@ import "../styles/game-styles/gamePage.less";
 import "../styles/game-styles/gameButton.less";
 import "../styles/game-styles/gameArticle.less";
 import "../styles/game-styles/gameMinders.less";
+import "react-responsive-modal/styles.css";
+
+const Rules = () => {
+  const [isModalOpen, setIsModalOpen] = useState(true);
+  const modalChangeToOpen = () => setIsModalOpen(true);
+  const modalChangeToClosed = () => setIsModalOpen(false);
+  return (
+    <div className="gameRules">
+      <button onClick={() => modalChangeToOpen()}>See rules</button>
+      <Modal
+        open={isModalOpen}
+        onClose={() => modalChangeToClosed()}
+        center
+        styles={{modal: {fontFamily: "Iceberg"}}}
+      >
+        <h2 style={{ borderBottom: "2px solid black" }}>Game Rules</h2>
+        <p>Be careful! If you go bankrupt you lose the game.</p>
+      </Modal>
+    </div>
+  );
+};
 
 const Game = ({ formDetails, gameDetails }) => {
   document.title = "Game";
@@ -23,9 +45,11 @@ const Game = ({ formDetails, gameDetails }) => {
     <>
       <Header />
       <main className="gameParts">
+        <Rules />
         <div className="game">
           {gameDetails.isGameFinished ? <GameResume /> : <GameRoutes />}
         </div>
+
         <aside>
           <select
             className="dropdownGame"
@@ -36,6 +60,7 @@ const Game = ({ formDetails, gameDetails }) => {
             <option value="progress">Progress</option>
             <option value="minders">Minders</option>
           </select>
+
           <div className="valueDisplay">
             {dropdownValue === "profile" && (
               <Profile
@@ -52,9 +77,11 @@ const Game = ({ formDetails, gameDetails }) => {
             {dropdownValue === "progress" && (
               <ProgressBars
                 skills={gameDetails.skillsLevel}
-                specialization={gameDetails.career
-                  ? gameDetails.career
-                  : gameDetails.specialization}
+                specialization={
+                  gameDetails.career
+                    ? gameDetails.career
+                    : gameDetails.specialization
+                }
                 prevExperience={gameDetails.prevExperience}
               />
             )}

@@ -4,6 +4,25 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "../../styles/game-styles/progressBars.less";
 
+const Bar = ({ tag, skill }) => {
+  return (
+    <article>
+      <h3>{tag}</h3>
+      <div
+        className={`bar ${
+          skill <= 15
+            ? "badStatus"
+            : skill <= 50
+            ? "mediumStatus"
+            : "goodStatus"
+        }`}
+      >
+        {skill}%
+      </div>
+    </article>
+  );
+};
+
 const ProgressBars = ({ skills, specialization, prevExperience }) => {
   return (
     <section className="progressBars">
@@ -16,309 +35,60 @@ const ProgressBars = ({ skills, specialization, prevExperience }) => {
         </TabList>
 
         <TabPanel>
-          <article>
-            <h3>Social Skills</h3>
-            <div
-              className={`bar ${
-                skills.socialSkills <= 15
-                  ? "badStatus"
-                  : skills.socialSkills <= 50
-                  ? "mediumStatus"
-                  : "goodStatus"
-              }`}
-              id="socialSkills"
-            >
-              {skills.socialSkills}%
-            </div>
-          </article>
+          <Bar tag="Social Skills" skill={skills.socialSkills} />
         </TabPanel>
 
         <TabPanel>
           {(prevExperience === "C++" || specialization === "Backend") && (
-            <>
-              <article>
-                <h3>C++</h3>
-                <div
-                  className={`bar ${
-                    skills.backend.cplusplusSkills <= 15
-                      ? "badStatus"
-                      : skills.backend.cplusplusSkills <= 50
-                      ? "mediumStatus"
-                      : "goodStatus"
-                  }`}
-                >
-                  {skills.backend.cplusplusSkills}%
-                </div>
-              </article>
-            </>
+            <Bar tag="C++" skill={skills.backend.cplusplusSkills} />
           )}
           {specialization === "Backend" && (
-            <article>
-              <h3>Golang</h3>
-              <div
-                className={`bar ${
-                  skills.backend.golangSkills <= 15
-                    ? "badStatus"
-                    : skills.backend.golangSkills <= 50
-                    ? "mediumStatus"
-                    : "goodStatus"
-                }`}
-              >
-                {skills.backend.golangSkills}%
-              </div>
-            </article>
+            <Bar tag="Golang" skill={skills.backend.golangSkills} />
           )}
-
-          <article>
-            <h3>Java</h3>
-            <div
-              className={`bar ${
-                skills.backend.javaSkills <= 15
-                  ? "badStatus"
-                  : skills.backend.javaSkills <= 50
-                  ? "mediumStatus"
-                  : "goodStatus"
-              }`}
-            >
-              {skills.backend.javaSkills}%
-            </div>
-          </article>
+          <Bar tag="Java" skill={skills.backend.javaSkills} />
 
           {(prevExperience === "PHP" || specialization === "Backend") && (
-            <article>
-              <h3>PHP</h3>
-              <div
-                className={`bar ${
-                  skills.backend.phpSkills <= 15
-                    ? "badStatus"
-                    : skills.backend.phpSkills <= 50
-                    ? "mediumStatus"
-                    : "goodStatus"
-                }`}
-              >
-                {skills.backend.phpSkills}%
-              </div>
-            </article>
+            <Bar tag="PHP" skill={skills.backend.phpSkills} />
           )}
 
           {(prevExperience === "Python" || specialization === "Backend") && (
-            <article>
-              <h3>Python</h3>
-              <div
-                className={`bar ${
-                  skills.backend.pythonSkills <= 15
-                    ? "badStatus"
-                    : skills.backend.pythonSkills <= 50
-                    ? "mediumStatus"
-                    : "goodStatus"
-                }`}
-              >
-                {skills.backend.pythonSkills}%
-              </div>
-            </article>
+            <Bar tag="Python" skill={skills.backend.pythonSkills} />
           )}
 
           {specialization === "Backend" && (
-            <>
-              <article>
-                <h3>Ruby</h3>
-                <div
-                  className={`bar ${
-                    skills.backend.rubySkills <= 15
-                      ? "badStatus"
-                      : skills.backend.rubySkills <= 50
-                      ? "mediumStatus"
-                      : "goodStatus"
-                  }`}
-                >
-                  {skills.backend.rubySkills}%
-                </div>
-              </article>
-            </>
+            <Bar tag="Ruby" skill={skills.backend.rubySkills} />
           )}
-
-          <article>
-            <h3>SQL</h3>
-            <div
-              className={`bar ${
-                skills.backend.sqlSkills <= 15
-                  ? "badStatus"
-                  : skills.backend.sqlSkills <= 50
-                  ? "mediumStatus"
-                  : "goodStatus"
-              }`}
-            >
-              {skills.backend.sqlSkills}%
-            </div>
-          </article>
+          <Bar tag="SQL" skill={skills.backend.sqlSkills} />
         </TabPanel>
 
         <TabPanel>
-          <article>
-            <h3>HTML</h3>
-            <div
-              className={`bar ${
-                skills.frontend.htmlSkills <= 15
-                  ? "badStatus"
-                  : skills.frontend.htmlSkills <= 50
-                  ? "mediumStatus"
-                  : "goodStatus"
-              }`}
-            >
-              {skills.frontend.htmlSkills}%
-            </div>
-          </article>
-          <article>
-            <h3>CSS</h3>
-            <div
-              className={`bar ${
-                skills.frontend.cssSkills <= 15
-                  ? "badStatus"
-                  : skills.frontend.cssSkills <= 50
-                  ? "mediumStatus"
-                  : "goodStatus"
-              }`}
-            >
-              {skills.frontend.cssSkills}%
-            </div>
-          </article>
-          <article>
-            <h3>Javascript</h3>
-            <div
-              className={`bar ${
-                skills.frontend.jsSkills <= 15
-                  ? "badStatus"
-                  : skills.frontend.jsSkills <= 50
-                  ? "mediumStatus"
-                  : "goodStatus"
-              }`}
-            >
-              {skills.frontend.jsSkills}%
-            </div>
-          </article>
+          {specialization === "Frontend" && (
+            <Bar tag="AngularJS" skill={skills.frontend.angularSkills} />
+          )}
+          <Bar tag="HTML" skill={skills.frontend.htmlSkills} />
+          <Bar tag="CSS" skill={skills.frontend.cssSkills} />
+          <Bar tag="Javascript" skill={skills.frontend.jsSkills} />
+
           {specialization === "Frontend" && (
             <>
-              <article>
-                <h3>AngularJS</h3>
-                <div
-                  className={`bar ${
-                    skills.frontend.angularSkills <= 15
-                      ? "badStatus"
-                      : skills.frontend.angularSkills <= 50
-                      ? "mediumStatus"
-                      : "goodStatus"
-                  }`}
-                >
-                  {skills.frontend.angularSkills}%
-                </div>
-              </article>
-              <article>
-                <h3>ReactJS</h3>
-                <div
-                  className={`bar ${
-                    skills.frontend.reactjsSkills <= 15
-                      ? "badStatus"
-                      : skills.frontend.reactjsSkills <= 50
-                      ? "mediumStatus"
-                      : "goodStatus"
-                  }`}
-                >
-                  {skills.frontend.reactjsSkills}%
-                </div>
-              </article>
-              <article>
-                <h3>VueJS</h3>
-                <div
-                  className={`bar ${
-                    skills.frontend.vueSkills <= 15
-                      ? "badStatus"
-                      : skills.frontend.vueSkills <= 50
-                      ? "mediumStatus"
-                      : "goodStatus"
-                  }`}
-                >
-                  {skills.frontend.vueSkills}%
-                </div>
-              </article>
+              <Bar tag="ReactJS" skill={skills.frontend.reactjsSkills} />
+              <Bar tag="VueJS" skill={skills.frontend.vueSkills} />
             </>
           )}
         </TabPanel>
 
         <TabPanel>
-          <article>
-            <h3>Kotlin</h3>
-            <div
-              className={`bar ${
-                skills.mobile.kotlinSkills <= 15
-                  ? "badStatus"
-                  : skills.mobile.kotlinSkills <= 50
-                  ? "mediumStatus"
-                  : "goodStatus"
-              }`}
-            >
-              {skills.mobile.kotlinSkills}%
-            </div>
-          </article>
-
           {specialization === "Mobile" && (
             <>
-            <article>
-                <h3>Dart</h3>
-                <div
-                  className={`bar ${
-                    skills.mobile.dartSkills <= 15
-                      ? "badStatus"
-                      : skills.mobile.dartSkills <= 50
-                      ? "mediumStatus"
-                      : "goodStatus"
-                  }`}
-                >
-                  {skills.mobile.dartSkills}%
-                </div>
-              </article>
-              <article>
-                <h3>Flutter</h3>
-                <div
-                  className={`bar ${
-                    skills.mobile.flutterSkills <= 15
-                      ? "badStatus"
-                      : skills.mobile.flutterSkills <= 50
-                      ? "mediumStatus"
-                      : "goodStatus"
-                  }`}
-                >
-                  {skills.mobile.flutterSkills}%
-                </div>
-              </article>
-
-              <article>
-                <h3>Swift</h3>
-                <div
-                  className={`bar ${
-                    skills.mobile.swiftSkills <= 15
-                      ? "badStatus"
-                      : skills.mobile.swiftSkills <= 50
-                      ? "mediumStatus"
-                      : "goodStatus"
-                  }`}
-                >
-                  {skills.mobile.swiftSkills}%
-                </div>
-              </article>
-              <article>
-                <h3>React Native</h3>
-                <div
-                  className={`bar ${
-                    skills.mobile.reactNativeSkills <= 15
-                      ? "badStatus"
-                      : skills.mobile.reactNativeSkills <= 50
-                      ? "mediumStatus"
-                      : "goodStatus"
-                  }`}
-                >
-                  {skills.mobile.reactNativeSkills}%
-                </div>
-              </article>
+              <Bar tag="Dart" skill={skills.mobile.dartSkills} />
+              <Bar tag="Flutter" skill={skills.mobile.flutterSkills} />
+            </>
+          )}
+          <Bar tag="Kotlin" skill={skills.mobile.kotlinSkills} />
+          {specialization === "Mobile" && (
+            <>
+              <Bar tag="Swift" skill={skills.mobile.swiftSkills} />
+              <Bar tag="React Native" skill={skills.mobile.reactNativeSkills} />
             </>
           )}
         </TabPanel>
