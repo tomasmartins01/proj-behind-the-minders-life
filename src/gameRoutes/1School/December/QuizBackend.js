@@ -61,7 +61,7 @@ const QuizBackend = ({
             setIsQ3Solved(true);
             setCorrectAnswersBE(correctAnswersBE + 1);
             setAreAllSolved(true);
-            setFinalCorrect(correctAnswersBE);
+            setFinalCorrect(correctAnswersBE + 1);
           }}
           wrongAnswer={() => {
             setIsQ3Solved(true);

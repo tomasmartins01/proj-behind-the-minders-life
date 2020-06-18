@@ -49,15 +49,13 @@ const MinderPage = () => {
       <main className="characterPage">
         <section className="Characters">
           <h1 id="characterTitle">{minderInfo.name}</h1>
-          <LazyLoad once>
-            <ReactPlayer
-              controls
-              url={minderInfo.youtubeVideo}
-              width="100%"
-              height="100%"
-              className="minderVideo"
-            />
-          </LazyLoad>
+          <ReactPlayer
+            controls
+            url={minderInfo.youtubeVideo}
+            width="100%"
+            height="100%"
+            className="minderVideo"
+          />
         </section>
 
         <section className="displayMinders">

@@ -61,7 +61,7 @@ const QuizMobile = ({
             setIsQ3Solved(true);
             setCorrectAnswersMB(correctAnswersMB + 1);
             setAreAllSolved(true);
-            setFinalCorrect(correctAnswersMB);
+            setFinalCorrect(correctAnswersMB + 1);
           }}
           wrongAnswer={() => {
             setIsQ3Solved(true);

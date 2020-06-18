@@ -61,7 +61,7 @@ const QuizFrontend = ({
             setIsQ3Solved(true);
             setCorrectAnswersFE(correctAnswersFE + 1);
             setAreAllSolved(true);
-            setFinalCorrect(correctAnswersFE);
+            setFinalCorrect(correctAnswersFE + 1);
           }}
           wrongAnswer={() => {
             setIsQ3Solved(true);

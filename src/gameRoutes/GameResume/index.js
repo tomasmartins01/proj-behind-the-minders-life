@@ -59,7 +59,8 @@ const GameResume = ({ formDetails, gameDetails, timestamps }) => {
 
   return (
     <>
-      <p id="thankyouforplaying"
+      <p
+        id="thankyouforplaying"
         style={{
           textAlign: "center",
           fontSize: "30px",
@@ -76,13 +77,13 @@ const GameResume = ({ formDetails, gameDetails, timestamps }) => {
 
         <Tabs>
           <TabList>
-            <Tab>Interview</Tab>
-            <Tab disabled={isSchoolDisabled}>School Year</Tab>
-            <Tab disabled={isMindera1Disabled}>Mindera First Year</Tab>
-            <Tab disabled={isMindera2Disabled}>Mindera Second Year</Tab>
-            <Tab disabled={isMindera3Disabled}>Mindera Third Year</Tab>
-            <Tab disabled={isMindera4Disabled}>Mindera Fourth Year</Tab>
-            <Tab disabled={isMindera5Disabled}>Mindera Fifth Year</Tab>
+            <Tab style={{ color: "black" }}>Interview</Tab>
+            <Tab style={{ color: "black" }} disabled={isSchoolDisabled}>School Year</Tab>
+            <Tab style={{ color: "black" }} disabled={isMindera1Disabled}>Mindera First Year</Tab>
+            <Tab style={{ color: "black" }} disabled={isMindera2Disabled}>Mindera Second Year</Tab>
+            <Tab style={{ color: "black" }} disabled={isMindera3Disabled}>Mindera Third Year</Tab>
+            <Tab style={{ color: "black" }} disabled={isMindera4Disabled}>Mindera Fourth Year</Tab>
+            <Tab style={{ color: "black" }} disabled={isMindera5Disabled}>Mindera Fifth Year</Tab>
           </TabList>
 
           <TabPanel style={panelStyle}>
@@ -112,7 +113,7 @@ const GameResume = ({ formDetails, gameDetails, timestamps }) => {
           </TabPanel>
 
           <TabPanel style={panelStyle}>
-            <MinderaFourthChoices timestamps={timestamps}/>
+            <MinderaFourthChoices timestamps={timestamps} />
           </TabPanel>
 
           <TabPanel style={panelStyle}>

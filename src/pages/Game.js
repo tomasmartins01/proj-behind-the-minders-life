@@ -22,15 +22,35 @@ const Rules = () => {
   const modalChangeToClosed = () => setIsModalOpen(false);
   return (
     <div className="gameRules">
-      <button onClick={() => modalChangeToOpen()}>See rules</button>
+      {!isModalOpen && (
+        <button onClick={() => modalChangeToOpen()}>See rules</button>
+      )}
       <Modal
         open={isModalOpen}
         onClose={() => modalChangeToClosed()}
         center
-        styles={{modal: {fontFamily: "Iceberg"}}}
+        styles={{ modal: { fontFamily: "Iceberg", width: "50%", borderRadius: "5px" } }}
       >
-        <h2 style={{ borderBottom: "2px solid black" }}>Game Rules</h2>
-        <p>Be careful! If you go bankrupt you lose the game.</p>
+        <h2 style={{ borderBottom: "2px solid black", textAlign: "center" }}>
+          Game Rules
+        </h2>
+        <p>If you go bankrupt you lose the game!</p>
+        <hr />
+        <p>
+          Be careful, all the choices you make can lead you to an unexpected{" "}
+          end...
+        </p>
+        <hr />
+        <p>
+          The only way to win the game is to reach the 5th year of Mindera,{" "}
+          don't worry you will know if you won when you get there..
+        </p>
+        <hr />
+        <p>I heard that the octopus is not very good in Porto ;)</p>
+        <hr />
+        <p>If you are caught not having fun you will also lose the game!</p>
+        <hr />
+        <p>Always watch out for traps!!</p>
       </Modal>
     </div>
   );
