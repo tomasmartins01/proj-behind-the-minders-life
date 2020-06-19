@@ -44,60 +44,60 @@ const SchoolDecember = ({
           socialSkills: 85,
           backend: {
             ...skillsLevel.backend,
-            javaSkills: 85,
-            sqlSkills: 65
+            javaSkills: 40,
+            sqlSkills: 40
           },
           frontend: {
             ...skillsLevel.frontend,
-            htmlSkills: 80,
-            cssSkills: 80,
-            jsSkills: 80
+            htmlSkills: 40,
+            cssSkills: 40,
+            jsSkills: 40
           },
           mobile: {
             ...skillsLevel.mobile,
-            kotlinSkills: 65
+            kotlinSkills: 40
           }
         });
         break;
       case "Backend":
         updateSkills({
           ...skillsLevel,
-          socialSkills: 80,
+          socialSkills: 85,
           backend: {
             ...skillsLevel.backend,
-            javaSkills: 80,
-            sqlSkills: 80
+            javaSkills: 60,
+            sqlSkills: 60
           },
           frontend: {
             ...skillsLevel.frontend,
-            htmlSkills: 65,
-            cssSkills: 65,
-            jsSkills: 65
+            htmlSkills: 50,
+            cssSkills: 50,
+            jsSkills: 50
           },
           mobile: {
             ...skillsLevel.mobile,
-            kotlinSkills: 65
+            kotlinSkills: 50
           }
         });
         break;
       case "Mobile":
         updateSkills({
           ...skillsLevel,
-          socialSkills: 80,
+          socialSkills: 85,
           backend: {
             ...skillsLevel.backend,
-            javaSkills: 65,
-            sqlSkills: 65
+            javaSkills: 50,
+            sqlSkills: 50
           },
           frontend: {
             ...skillsLevel.frontend,
-            htmlSkills: 65,
-            cssSkills: 65,
-            jsSkills: 65
+            htmlSkills: 50,
+            cssSkills: 50,
+            jsSkills: 50
           },
           mobile: {
             ...skillsLevel.mobile,
-            kotlinSkills: 80
+            kotlinSkills: 60
           }
         });
         break;

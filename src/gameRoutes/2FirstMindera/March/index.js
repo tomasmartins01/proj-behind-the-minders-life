@@ -45,8 +45,9 @@ const FirstMinderaMarch = ({
           frontend: {
             ...gameDetails.skillsLevel.frontend,
             htmlSkills: 95,
-            cssSkills: 95,
-            jsSkills: 95
+            cssSkills: 85,
+            jsSkills: 73,
+            reactjsSkills: 70
           }
         });
         break;
@@ -56,8 +57,8 @@ const FirstMinderaMarch = ({
           socialSkills: 95,
           backend: {
             ...gameDetails.skillsLevel.backend,
-            javaSkills: 95,
-            sqlSkills: 95
+            javaSkills: 73,
+            sqlSkills: 73
           }
         });
         break;
@@ -67,7 +68,7 @@ const FirstMinderaMarch = ({
           socialSkills: 95,
           mobile: {
             ...gameDetails.skillsLevel.mobile,
-            kotlinSkills: 95
+            kotlinSkills: 73
           }
         });
         break;

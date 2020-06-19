@@ -39,10 +39,12 @@ const SchoolJune = ({
   const setSkills = () => {
     updateSkills({
       ...gameDetails.skillsLevel,
-      backend: { ...gameDetails.skillsLevel.backend, javaSkills: 80 },
+      backend: { ...gameDetails.skillsLevel.backend, javaSkills: 60 },
       frontend: {
         ...gameDetails.skillsLevel.frontend,
-        reactjsSkills: 60
+        htmlSkills: 80,
+        cssSkills: 60,
+        jsSkills: 60
       },
       mobile: {
         ...gameDetails.skillsLevel.mobile,

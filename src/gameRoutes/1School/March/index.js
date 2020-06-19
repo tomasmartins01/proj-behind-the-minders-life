@@ -54,19 +54,19 @@ const SchoolMarch = ({
       case "Java":
         updateSkills({
           ...gameDetails.skillsLevel,
-          backend: { ...gameDetails.skillsLevel.backend, javaSkills: 90 }
+          backend: { ...gameDetails.skillsLevel.backend, javaSkills: 50 }
         });
         break;
       case "Golang":
         updateSkills({
           ...gameDetails.skillsLevel,
-          backend: { ...gameDetails.skillsLevel.backend, golangSkills: 60 }
+          backend: { ...gameDetails.skillsLevel.backend, golangSkills: 30 }
         });
         break;
       case "Python":
         updateSkills({
           ...gameDetails.skillsLevel,
-          backend: { ...gameDetails.skillsLevel.backend, pythonSkills: 60 }
+          backend: { ...gameDetails.skillsLevel.backend, pythonSkills: 30 }
         });
         break;
 
@@ -75,9 +75,9 @@ const SchoolMarch = ({
           ...gameDetails.skillsLevel,
           frontend: {
             ...gameDetails.skillsLevel.frontend,
-            htmlSkills: 90,
-            cssSkills: 90,
-            jsSkills: 90
+            htmlSkills: 70,
+            cssSkills: 50,
+            jsSkills: 50
           }
         });
         break;
@@ -86,10 +86,10 @@ const SchoolMarch = ({
           ...gameDetails.skillsLevel,
           frontend: {
             ...gameDetails.skillsLevel.frontend,
-            htmlSkills: 90,
-            cssSkills: 90,
-            jsSkills: 90,
-            reactjsSkills: 50
+            htmlSkills: 70,
+            cssSkills: 50,
+            jsSkills: 50,
+            reactjsSkills: 40
           }
         });
         break;
@@ -98,10 +98,10 @@ const SchoolMarch = ({
           ...gameDetails.skillsLevel,
           frontend: {
             ...gameDetails.skillsLevel.frontend,
-            htmlSkills: 90,
-            cssSkills: 90,
-            jsSkills: 90,
-            angularSkills: 50
+            htmlSkills: 70,
+            cssSkills: 50,
+            jsSkills: 50,
+            angularSkills: 40
           }
         });
         break;
@@ -109,19 +109,19 @@ const SchoolMarch = ({
       case "Kotlin":
         updateSkills({
           ...gameDetails.skillsLevel,
-          mobile: { ...gameDetails.skillsLevel.mobile, kotlinSkills: 90 }
+          mobile: { ...gameDetails.skillsLevel.mobile, kotlinSkills: 50 }
         });
         break;
       case "Swift":
         updateSkills({
           ...gameDetails.skillsLevel,
-          mobile: { ...gameDetails.skillsLevel.mobile, swiftSkills: 60 }
+          mobile: { ...gameDetails.skillsLevel.mobile, swiftSkills: 40 }
         });
         break;
       case "React Native":
         updateSkills({
           ...gameDetails.skillsLevel,
-          mobile: { ...gameDetails.skillsLevel.mobile, reactNativeSkills: 60 }
+          mobile: { ...gameDetails.skillsLevel.mobile, reactNativeSkills: 40 }
         });
         break;
     }

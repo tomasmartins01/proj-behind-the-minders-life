@@ -44,9 +44,9 @@ const SecondMinderaDecember = ({
           socialSkills: 100,
           frontend: {
             ...gameDetails.skillsLevel.frontend,
-            htmlSkills: 100,
             cssSkills: 100,
-            jsSkills: 100
+            jsSkills: 85,
+            reactjsSkills: 80
           }
         });
         break;
@@ -56,8 +56,8 @@ const SecondMinderaDecember = ({
           socialSkills: 100,
           backend: {
             ...gameDetails.skillsLevel.backend,
-            javaSkills: 100,
-            sqlSkills: 100
+            javaSkills: 85,
+            sqlSkills: 85
           }
         });
         break;
@@ -67,7 +67,7 @@ const SecondMinderaDecember = ({
           socialSkills: 100,
           mobile: {
             ...gameDetails.skillsLevel.mobile,
-            kotlinSkills: 100
+            kotlinSkills: 85
           }
         });
         break;
@@ -101,9 +101,7 @@ const SecondMinderaDecember = ({
       {minderaTwoDec.tripDecision && <p>I decided to go to the Alps.</p>}
 
       {minderaTwoDec.tripDecision === false && (
-        <p>
-          I decided to not go to the Alps with my team.
-        </p>
+        <p>I decided to not go to the Alps with my team.</p>
       )}
 
       {minderaTwoDec.tripDecision !== undefined && !minderaTwoDec.isFinished && (

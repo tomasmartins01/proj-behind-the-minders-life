@@ -59,9 +59,8 @@ const SecondMinderaMarch = ({
           socialSkills: 100,
           frontend: {
             ...gameDetails.skillsLevel.frontend,
-            htmlSkills: 100,
-            cssSkills: 100,
-            jsSkills: 100
+            jsSkills: 87,
+            reactjsSkills: 85
           }
         });
         break;
@@ -71,18 +70,18 @@ const SecondMinderaMarch = ({
           socialSkills: 100,
           backend: {
             ...gameDetails.skillsLevel.backend,
-            javaSkills: 100,
-            sqlSkills: 100
+            javaSkills: 87,
+            sqlSkills: 87
           }
         });
         break;
       case "Mobile":
         updateSkills({
           ...gameDetails.skillsLevel,
-          socialSkills: 100,
+          socialSkills: 87,
           mobile: {
             ...gameDetails.skillsLevel.mobile,
-            kotlinSkills: 100
+            kotlinSkills: 87
           }
         });
         break;

@@ -47,18 +47,18 @@ const SchoolSeptember = ({
       socialSkills: 70,
       backend: {
         ...skillsLevel.backend,
-        javaSkills: 60,
-        sqlSkills: 60
+        javaSkills: 30,
+        sqlSkills: 30
       },
       frontend: {
         ...skillsLevel.frontend,
-        htmlSkills: 60,
-        cssSkills: 60,
-        jsSkills: 60
+        htmlSkills: 30,
+        cssSkills: 30,
+        jsSkills: 30
       },
       mobile: {
         ...skillsLevel.mobile,
-        kotlinSkills: 60
+        kotlinSkills: 30
       }
     });
   };

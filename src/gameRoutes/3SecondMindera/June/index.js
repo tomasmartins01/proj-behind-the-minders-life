@@ -44,9 +44,8 @@ const SecondMinderaJune = ({
           socialSkills: 100,
           frontend: {
             ...gameDetails.skillsLevel.frontend,
-            htmlSkills: 100,
-            cssSkills: 100,
-            jsSkills: 100
+            jsSkills: 90,
+            reactjsSkills: 87
           }
         });
         break;
@@ -56,8 +55,8 @@ const SecondMinderaJune = ({
           socialSkills: 100,
           backend: {
             ...gameDetails.skillsLevel.backend,
-            javaSkills: 100,
-            sqlSkills: 100
+            javaSkills: 90,
+            sqlSkills: 90
           }
         });
         break;
@@ -67,7 +66,7 @@ const SecondMinderaJune = ({
           socialSkills: 100,
           mobile: {
             ...gameDetails.skillsLevel.mobile,
-            kotlinSkills: 100
+            kotlinSkills: 90
           }
         });
         break;

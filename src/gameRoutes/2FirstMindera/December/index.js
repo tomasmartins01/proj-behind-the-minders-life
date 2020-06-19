@@ -61,8 +61,9 @@ const FirstMinderaDecember = ({
           frontend: {
             ...gameDetails.skillsLevel.frontend,
             htmlSkills: 90,
-            cssSkills: 90,
-            jsSkills: 90
+            cssSkills: 80,
+            jsSkills: 70,
+            reactjsSkills: 65
           }
         });
         break;
@@ -72,8 +73,8 @@ const FirstMinderaDecember = ({
           socialSkills: 90,
           backend: {
             ...gameDetails.skillsLevel.backend,
-            javaSkills: 90,
-            sqlSkills: 90
+            javaSkills: 70,
+            sqlSkills: 70
           }
         });
         break;
@@ -83,7 +84,7 @@ const FirstMinderaDecember = ({
           socialSkills: 90,
           mobile: {
             ...gameDetails.skillsLevel.mobile,
-            kotlinSkills: 90
+            kotlinSkills: 70
           }
         });
         break;

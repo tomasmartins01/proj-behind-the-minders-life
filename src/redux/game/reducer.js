@@ -38,57 +38,57 @@ const initialStateGame = {
 
       minderaOneSep: {
         isFinished: false,
-        optionAfterSchool: "",
+        optionAfterSchool: undefined,
         passedTheInterview: undefined,
         acceptedContract: undefined
       },
       minderaOneDec: {
         isFinished: false,
-        partyOrProject: "",
-        christmasPresent: ""
+        partyOrProject: undefined,
+        christmasPresent: undefined
       },
-      minderaOneMar: { isFinished: false, dinnerFood: "" },
-      minderaOneJun: { isFinished: false, newProject: "" },
+      minderaOneMar: { isFinished: false, dinnerFood: undefined },
+      minderaOneJun: { isFinished: false, newProject: undefined },
 
-      minderaTwoSep: { isFinished: false, birthdayAction: "" },
+      minderaTwoSep: { isFinished: false, birthdayAction: undefined },
       minderaTwoDec: { isFinished: false, tripDecision: undefined },
       minderaTwoMar: {
         isFinished: false,
-        pcbrokeToDo: "",
+        pcbrokeToDo: undefined,
         pcInformation: undefined
       },
       minderaTwoJun: { isFinished: false, wentToLanParty: undefined },
 
       minderaThreeSep: { isFinished: false, robberyAction: undefined },
-      minderaThreeDec: { isFinished: false, giftDecision: "" },
+      minderaThreeDec: { isFinished: false, giftDecision: undefined },
       minderaThreeMar: { isFinished: false },
       minderaThreeJun: {
         isFinished: false,
-        vacationPlace: "",
+        vacationPlace: undefined,
         vacationMoney: undefined
       },
 
       minderaFourSep: { isFinished: false, newLanguageProject: undefined },
       minderaFourDec: { isFinished: false, doneWorkshop: undefined },
       minderaFourMar: { isFinished: false, minderaTechDay: undefined },
-      minderaFourJun: { isFinished: false, surf: "" },
+      minderaFourJun: { isFinished: false, surf: undefined },
 
       minderaFiveSep: {
         isFinished: false,
         hasAskedQuestion: undefined,
-        helpTests: "",
-        helpSeo: ""
+        helpTests: undefined,
+        helpSeo: undefined
       },
-      minderaFiveDec: { isFinished: false, gifts: "" },
+      minderaFiveDec: { isFinished: false, gifts: undefined },
       minderaFiveMar: {
         isFinished: false,
         talkChoice: undefined,
-        excuseText: ""
+        excuseText: undefined
       },
       minderaFiveJun: {
         isFinished: false,
         helpChoice: undefined,
-        birthdayText: ""
+        birthdayText: undefined
       }
     },
     skillsLevel: {

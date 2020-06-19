@@ -51,9 +51,9 @@ const SecondMinderaSeptember = ({
           socialSkills: 100,
           frontend: {
             ...gameDetails.skillsLevel.frontend,
-            htmlSkills: 100,
             cssSkills: 100,
-            jsSkills: 100
+            jsSkills: 78,
+            reactjsSkills: 75
           }
         });
         break;
@@ -63,8 +63,8 @@ const SecondMinderaSeptember = ({
           socialSkills: 100,
           backend: {
             ...gameDetails.skillsLevel.backend,
-            javaSkills: 100,
-            sqlSkills: 100
+            javaSkills: 78,
+            sqlSkills: 78
           }
         });
         break;
@@ -74,7 +74,7 @@ const SecondMinderaSeptember = ({
           socialSkills: 100,
           mobile: {
             ...gameDetails.skillsLevel.mobile,
-            kotlinSkills: 100
+            kotlinSkills: 78
           }
         });
         break;

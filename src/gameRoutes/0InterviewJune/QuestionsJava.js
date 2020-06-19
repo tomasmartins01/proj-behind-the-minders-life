@@ -157,7 +157,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(
       updateSkillsAction({
         ...skillsLevel,
-        backend: { ...skillsLevel.backend, JavaSkills: 50 }
+        backend: { ...skillsLevel.backend, javaSkills: 20 }
       })
     )
 });
