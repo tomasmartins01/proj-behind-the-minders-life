@@ -6,7 +6,8 @@ import StoryText from "../../../components/game/StoryText";
 import {
   updateTimeBoxAction,
   updateBankBalanceAction,
-  updateHappinessAction
+  updateHappinessAction,
+  updateSkillsAction
 } from "../../../redux/game/actions";
 
 import { NextButton } from "../../../components/game/GameButtons";
@@ -17,6 +18,7 @@ const FourthMinderaMarch = ({
   minderaFourMar,
   updateHappiness,
   updateBalance,
+  updateSkills,
   updateBox,
   goToNext
 }) => {
@@ -32,6 +34,49 @@ const FourthMinderaMarch = ({
         minderaTechDay: text
       }
     });
+  };
+
+  const updateSkillsLevel = esp => {
+    switch (esp) {
+      case "Frontend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          frontend: {
+            ...gameDetails.skillsLevel.frontend,
+            angularSkills: 70,
+            vueSkills: 70
+          }
+        });
+        break;
+      case "Backend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          backend: {
+            ...gameDetails.skillsLevel.backend,
+            cplusplusSkills: 70,
+            golangSkills: 70,
+            phpSkills: 70,
+            pythonSkills: 70,
+            rubySkills: 70
+          }
+        });
+        break;
+      case "Mobile":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          mobile: {
+            ...gameDetails.skillsLevel.mobile,
+            dartSkills: 70,
+            flutterSkills: 70,
+            swiftSkills: 70,
+            reactNativeSkills: 70
+          }
+        });
+        break;
+    }
   };
 
   return (
@@ -66,6 +111,7 @@ const FourthMinderaMarch = ({
           <NextButton
             action={() => {
               updateBalance(gameDetails.bankBalance + 600 * 3);
+              updateSkillsLevel(gameDetails.career);
               setIsOpen(false);
               goToNext(gameDetails.timestamps);
             }}
@@ -86,6 +132,7 @@ const mapDispatchToProps = dispatch => ({
   updateHappiness: happiness => dispatch(updateHappinessAction(happiness)),
   updateBalance: bankBalance => dispatch(updateBankBalanceAction(bankBalance)),
   updateBox: timestamps => dispatch(updateTimeBoxAction(timestamps)),
+  updateSkills: skillsLevel => dispatch(updateSkillsAction(skillsLevel)),
   goToNext: timestamps =>
     dispatch(
       updateTimeBoxAction({

@@ -8,7 +8,8 @@ import GameQuestion from "../../../components/game/GameQuestion";
 import {
   updateTimeBoxAction,
   updateBankBalanceAction,
-  updateHappinessAction
+  updateHappinessAction,
+  updateSkillsAction
 } from "../../../redux/game/actions";
 
 const FourthMinderaDecember = ({
@@ -16,6 +17,7 @@ const FourthMinderaDecember = ({
   minderaFourDec,
   updateBox,
   updateHappiness,
+  updateSkills,
   updateBalance,
   goToNext
 }) => {
@@ -31,6 +33,49 @@ const FourthMinderaDecember = ({
         doneWorkshop: text
       }
     });
+  };
+
+  const updateSkillsLevel = esp => {
+    switch (esp) {
+      case "Frontend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          frontend: {
+            ...gameDetails.skillsLevel.frontend,
+            angularSkills: 65,
+            vueSkills: 65
+          }
+        });
+        break;
+      case "Backend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          backend: {
+            ...gameDetails.skillsLevel.backend,
+            cplusplusSkills: 65,
+            golangSkills: 65,
+            phpSkills: 65,
+            pythonSkills: 65,
+            rubySkills: 65
+          }
+        });
+        break;
+      case "Mobile":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          mobile: {
+            ...gameDetails.skillsLevel.mobile,
+            dartSkills: 65,
+            flutterSkills: 65,
+            swiftSkills: 65,
+            reactNativeSkills: 65
+          }
+        });
+        break;
+    }
   };
 
   return (
@@ -75,6 +120,7 @@ const FourthMinderaDecember = ({
         <NextButton
           action={() => {
             updateBalance(gameDetails.bankBalance + 600 * 3);
+            updateSkillsLevel(gameDetails.career);
             setIsOpen(false);
             goToNext(gameDetails.timestamps);
           }}
@@ -95,6 +141,7 @@ const mapDispatchToProps = dispatch => ({
   updateHappiness: happiness => dispatch(updateHappinessAction(happiness)),
   updateBalance: bankBalance => dispatch(updateBankBalanceAction(bankBalance)),
   updateBox: timestamps => dispatch(updateTimeBoxAction(timestamps)),
+  updateSkills: skillsLevel => dispatch(updateSkillsAction(skillsLevel)),
   goToNext: timestamps =>
     dispatch(
       updateTimeBoxAction({

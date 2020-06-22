@@ -88,28 +88,28 @@ const FirstMinderaMarch = ({
           op2="Bacalhau"
           op3="Francesinha"
           op4="Polvo à Lagareiro"
-          onClickOp1={() => dinner("eat bifanas")}
-          onClickOp2={() => dinner("eat bacalhau")}
-          onClickOp3={() => dinner("eat francesinha")}
-          onClickOp4={() => dinner("eat polvo à lagareiro")}
+          onClickOp1={() => dinner("bifanas")}
+          onClickOp2={() => dinner("bacalhau")}
+          onClickOp3={() => dinner("francesinha")}
+          onClickOp4={() => dinner("polvo à lagareiro")}
         />
       )}
 
-      {minderaOneMar.dinnerFood === "eat bifanas" && (
+      {minderaOneMar.dinnerFood === "bifanas" && (
         <p>
           I don't feel so good... Those bifanas are going to make me throw up.
         </p>
       )}
 
-      {minderaOneMar.dinnerFood === "eat bacalhau" && (
+      {minderaOneMar.dinnerFood === "bacalhau" && (
         <p>Wow that bacalhau was so nice!</p>
       )}
 
-      {minderaOneMar.dinnerFood === "eat francesinha" && (
+      {minderaOneMar.dinnerFood === "francesinha" && (
         <p>I think I got food poisoning because I ate a francesinha.</p>
       )}
 
-      {minderaOneMar.dinnerFood === "eat polvo à lagareiro" && (
+      {minderaOneMar.dinnerFood === "polvo à lagareiro" && (
         <>
           <p>I think that thing I ate was alive...</p>
           <p>
@@ -120,7 +120,7 @@ const FirstMinderaMarch = ({
       )}
 
       {minderaOneMar.dinnerFood &&
-        minderaOneMar.dinnerFood === "eat polvo à lagareiro" && (
+        minderaOneMar.dinnerFood === "polvo à lagareiro" && (
           <EndButton
             action={() => {
               goToNext(gameDetails.timestamps);
@@ -130,7 +130,7 @@ const FirstMinderaMarch = ({
         )}
 
       {minderaOneMar.dinnerFood &&
-        minderaOneMar.dinnerFood !== "eat polvo à lagareiro" &&
+        minderaOneMar.dinnerFood !== "polvo à lagareiro" &&
         !minderaOneMar.isFinished && (
           <NextButton
             action={() => {

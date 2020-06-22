@@ -17,7 +17,7 @@ const Mindera1Sep = ({ gameDetails, timestamps }) => {
             <p>
               You've done the interview and passed. They offered you a contract{" "}
               {timestamps.minderaOneSep.acceptedContract
-                ? `and you were part of Mindera as ${gameDetails.career}.`
+                ? `and you were part of Mindera as ${gameDetails.career} Developer.`
                 : "but you changed your mind."}
             </p>
           )}

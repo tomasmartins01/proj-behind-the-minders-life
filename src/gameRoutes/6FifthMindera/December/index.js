@@ -7,7 +7,8 @@ import GameQuestion from "../../../components/game/GameQuestion";
 
 import {
   updateTimeBoxAction,
-  updateBankBalanceAction
+  updateBankBalanceAction,
+  updateSkillsAction
 } from "../../../redux/game/actions";
 
 const FifthMinderaDecember = ({
@@ -15,6 +16,7 @@ const FifthMinderaDecember = ({
   minderaFiveDec,
   updateBox,
   updateBalance,
+  updateSkills,
   goToNext
 }) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -29,6 +31,49 @@ const FifthMinderaDecember = ({
         gifts: text
       }
     });
+  };
+
+  const updateSkillsLevel = esp => {
+    switch (esp) {
+      case "Frontend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          frontend: {
+            ...gameDetails.skillsLevel.frontend,
+            angularSkills: 95,
+            vueSkills: 95
+          }
+        });
+        break;
+      case "Backend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          backend: {
+            ...gameDetails.skillsLevel.backend,
+            cplusplusSkills: 95,
+            golangSkills: 95,
+            phpSkills: 95,
+            pythonSkills: 95,
+            rubySkills: 95
+          }
+        });
+        break;
+      case "Mobile":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          mobile: {
+            ...gameDetails.skillsLevel.mobile,
+            dartSkills: 95,
+            flutterSkills: 95,
+            swiftSkills: 95,
+            reactNativeSkills: 95
+          }
+        });
+        break;
+    }
   };
 
   return (
@@ -74,6 +119,8 @@ const FifthMinderaDecember = ({
       {minderaFiveDec.gifts && !minderaFiveDec.isFinished && (
         <NextButton
           action={() => {
+            updateSkillsLevel(gameDetails.career);
+            updateBalance(gameDetails.bankBalance + 600 * 3);
             setIsOpen(false);
             goToNext(gameDetails.timestamps);
           }}
@@ -93,6 +140,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   updateBox: timestamps => dispatch(updateTimeBoxAction(timestamps)),
   updateBalance: bankBalance => dispatch(updateBankBalanceAction(bankBalance)),
+  updateSkills: skillsLevel => dispatch(updateSkillsAction(skillsLevel)),
   goToNext: timestamps =>
     dispatch(
       updateTimeBoxAction({

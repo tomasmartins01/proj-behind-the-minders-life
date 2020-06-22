@@ -36,6 +36,46 @@ const FourthMinderaSeptember = ({
     }
   };
 
+  const updateSkillsLevel = esp => {
+    switch (esp) {
+      case "Frontend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          frontend: {
+            ...gameDetails.skillsLevel.frontend,
+            angularSkills: 60,
+            vueSkills: 60
+          }
+        });
+        break;
+      case "Backend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          backend: {
+            ...gameDetails.skillsLevel.backend,
+            cplusplusSkills: 60,
+            golangSkills: 60,
+            phpSkills: 60,
+            pythonSkills: 60,
+            rubySkills: 60
+          }
+        });
+        break;
+      case "Mobile":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          mobile: {
+            ...gameDetails.skillsLevel.mobile,
+            dartSkills: 60,
+            flutterSkills: 60,
+            swiftSkills: 60,
+            reactNativeSkills: 60
+          }
+        });
+        break;
+    }
+  };
+
   return (
     <StoryText
       hashtag={`#september${gameDetails.startingYear + 4}`}
@@ -72,6 +112,7 @@ const FourthMinderaSeptember = ({
         <NextButton
           action={() => {
             updateBalance(gameDetails.bankBalance + 600 * 3);
+            updateSkillsLevel(gameDetails.career);
             setIsOpen(false);
             goToNext(gameDetails.timestamps);
           }}

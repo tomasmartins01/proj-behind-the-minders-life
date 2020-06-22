@@ -60,13 +60,13 @@ const SchoolMarch = ({
       case "Golang":
         updateSkills({
           ...gameDetails.skillsLevel,
-          backend: { ...gameDetails.skillsLevel.backend, golangSkills: 30 }
+          backend: { ...gameDetails.skillsLevel.backend, golangSkills: 40 }
         });
         break;
       case "Python":
         updateSkills({
           ...gameDetails.skillsLevel,
-          backend: { ...gameDetails.skillsLevel.backend, pythonSkills: 30 }
+          backend: { ...gameDetails.skillsLevel.backend, pythonSkills: 40 }
         });
         break;
 

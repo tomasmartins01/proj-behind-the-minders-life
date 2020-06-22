@@ -7,16 +7,18 @@ import GameQuestion from "../../../components/game/GameQuestion";
 
 import {
   updateTimeBoxAction,
+  updateSkillsAction,
   updateBankBalanceAction
 } from "../../../redux/game/actions";
 import { updateAgeAction } from "../../../redux/formInfo/actions";
 
 const ThirdMinderaJune = ({
-  formAge, 
+  formAge,
   gameDetails,
   minderaThreeJun,
   increaseAge,
   updateBalance,
+  updateSkills,
   updateBox,
   goToNext
 }) => {
@@ -34,6 +36,49 @@ const ThirdMinderaJune = ({
         vacationMoney: money
       }
     });
+  };
+
+  const updateSkillsLevel = esp => {
+    switch (esp) {
+      case "Frontend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          frontend: {
+            ...gameDetails.skillsLevel.frontend,
+            angularSkills: 50,
+            vueSkills: 50
+          }
+        });
+        break;
+      case "Backend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          backend: {
+            ...gameDetails.skillsLevel.backend,
+            cplusplusSkills: 50,
+            golangSkills: 50,
+            phpSkills: 50,
+            pythonSkills: 50,
+            rubySkills: 50
+          }
+        });
+        break;
+      case "Mobile":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          mobile: {
+            ...gameDetails.skillsLevel.mobile,
+            dartSkills: 50,
+            flutterSkills: 50,
+            swiftSkills: 50,
+            reactNativeSkills: 50
+          }
+        });
+        break;
+    }
   };
 
   return (
@@ -74,6 +119,7 @@ const ThirdMinderaJune = ({
               action={() => {
                 updateBalance(gameDetails.bankBalance + 600 * 3);
                 increaseAge(formAge + 1);
+                updateSkillsLevel(gameDetails.career);
                 setIsOpen(false);
                 goToNext(gameDetails.timestamps);
               }}
@@ -95,9 +141,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   increaseAge: age => dispatch(updateAgeAction(age)),
-  updateBalance: bankBalance =>
-    dispatch(updateBankBalanceAction(bankBalance)),
+  updateBalance: bankBalance => dispatch(updateBankBalanceAction(bankBalance)),
   updateBox: timestamps => dispatch(updateTimeBoxAction(timestamps)),
+  updateSkills: skillsLevel => dispatch(updateSkillsAction(skillsLevel)),
   goToNext: timestamps =>
     dispatch(
       updateTimeBoxAction({

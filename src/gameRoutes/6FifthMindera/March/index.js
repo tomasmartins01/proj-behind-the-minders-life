@@ -8,6 +8,7 @@ import GameQuestion from "../../../components/game/GameQuestion";
 import {
   updateTimeBoxAction,
   updateBankBalanceAction,
+  updateSkillsAction,
   endGameAction
 } from "../../../redux/game/actions";
 import mindersList from "../../../helpers/mindersList";
@@ -17,6 +18,7 @@ const FifthMinderaMarch = ({
   minderaFiveMar,
   updateBox,
   updateBalance,
+  updateSkills,
   endGame,
   goToNext
 }) => {
@@ -66,6 +68,49 @@ const FifthMinderaMarch = ({
     }
   };
 
+  const updateSkillsLevel = esp => {
+    switch (esp) {
+      case "Frontend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          frontend: {
+            ...gameDetails.skillsLevel.frontend,
+            angularSkills: 100,
+            vueSkills: 100
+          }
+        });
+        break;
+      case "Backend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          backend: {
+            ...gameDetails.skillsLevel.backend,
+            cplusplusSkills: 100,
+            golangSkills: 100,
+            phpSkills: 100,
+            pythonSkills: 100,
+            rubySkills: 100
+          }
+        });
+        break;
+      case "Mobile":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          mobile: {
+            ...gameDetails.skillsLevel.mobile,
+            dartSkills: 100,
+            flutterSkills: 100,
+            swiftSkills: 100,
+            reactNativeSkills: 100
+          }
+        });
+        break;
+    }
+  };
+
   return (
     <StoryText
       hashtag={`#march${gameDetails.startingYear + 6}`}
@@ -101,8 +146,12 @@ const FifthMinderaMarch = ({
               op2="I'm with some problems with my project"
               op3="My grandfather is pregnant and needs my help"
               onClickOp1={() => setOption("excuse", "were feeling sick")}
-              onClickOp2={() => setOption("excuse", "had project problems to solve")}
-              onClickOp3={() => setOption("excuse", "had a pregnant grandfather")}
+              onClickOp2={() =>
+                setOption("excuse", "had project problems to solve")
+              }
+              onClickOp3={() =>
+                setOption("excuse", "had a pregnant grandfather")
+              }
             />
           )}
 
@@ -114,6 +163,7 @@ const FifthMinderaMarch = ({
       {minderaFiveMar.excuseText === "pregnant grandfather" && (
         <EndButton
           action={() => {
+            updateSkillsLevel(gameDetails.career);
             goToNext(gameDetails.timestamps);
             endGame();
           }}
@@ -127,6 +177,7 @@ const FifthMinderaMarch = ({
           <NextButton
             action={() => {
               updateBalance(gameDetails.bankBalance + 700 * 3);
+              updateSkillsLevel(gameDetails.career);
               setIsOpen(false);
               goToNext(gameDetails.timestamps);
             }}
@@ -146,6 +197,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   updateBalance: bankBalance => dispatch(updateBankBalanceAction(bankBalance)),
   updateBox: timestamps => dispatch(updateTimeBoxAction(timestamps)),
+  updateSkills: skillsLevel => dispatch(updateSkillsAction(skillsLevel)),
   endGame: () => dispatch(endGameAction()),
   goToNext: timestamps =>
     dispatch(

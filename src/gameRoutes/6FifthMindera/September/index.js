@@ -7,7 +7,8 @@ import GameQuestion from "../../../components/game/GameQuestion";
 
 import {
   updateTimeBoxAction,
-  updateBankBalanceAction
+  updateBankBalanceAction,
+  updateSkillsAction
 } from "../../../redux/game/actions";
 
 import mindersList from "../../../helpers/mindersList";
@@ -17,6 +18,7 @@ const FifthMinderaSeptember = ({
   minderaFiveSep,
   updateBox,
   updateBalance,
+  updateSkills,
   goToNext
 }) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -88,6 +90,49 @@ const FifthMinderaSeptember = ({
     }
   };
 
+  const updateSkillsLevel = esp => {
+    switch (esp) {
+      case "Frontend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          frontend: {
+            ...gameDetails.skillsLevel.frontend,
+            angularSkills: 90,
+            vueSkills: 90
+          }
+        });
+        break;
+      case "Backend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          backend: {
+            ...gameDetails.skillsLevel.backend,
+            cplusplusSkills: 90,
+            golangSkills: 90,
+            phpSkills: 90,
+            pythonSkills: 90,
+            rubySkills: 90
+          }
+        });
+        break;
+      case "Mobile":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          mobile: {
+            ...gameDetails.skillsLevel.mobile,
+            dartSkills: 90,
+            flutterSkills: 90,
+            swiftSkills: 90,
+            reactNativeSkills: 90
+          }
+        });
+        break;
+    }
+  };
+
   return (
     <StoryText
       hashtag={`#september${gameDetails.startingYear + 5}`}
@@ -106,10 +151,8 @@ const FifthMinderaSeptember = ({
           question="What should I do?"
           op1="Ask Irina because she is the PO"
           op2="I think I've got everything I need"
-          onClickOp1={() => setOption("question", true)
-          }
-          onClickOp2={() => setOption("question", false)
-          }
+          onClickOp1={() => setOption("question", true)}
+          onClickOp2={() => setOption("question", false)}
         />
       )}
       {minderaFiveSep.hasAskedQuestion && (
@@ -138,8 +181,7 @@ const FifthMinderaSeptember = ({
               op2="Ask Mehul Irá"
               op3="Ask Pedro Teixeira"
               op4="Ask Vitor Mineiro"
-              onClickOp1={() => setOption("tests", "my mom")
-              }
+              onClickOp1={() => setOption("tests", "my mom")}
               onClickOp2={() => setOption("tests", "Mehul Irá")}
               onClickOp3={() => setOption("tests", "Pedro Teixeira")}
               onClickOp4={() => setOption("tests", "Vitor Mineiro")}
@@ -176,6 +218,7 @@ const FifthMinderaSeptember = ({
         <NextButton
           action={() => {
             updateBalance(gameDetails.bankBalance + 600 * 3);
+            updateSkillsLevel(gameDetails.career);
             setIsOpen(false);
             goToNext(gameDetails.timestamps);
           }}
@@ -195,6 +238,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   updateBox: timestamps => dispatch(updateTimeBoxAction(timestamps)),
   updateBalance: bankBalance => dispatch(updateBankBalanceAction(bankBalance)),
+  updateSkills: skillsLevel => dispatch(updateSkillsAction(skillsLevel)),
   goToNext: timestamps =>
     dispatch(
       updateTimeBoxAction({

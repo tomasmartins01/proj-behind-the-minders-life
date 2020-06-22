@@ -9,6 +9,7 @@ import {
   updateTimeBoxAction,
   updateBankBalanceAction,
   endGameAction,
+  updateSkillsAction,
   updateHappinessAction
 } from "../../../redux/game/actions";
 
@@ -18,6 +19,7 @@ const ThirdMinderaSeptember = ({
   updateBox,
   updateBalance,
   updateHappiness,
+  updateSkills,
   endGame,
   goToNext
 }) => {
@@ -33,6 +35,43 @@ const ThirdMinderaSeptember = ({
         robberyAction: text
       }
     });
+  };
+
+  const updateSkillsLevel = esp => {
+    switch (esp) {
+      case "Frontend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          frontend: {
+            ...gameDetails.skillsLevel.frontend,
+            jsSkills: 95,
+            reactjsSkills: 92
+          }
+        });
+        break;
+      case "Backend":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          backend: {
+            ...gameDetails.skillsLevel.backend,
+            javaSkills: 95,
+            sqlSkills: 95
+          }
+        });
+        break;
+      case "Mobile":
+        updateSkills({
+          ...gameDetails.skillsLevel,
+          socialSkills: 100,
+          mobile: {
+            ...gameDetails.skillsLevel.mobile,
+            kotlinSkills: 95
+          }
+        });
+        break;
+    }
   };
 
   return (
@@ -96,6 +135,7 @@ const ThirdMinderaSeptember = ({
           <NextButton
             action={() => {
               updateBalance(gameDetails.bankBalance + 600 * 3);
+              updateSkillsLevel(gameDetails.career);
               setIsOpen(false);
               goToNext(gameDetails.timestamps);
             }}
@@ -116,6 +156,7 @@ const mapDispatchToProps = dispatch => ({
   updateBalance: bankBalance => dispatch(updateBankBalanceAction(bankBalance)),
   updateHappiness: happiness => dispatch(updateHappinessAction(happiness)),
   updateBox: timestamps => dispatch(updateTimeBoxAction(timestamps)),
+  updateSkills: skillsLevel => dispatch(updateSkillsAction(skillsLevel)),
   endGame: () => dispatch(endGameAction()),
   goToNext: timestamps =>
     dispatch(
