@@ -3,7 +3,7 @@ const mindersList = [
     name: "Sara Cardoso",
     urlName: "saracardoso",
     job: "Operations Team",
-    youtubeVideo: "https://www.youtube.com/watch?v=gwIcgyqioPo",
+    youtubeVideo: "https://www.youtube.com/watch?v=3rtb4YZDcTY",
   },
   {
     name: "Edgar Costa",

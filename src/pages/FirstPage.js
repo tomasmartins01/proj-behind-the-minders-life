@@ -88,7 +88,7 @@ const FirstPage = ({ loginUser, logoutUser, isNightMode }) => {
               alt="Logo Site"
               cName="login-logo"
             />
-          <h1> Behind The Minder's Life </h1>
+          <h1> Behind The Minders Life </h1>
           <h2> Get ready for the adventure </h2>
           <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
         </div>
