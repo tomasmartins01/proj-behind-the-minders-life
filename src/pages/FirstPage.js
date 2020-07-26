@@ -13,11 +13,13 @@ import logoWhite from "../images/logoWhite.png";
 import logoLife from "../images/logoLife.png";
 import logoLifeBlack from "../images/logoLifeBlack.png";
 
+import config from "../config";
+
 import "../styles/index.less";
 
 firebase.initializeApp({
-  apiKey: "AIzaSyAzDykfytwb2JBZ7mtfzVFVm5AAXCMuT54",
-  authDomain: "behindtheminderslife.firebaseapp.com"
+  apiKey: config.API_KEY,
+  authDomain: config.DOMAIN
 });
 
 const FirstPage = ({ loginUser, logoutUser, isNightMode }) => {
@@ -83,11 +85,11 @@ const FirstPage = ({ loginUser, logoutUser, isNightMode }) => {
         )
       ) : (
         <div id="toLogin">
-            <Image
-              imageSrc={isNightMode ? logoWhite : logoBlack}
-              alt="Logo Site"
-              cName="login-logo"
-            />
+          <Image
+            imageSrc={isNightMode ? logoWhite : logoBlack}
+            alt="Logo Site"
+            cName="login-logo"
+          />
           <h1> Behind The Minders Life </h1>
           <h2> Get ready for the adventure </h2>
           <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
